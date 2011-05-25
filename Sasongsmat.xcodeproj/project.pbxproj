@@ -1,0 +1,476 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		493E0911138DBC430030161D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0910138DBC430030161D /* UIKit.framework */; };
+		493E0913138DBC430030161D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0912138DBC430030161D /* Foundation.framework */; };
+		493E0915138DBC430030161D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0914138DBC430030161D /* CoreGraphics.framework */; };
+		493E091B138DBC430030161D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 493E0919138DBC430030161D /* InfoPlist.strings */; };
+		493E091E138DBC430030161D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 493E091D138DBC430030161D /* main.m */; };
+		493E0921138DBC430030161D /* SasongsmatAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 493E0920138DBC430030161D /* SasongsmatAppDelegate.m */; };
+		493E0924138DBC430030161D /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 493E0922138DBC430030161D /* MainWindow.xib */; };
+		493E0927138DBC430030161D /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 493E0926138DBC430030161D /* FirstViewController.m */; };
+		493E092A138DBC430030161D /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 493E0929138DBC430030161D /* SecondViewController.m */; };
+		493E092D138DBC430030161D /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 493E092B138DBC430030161D /* FirstView.xib */; };
+		493E0930138DBC430030161D /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 493E092E138DBC430030161D /* SecondView.xib */; };
+		493E0937138DBC430030161D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0910138DBC430030161D /* UIKit.framework */; };
+		493E0938138DBC430030161D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0912138DBC430030161D /* Foundation.framework */; };
+		493E0939138DBC430030161D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0914138DBC430030161D /* CoreGraphics.framework */; };
+		493E0941138DBC430030161D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 493E093F138DBC430030161D /* InfoPlist.strings */; };
+		493E0944138DBC430030161D /* SasongsmatTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 493E0943138DBC430030161D /* SasongsmatTests.h */; };
+		493E0946138DBC430030161D /* SasongsmatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 493E0945138DBC430030161D /* SasongsmatTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		493E093A138DBC430030161D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 493E0903138DBC430030161D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 493E090B138DBC430030161D;
+			remoteInfo = Sasongsmat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		493E090C138DBC430030161D /* Sasongsmat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sasongsmat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		493E0910138DBC430030161D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		493E0912138DBC430030161D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		493E0914138DBC430030161D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		493E0918138DBC430030161D /* Sasongsmat-Info.plist */ = {isa = PBXFileReference; path = "Sasongsmat-Info.plist"; sourceTree = "<group>"; };
+		493E091A138DBC430030161D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		493E091C138DBC430030161D /* Sasongsmat-Prefix.pch */ = {isa = PBXFileReference; path = "Sasongsmat-Prefix.pch"; sourceTree = "<group>"; };
+		493E091D138DBC430030161D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		493E091F138DBC430030161D /* SasongsmatAppDelegate.h */ = {isa = PBXFileReference; path = SasongsmatAppDelegate.h; sourceTree = "<group>"; };
+		493E0920138DBC430030161D /* SasongsmatAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SasongsmatAppDelegate.m; sourceTree = "<group>"; };
+		493E0923138DBC430030161D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		493E0925138DBC430030161D /* FirstViewController.h */ = {isa = PBXFileReference; path = FirstViewController.h; sourceTree = "<group>"; };
+		493E0926138DBC430030161D /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		493E0928138DBC430030161D /* SecondViewController.h */ = {isa = PBXFileReference; path = SecondViewController.h; sourceTree = "<group>"; };
+		493E0929138DBC430030161D /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		493E092C138DBC430030161D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstView.xib; sourceTree = "<group>"; };
+		493E092F138DBC430030161D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondView.xib; sourceTree = "<group>"; };
+		493E0936138DBC430030161D /* SasongsmatTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SasongsmatTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		493E093E138DBC430030161D /* SasongsmatTests-Info.plist */ = {isa = PBXFileReference; path = "SasongsmatTests-Info.plist"; sourceTree = "<group>"; };
+		493E0940138DBC430030161D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		493E0942138DBC430030161D /* SasongsmatTests-Prefix.pch */ = {isa = PBXFileReference; path = "SasongsmatTests-Prefix.pch"; sourceTree = "<group>"; };
+		493E0943138DBC430030161D /* SasongsmatTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SasongsmatTests.h; sourceTree = "<group>"; };
+		493E0945138DBC430030161D /* SasongsmatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SasongsmatTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		493E0909138DBC430030161D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				493E0911138DBC430030161D /* UIKit.framework in Frameworks */,
+				493E0913138DBC430030161D /* Foundation.framework in Frameworks */,
+				493E0915138DBC430030161D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		493E0932138DBC430030161D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				493E0937138DBC430030161D /* UIKit.framework in Frameworks */,
+				493E0938138DBC430030161D /* Foundation.framework in Frameworks */,
+				493E0939138DBC430030161D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		493E0901138DBC430030161D = {
+			isa = PBXGroup;
+			children = (
+				493E0916138DBC430030161D /* Sasongsmat */,
+				493E093C138DBC430030161D /* SasongsmatTests */,
+				493E090F138DBC430030161D /* Frameworks */,
+				493E090D138DBC430030161D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		493E090D138DBC430030161D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				493E090C138DBC430030161D /* Sasongsmat.app */,
+				493E0936138DBC430030161D /* SasongsmatTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		493E090F138DBC430030161D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				493E0910138DBC430030161D /* UIKit.framework */,
+				493E0912138DBC430030161D /* Foundation.framework */,
+				493E0914138DBC430030161D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		493E0916138DBC430030161D /* Sasongsmat */ = {
+			isa = PBXGroup;
+			children = (
+				493E091F138DBC430030161D /* SasongsmatAppDelegate.h */,
+				493E0920138DBC430030161D /* SasongsmatAppDelegate.m */,
+				493E0922138DBC430030161D /* MainWindow.xib */,
+				493E0925138DBC430030161D /* FirstViewController.h */,
+				493E0926138DBC430030161D /* FirstViewController.m */,
+				493E0928138DBC430030161D /* SecondViewController.h */,
+				493E0929138DBC430030161D /* SecondViewController.m */,
+				493E092B138DBC430030161D /* FirstView.xib */,
+				493E092E138DBC430030161D /* SecondView.xib */,
+				493E0917138DBC430030161D /* Supporting Files */,
+			);
+			path = Sasongsmat;
+			sourceTree = "<group>";
+		};
+		493E0917138DBC430030161D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				493E0918138DBC430030161D /* Sasongsmat-Info.plist */,
+				493E0919138DBC430030161D /* InfoPlist.strings */,
+				493E091C138DBC430030161D /* Sasongsmat-Prefix.pch */,
+				493E091D138DBC430030161D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		493E093C138DBC430030161D /* SasongsmatTests */ = {
+			isa = PBXGroup;
+			children = (
+				493E0943138DBC430030161D /* SasongsmatTests.h */,
+				493E0945138DBC430030161D /* SasongsmatTests.m */,
+				493E093D138DBC430030161D /* Supporting Files */,
+			);
+			path = SasongsmatTests;
+			sourceTree = "<group>";
+		};
+		493E093D138DBC430030161D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				493E093E138DBC430030161D /* SasongsmatTests-Info.plist */,
+				493E093F138DBC430030161D /* InfoPlist.strings */,
+				493E0942138DBC430030161D /* SasongsmatTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		493E090B138DBC430030161D /* Sasongsmat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 493E0949138DBC430030161D /* Build configuration list for PBXNativeTarget "Sasongsmat" */;
+			buildPhases = (
+				493E0908138DBC430030161D /* Sources */,
+				493E0909138DBC430030161D /* Frameworks */,
+				493E090A138DBC430030161D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sasongsmat;
+			productName = Sasongsmat;
+			productReference = 493E090C138DBC430030161D /* Sasongsmat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		493E0935138DBC430030161D /* SasongsmatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 493E094C138DBC430030161D /* Build configuration list for PBXNativeTarget "SasongsmatTests" */;
+			buildPhases = (
+				493E0931138DBC430030161D /* Sources */,
+				493E0932138DBC430030161D /* Frameworks */,
+				493E0933138DBC430030161D /* Resources */,
+				493E0934138DBC430030161D /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				493E093B138DBC430030161D /* PBXTargetDependency */,
+			);
+			name = SasongsmatTests;
+			productName = SasongsmatTests;
+			productReference = 493E0936138DBC430030161D /* SasongsmatTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		493E0903138DBC430030161D /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 493E0906138DBC430030161D /* Build configuration list for PBXProject "Sasongsmat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 493E0901138DBC430030161D;
+			productRefGroup = 493E090D138DBC430030161D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				493E090B138DBC430030161D /* Sasongsmat */,
+				493E0935138DBC430030161D /* SasongsmatTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		493E090A138DBC430030161D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				493E091B138DBC430030161D /* InfoPlist.strings in Resources */,
+				493E0924138DBC430030161D /* MainWindow.xib in Resources */,
+				493E092D138DBC430030161D /* FirstView.xib in Resources */,
+				493E0930138DBC430030161D /* SecondView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		493E0933138DBC430030161D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				493E0941138DBC430030161D /* InfoPlist.strings in Resources */,
+				493E0944138DBC430030161D /* SasongsmatTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		493E0934138DBC430030161D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		493E0908138DBC430030161D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				493E091E138DBC430030161D /* main.m in Sources */,
+				493E0921138DBC430030161D /* SasongsmatAppDelegate.m in Sources */,
+				493E0927138DBC430030161D /* FirstViewController.m in Sources */,
+				493E092A138DBC430030161D /* SecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		493E0931138DBC430030161D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				493E0946138DBC430030161D /* SasongsmatTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		493E093B138DBC430030161D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 493E090B138DBC430030161D /* Sasongsmat */;
+			targetProxy = 493E093A138DBC430030161D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		493E0919138DBC430030161D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				493E091A138DBC430030161D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		493E0922138DBC430030161D /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				493E0923138DBC430030161D /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		493E092B138DBC430030161D /* FirstView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				493E092C138DBC430030161D /* en */,
+			);
+			name = FirstView.xib;
+			sourceTree = "<group>";
+		};
+		493E092E138DBC430030161D /* SecondView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				493E092F138DBC430030161D /* en */,
+			);
+			name = SecondView.xib;
+			sourceTree = "<group>";
+		};
+		493E093F138DBC430030161D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				493E0940138DBC430030161D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		493E0947138DBC430030161D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		493E0948138DBC430030161D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		493E094A138DBC430030161D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sasongsmat/Sasongsmat-Prefix.pch";
+				INFOPLIST_FILE = "Sasongsmat/Sasongsmat-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		493E094B138DBC430030161D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sasongsmat/Sasongsmat-Prefix.pch";
+				INFOPLIST_FILE = "Sasongsmat/Sasongsmat-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		493E094D138DBC430030161D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Sasongsmat.app/Sasongsmat";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SasongsmatTests/SasongsmatTests-Prefix.pch";
+				INFOPLIST_FILE = "SasongsmatTests/SasongsmatTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		493E094E138DBC430030161D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Sasongsmat.app/Sasongsmat";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SasongsmatTests/SasongsmatTests-Prefix.pch";
+				INFOPLIST_FILE = "SasongsmatTests/SasongsmatTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		493E0906138DBC430030161D /* Build configuration list for PBXProject "Sasongsmat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				493E0947138DBC430030161D /* Debug */,
+				493E0948138DBC430030161D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		493E0949138DBC430030161D /* Build configuration list for PBXNativeTarget "Sasongsmat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				493E094A138DBC430030161D /* Debug */,
+				493E094B138DBC430030161D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		493E094C138DBC430030161D /* Build configuration list for PBXNativeTarget "SasongsmatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				493E094D138DBC430030161D /* Debug */,
+				493E094E138DBC430030161D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 493E0903138DBC430030161D /* Project object */;
+}
