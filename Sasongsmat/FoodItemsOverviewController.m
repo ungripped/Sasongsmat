@@ -7,10 +7,10 @@
 //
 
 #import "FoodItemsOverviewController.h"
-
+#import "FoodItemRow.h"
 
 @implementation FoodItemsOverviewController
-@synthesize seasonHeaderImageView;
+@synthesize seasonHeaderView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -23,7 +23,7 @@
 
 - (void)dealloc
 {
-    [seasonHeaderImageView release];
+    [seasonHeaderView release];
     [super dealloc];
 }
 
@@ -40,7 +40,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    UIViewController *tempController = [[UIViewController alloc] initWithNibName:@"SeasonHeaderView" bundle:nil];
+    self.seasonHeaderView = tempController.view;
+    
+    [tempController release];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -51,6 +56,7 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    self.seasonHeaderView = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -105,14 +111,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"FoodItemRowCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    FoodItemRow *cell = (FoodItemRow *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        
+        UIViewController *tempController = [[UIViewController alloc] initWithNibName:@"FoodItemRow" bundle:nil];
+        cell = (FoodItemRow *)tempController.view;
+        
+        [tempController release];
+        //cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    cell.textLabel.text = @"Majrova";
+    cell.itemSeason.text = @"6 jun - 9 jul";
+    
+    //cell.textLabel.text = @"Majrova";
     // Configure the cell...
     
     return cell;
@@ -121,14 +134,26 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     switch (section) {
         case kSeasonSection:
-            seasonHeaderImageView.frame = CGRectMake(10, 10, 139, 30);
-            return seasonHeaderImageView;
+            return seasonHeaderView;
             break;
             
         default:
             return nil;
             break;
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.section) {
+        case kSeasonSection:
+            return 55;
+            break;
+            
+        default:
+            break;
+    }
+    
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

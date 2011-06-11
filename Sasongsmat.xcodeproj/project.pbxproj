@@ -318,8 +318,8 @@
 		490312DD13A2A9B9005EB2EC /* glyphicons_308_sheriffs_-star.png in Resources */ = {isa = PBXBuildFile; fileRef = 490311A713A2A9B9005EB2EC /* glyphicons_308_sheriffs_-star.png */; };
 		490312DE13A2A9B9005EB2EC /* glyphicons_309_flip.png in Resources */ = {isa = PBXBuildFile; fileRef = 490311A813A2A9B9005EB2EC /* glyphicons_309_flip.png */; };
 		490312F113A2BFEB005EB2EC /* FoodItemsOverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490312EF13A2BFEB005EB2EC /* FoodItemsOverviewController.m */; };
-		490312F213A2BFEB005EB2EC /* FoodItemsOverviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 490312F013A2BFEB005EB2EC /* FoodItemsOverviewController.xib */; };
 		4903134213A2CB7A005EB2EC /* spring.png in Resources */ = {isa = PBXBuildFile; fileRef = 4903134113A2CB7A005EB2EC /* spring.png */; };
+		4912843713A360C500D82C0B /* FoodItemRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4912843613A360C500D82C0B /* FoodItemRow.xib */; };
 		493E0911138DBC430030161D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0910138DBC430030161D /* UIKit.framework */; };
 		493E0913138DBC430030161D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0912138DBC430030161D /* Foundation.framework */; };
 		493E0915138DBC430030161D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0914138DBC430030161D /* CoreGraphics.framework */; };
@@ -335,6 +335,9 @@
 		493E0941138DBC430030161D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 493E093F138DBC430030161D /* InfoPlist.strings */; };
 		493E0944138DBC430030161D /* SasongsmatTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 493E0943138DBC430030161D /* SasongsmatTests.h */; };
 		493E0946138DBC430030161D /* SasongsmatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 493E0945138DBC430030161D /* SasongsmatTests.m */; };
+		49E367C613A4038E00636828 /* beetroot.png in Resources */ = {isa = PBXBuildFile; fileRef = 49E367C513A4038E00636828 /* beetroot.png */; };
+		49E367CB13A4070600636828 /* FoodItemRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E367CA13A4070600636828 /* FoodItemRow.m */; };
+		49E367CD13A41CD500636828 /* SeasonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E367CC13A41CD500636828 /* SeasonHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -660,8 +663,8 @@
 		490311A813A2A9B9005EB2EC /* glyphicons_309_flip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_309_flip.png; sourceTree = "<group>"; };
 		490312EE13A2BFEB005EB2EC /* FoodItemsOverviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemsOverviewController.h; sourceTree = "<group>"; };
 		490312EF13A2BFEB005EB2EC /* FoodItemsOverviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemsOverviewController.m; sourceTree = "<group>"; };
-		490312F013A2BFEB005EB2EC /* FoodItemsOverviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodItemsOverviewController.xib; sourceTree = "<group>"; };
 		4903134113A2CB7A005EB2EC /* spring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spring.png; sourceTree = "<group>"; };
+		4912843613A360C500D82C0B /* FoodItemRow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodItemRow.xib; sourceTree = "<group>"; };
 		493E090C138DBC430030161D /* Sasongsmat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sasongsmat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		493E0910138DBC430030161D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		493E0912138DBC430030161D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -682,6 +685,10 @@
 		493E0942138DBC430030161D /* SasongsmatTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SasongsmatTests-Prefix.pch"; sourceTree = "<group>"; };
 		493E0943138DBC430030161D /* SasongsmatTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SasongsmatTests.h; sourceTree = "<group>"; };
 		493E0945138DBC430030161D /* SasongsmatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SasongsmatTests.m; sourceTree = "<group>"; };
+		49E367C513A4038E00636828 /* beetroot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beetroot.png; sourceTree = "<group>"; };
+		49E367C913A4070600636828 /* FoodItemRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemRow.h; sourceTree = "<group>"; };
+		49E367CA13A4070600636828 /* FoodItemRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemRow.m; sourceTree = "<group>"; };
+		49E367CC13A41CD500636828 /* SeasonHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeasonHeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -711,6 +718,7 @@
 		4903107113A2A9B8005EB2EC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				49E367C413A4038E00636828 /* Miniatures */,
 				4903134013A2CB7A005EB2EC /* Logos */,
 				4903107213A2A9B8005EB2EC /* Icons */,
 			);
@@ -1038,9 +1046,9 @@
 		490312DF13A2AEE7005EB2EC /* Items */ = {
 			isa = PBXGroup;
 			children = (
+				49E367C813A406DA00636828 /* Table Row */,
 				490312EE13A2BFEB005EB2EC /* FoodItemsOverviewController.h */,
 				490312EF13A2BFEB005EB2EC /* FoodItemsOverviewController.m */,
-				490312F013A2BFEB005EB2EC /* FoodItemsOverviewController.xib */,
 			);
 			name = Items;
 			sourceTree = "<group>";
@@ -1097,6 +1105,7 @@
 			isa = PBXGroup;
 			children = (
 				493E0922138DBC430030161D /* MainWindow.xib */,
+				49E367CC13A41CD500636828 /* SeasonHeaderView.xib */,
 				493E091F138DBC430030161D /* SasongsmatAppDelegate.h */,
 				493E0920138DBC430030161D /* SasongsmatAppDelegate.m */,
 				490312E013A2AF44005EB2EC /* Recipes */,
@@ -1135,6 +1144,24 @@
 				493E0942138DBC430030161D /* SasongsmatTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		49E367C413A4038E00636828 /* Miniatures */ = {
+			isa = PBXGroup;
+			children = (
+				49E367C513A4038E00636828 /* beetroot.png */,
+			);
+			path = Miniatures;
+			sourceTree = "<group>";
+		};
+		49E367C813A406DA00636828 /* Table Row */ = {
+			isa = PBXGroup;
+			children = (
+				4912843613A360C500D82C0B /* FoodItemRow.xib */,
+				49E367C913A4070600636828 /* FoodItemRow.h */,
+				49E367CA13A4070600636828 /* FoodItemRow.m */,
+			);
+			name = "Table Row";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1517,8 +1544,10 @@
 				490312DC13A2A9B9005EB2EC /* glyphicons_307_boat.png in Resources */,
 				490312DD13A2A9B9005EB2EC /* glyphicons_308_sheriffs_-star.png in Resources */,
 				490312DE13A2A9B9005EB2EC /* glyphicons_309_flip.png in Resources */,
-				490312F213A2BFEB005EB2EC /* FoodItemsOverviewController.xib in Resources */,
 				4903134213A2CB7A005EB2EC /* spring.png in Resources */,
+				4912843713A360C500D82C0B /* FoodItemRow.xib in Resources */,
+				49E367C613A4038E00636828 /* beetroot.png in Resources */,
+				49E367CD13A41CD500636828 /* SeasonHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1558,6 +1587,7 @@
 				493E0921138DBC430030161D /* SasongsmatAppDelegate.m in Sources */,
 				493E092A138DBC430030161D /* SecondViewController.m in Sources */,
 				490312F113A2BFEB005EB2EC /* FoodItemsOverviewController.m in Sources */,
+				49E367CB13A4070600636828 /* FoodItemRow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

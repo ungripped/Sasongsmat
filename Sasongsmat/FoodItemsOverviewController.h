@@ -18,10 +18,10 @@ enum SeasonSectionRows {
     NUM_SEASON_SECTION_ROWS
 };
 
-@interface FoodItemsOverviewController : UITableViewController {
+@interface FoodItemsOverviewController : UITableViewController <UITableViewDataSource, UITableViewDelegate> {
     
-    UIView *seasonHeaderImageView;
+    UIView *seasonHeaderView;
 }
 
-@property (nonatomic, retain) IBOutlet UIView *seasonHeaderImageView;
+@property (nonatomic, retain) UIView *seasonHeaderView;
 @end
