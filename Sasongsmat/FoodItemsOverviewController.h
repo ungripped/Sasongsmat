@@ -4,7 +4,7 @@
 //
 //  Created by Matti Ryhänen on 2011-06-10.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+//[
 
 #import <UIKit/UIKit.h>
 
@@ -21,7 +21,12 @@ enum SeasonSectionRows {
 @interface FoodItemsOverviewController : UITableViewController <UITableViewDataSource, UITableViewDelegate> {
     
     UIView *seasonHeaderView;
+    UIView *seasonFooterView;
 }
 
 @property (nonatomic, retain) UIView *seasonHeaderView;
+@property (nonatomic, retain) UIView *seasonFooterView;
+
+- (void)loadFoodItems;
+
 @end

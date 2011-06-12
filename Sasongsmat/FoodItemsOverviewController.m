@@ -9,8 +9,11 @@
 #import "FoodItemsOverviewController.h"
 #import "FoodItemRow.h"
 
+#import "ASIHTTPRequest.h"
+#import "SBJson.h"
+
 @implementation FoodItemsOverviewController
-@synthesize seasonHeaderView;
+@synthesize seasonHeaderView, seasonFooterView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -24,6 +27,7 @@
 - (void)dealloc
 {
     [seasonHeaderView release];
+    [seasonFooterView release];
     [super dealloc];
 }
 
@@ -46,11 +50,47 @@
     
     [tempController release];
     
+    tempController = [[UIViewController alloc] initWithNibName:@"SeasonFooterView" bundle:nil];
+    self.seasonFooterView = tempController.view;
+    
+    [tempController release];
+    
+    [self loadFoodItems];
+    
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)loadFoodItems {
+    
+    // TODO: Set load-indicator in table section footer
+    
+    NSURL *url = [NSURL URLWithString:@"http://xn--ssongsmat-v2a.nu/ssm/Special:Ask/-5B-5B:+-5D-5D-20-5B-5BI_s%C3%A4song::1912-06-12-5D-5D/limit%3D500/format%3Djson"];
+    
+    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setCompletionBlock:^{
+        NSString *responseString = [request responseString];
+        NSLog(@"%@", responseString);
+        
+        NSDictionary *responseJson = (NSDictionary *)[responseString JSONValue];
+        
+        NSLog(@"JSON value: \n%@", responseJson);
+        
+    }];
+    
+    [request setFailedBlock:^{
+        NSError *error = [request error];
+        NSLog(@"Error: %@", error);
+        
+        // TODO: Set error message and tap-message in section footer
+    }];
+    
+    [request startAsynchronous];
 }
 
 - (void)viewDidUnload
@@ -100,13 +140,9 @@
     switch (section) {
         case kSeasonSection:
             return NUM_SEASON_SECTION_ROWS;
-            break;
-            
         default:
-            break;
+            return 0;
     }
-
-    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -135,11 +171,17 @@
     switch (section) {
         case kSeasonSection:
             return seasonHeaderView;
-            break;
-            
         default:
             return nil;
-            break;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    switch (section) {
+        case kSeasonSection:
+            return seasonFooterView;
+        default:
+            return nil;
     }
 }
 
@@ -147,25 +189,27 @@
     switch (indexPath.section) {
         case kSeasonSection:
             return 55;
-            break;
-            
         default:
-            break;
+            return 0;
     }
-    
-    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     switch (section) {
         case kSeasonSection:
             return 45;
-            break;
-            
         default:
-            break;
+            return 0;
     }
-    return  0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    switch (section) {
+        case kSeasonSection:
+            return 45;
+        default:
+            return 0;
+    }
 }
 
 /*

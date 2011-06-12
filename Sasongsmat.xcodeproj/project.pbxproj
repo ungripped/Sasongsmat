@@ -341,6 +341,11 @@
 		4928613E13A566D200F169E9 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 4928613413A566D100F169E9 /* ASIInputStream.m */; };
 		4928613F13A566D200F169E9 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4928613613A566D100F169E9 /* ASINetworkQueue.m */; };
 		4928614213A566EF00F169E9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4928614113A566EF00F169E9 /* Reachability.m */; };
+		4928614413A56B0600F169E9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4928614313A56B0600F169E9 /* CFNetwork.framework */; };
+		4928614613A56B1000F169E9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4928614513A56B1000F169E9 /* SystemConfiguration.framework */; };
+		4928614813A56B1700F169E9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4928614713A56B1700F169E9 /* MobileCoreServices.framework */; };
+		4928614A13A56B4500F169E9 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4928614913A56B4500F169E9 /* libz.1.2.3.dylib */; };
+		4928614C13A56C7200F169E9 /* SeasonFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4928614B13A56C7200F169E9 /* SeasonFooterView.xib */; };
 		493E0911138DBC430030161D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0910138DBC430030161D /* UIKit.framework */; };
 		493E0913138DBC430030161D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0912138DBC430030161D /* Foundation.framework */; };
 		493E0915138DBC430030161D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0914138DBC430030161D /* CoreGraphics.framework */; };
@@ -734,6 +739,11 @@
 		4928613713A566D100F169E9 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
 		4928614013A566EF00F169E9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		4928614113A566EF00F169E9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		4928614313A56B0600F169E9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		4928614513A56B1000F169E9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4928614713A56B1700F169E9 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		4928614913A56B4500F169E9 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		4928614B13A56C7200F169E9 /* SeasonFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeasonFooterView.xib; sourceTree = "<group>"; };
 		493E090C138DBC430030161D /* Sasongsmat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sasongsmat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		493E0910138DBC430030161D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		493E0912138DBC430030161D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -765,6 +775,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4928614A13A56B4500F169E9 /* libz.1.2.3.dylib in Frameworks */,
+				4928614813A56B1700F169E9 /* MobileCoreServices.framework in Frameworks */,
+				4928614613A56B1000F169E9 /* SystemConfiguration.framework in Frameworks */,
+				4928614413A56B0600F169E9 /* CFNetwork.framework in Frameworks */,
 				493E0911138DBC430030161D /* UIKit.framework in Frameworks */,
 				493E0913138DBC430030161D /* Foundation.framework in Frameworks */,
 				493E0915138DBC430030161D /* CoreGraphics.framework in Frameworks */,
@@ -1213,6 +1227,10 @@
 		493E0901138DBC430030161D = {
 			isa = PBXGroup;
 			children = (
+				4928614913A56B4500F169E9 /* libz.1.2.3.dylib */,
+				4928614713A56B1700F169E9 /* MobileCoreServices.framework */,
+				4928614513A56B1000F169E9 /* SystemConfiguration.framework */,
+				4928614313A56B0600F169E9 /* CFNetwork.framework */,
 				493E0916138DBC430030161D /* Sasongsmat */,
 				4903107113A2A9B8005EB2EC /* Images */,
 				493E090F138DBC430030161D /* Frameworks */,
@@ -1245,6 +1263,7 @@
 			children = (
 				493E0922138DBC430030161D /* MainWindow.xib */,
 				49E367CC13A41CD500636828 /* SeasonHeaderView.xib */,
+				4928614B13A56C7200F169E9 /* SeasonFooterView.xib */,
 				493E091F138DBC430030161D /* SasongsmatAppDelegate.h */,
 				493E0920138DBC430030161D /* SasongsmatAppDelegate.m */,
 				4925048713A563870021DFC8 /* Communication */,
@@ -1689,6 +1708,7 @@
 				4912843713A360C500D82C0B /* FoodItemRow.xib in Resources */,
 				49E367C613A4038E00636828 /* beetroot.png in Resources */,
 				49E367CD13A41CD500636828 /* SeasonHeaderView.xib in Resources */,
+				4928614C13A56C7200F169E9 /* SeasonFooterView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
