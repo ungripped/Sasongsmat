@@ -51,7 +51,7 @@
 							<object class="IBUILabel" id="969590982">
 								<reference key="NSNextResponder" ref="71069813"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{93, 5}, {203, 30}}</string>
+								<string key="NSFrame">{{71, 5}, {203, 30}}</string>
 								<reference key="NSSuperview" ref="71069813"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="313011982"/>
@@ -77,7 +77,7 @@
 							<object class="IBUILabel" id="313011982">
 								<reference key="NSNextResponder" ref="71069813"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{93, 29}, {203, 21}}</string>
+								<string key="NSFrame">{{72, 29}, {203, 21}}</string>
 								<reference key="NSSuperview" ref="71069813"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
@@ -86,7 +86,7 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">24 maj - 9 nov</string>
+								<string key="IBUIText">t.o.m. 16 juni</string>
 								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">Helvetica</string>
 									<double key="NSSize">14</double>
@@ -103,7 +103,7 @@
 							<object class="IBUIImageView" id="234423239">
 								<reference key="NSNextResponder" ref="71069813"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 5}, {50, 45}}</string>
+								<string key="NSFrame">{{11, 5}, {50, 45}}</string>
 								<reference key="NSSuperview" ref="71069813"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="969590982"/>
