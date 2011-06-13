@@ -8,12 +8,14 @@
 
 #import "FoodItemsOverviewController.h"
 #import "FoodItemRow.h"
+#import "FoodListItem.h"
 
 #import "ASIHTTPRequest.h"
 #import "SBJson.h"
 
 @implementation FoodItemsOverviewController
 @synthesize seasonHeaderView, seasonFooterView;
+@synthesize seasonFoodItems;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,6 +30,8 @@
 {
     [seasonHeaderView release];
     [seasonFooterView release];
+    [seasonFoodItems release];
+    
     [super dealloc];
 }
 
@@ -73,13 +77,22 @@
     NSURL *url = [NSURL URLWithString:@"http://xn--ssongsmat-v2a.nu/ssm/Special:Ask/-5B-5B:+-5D-5D-20-5B-5BI_s%C3%A4song::1912-06-12-5D-5D/limit%3D500/format%3Djson"];
     
     __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    request.defaultResponseEncoding = NSUTF8StringEncoding;
+    
     [request setCompletionBlock:^{
         NSString *responseString = [request responseString];
-        NSLog(@"%@", responseString);
+        //NSLog(@"%@", responseString);
         
         NSDictionary *responseJson = (NSDictionary *)[responseString JSONValue];
         
-        NSLog(@"JSON value: \n%@", responseJson);
+        self.seasonFoodItems = [FoodListItem listItemsForJsonArray:[responseJson objectForKey:@"items"]];
+        
+        //[self.tableView reloadData];
+        
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSeasonSection] withRowAnimation:UITableViewRowAnimationLeft];
+        
+        NSLog(@"Items:\n%@", seasonFoodItems);
+        NSLog(@"Count: %i", [seasonFoodItems count]);
         
     }];
     
@@ -139,7 +152,13 @@
 {
     switch (section) {
         case kSeasonSection:
-            return NUM_SEASON_SECTION_ROWS;
+            if (seasonFoodItems != nil) {
+                return [seasonFoodItems count];
+            }
+            else {
+                // TODO: Should be 0.
+                return NUM_SEASON_SECTION_ROWS;
+            }
         default:
             return 0;
     }
@@ -158,6 +177,9 @@
         [tempController release];
         //cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
+    
+    FoodListItem *item = [seasonFoodItems objectAtIndex:indexPath.row];
+    cell.itemName.text = item.label;
     
     cell.itemSeason.text = @"6 jun - 9 jul";
     

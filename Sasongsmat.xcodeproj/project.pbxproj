@@ -361,6 +361,7 @@
 		493E0941138DBC430030161D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 493E093F138DBC430030161D /* InfoPlist.strings */; };
 		493E0944138DBC430030161D /* SasongsmatTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 493E0943138DBC430030161D /* SasongsmatTests.h */; };
 		493E0946138DBC430030161D /* SasongsmatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 493E0945138DBC430030161D /* SasongsmatTests.m */; };
+		4981007513A6BB0E0066D51A /* FoodListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4981007413A6BB0E0066D51A /* FoodListItem.m */; };
 		49E367C613A4038E00636828 /* beetroot.png in Resources */ = {isa = PBXBuildFile; fileRef = 49E367C513A4038E00636828 /* beetroot.png */; };
 		49E367CB13A4070600636828 /* FoodItemRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E367CA13A4070600636828 /* FoodItemRow.m */; };
 		49E367CD13A41CD500636828 /* SeasonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E367CC13A41CD500636828 /* SeasonHeaderView.xib */; };
@@ -764,6 +765,8 @@
 		493E0942138DBC430030161D /* SasongsmatTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SasongsmatTests-Prefix.pch"; sourceTree = "<group>"; };
 		493E0943138DBC430030161D /* SasongsmatTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SasongsmatTests.h; sourceTree = "<group>"; };
 		493E0945138DBC430030161D /* SasongsmatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SasongsmatTests.m; sourceTree = "<group>"; };
+		4981007313A6BB0E0066D51A /* FoodListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodListItem.h; sourceTree = "<group>"; };
+		4981007413A6BB0E0066D51A /* FoodListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodListItem.m; sourceTree = "<group>"; };
 		49E367C513A4038E00636828 /* beetroot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beetroot.png; sourceTree = "<group>"; };
 		49E367C913A4070600636828 /* FoodItemRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemRow.h; sourceTree = "<group>"; };
 		49E367CA13A4070600636828 /* FoodItemRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemRow.m; sourceTree = "<group>"; };
@@ -1190,6 +1193,7 @@
 		4925048713A563870021DFC8 /* Communication */ = {
 			isa = PBXGroup;
 			children = (
+				4925045F13A562D30021DFC8 /* JSON */,
 				4928612213A566AB00F169E9 /* ASI */,
 			);
 			name = Communication;
@@ -1227,10 +1231,6 @@
 		493E0901138DBC430030161D = {
 			isa = PBXGroup;
 			children = (
-				4928614913A56B4500F169E9 /* libz.1.2.3.dylib */,
-				4928614713A56B1700F169E9 /* MobileCoreServices.framework */,
-				4928614513A56B1000F169E9 /* SystemConfiguration.framework */,
-				4928614313A56B0600F169E9 /* CFNetwork.framework */,
 				493E0916138DBC430030161D /* Sasongsmat */,
 				4903107113A2A9B8005EB2EC /* Images */,
 				493E090F138DBC430030161D /* Frameworks */,
@@ -1251,6 +1251,10 @@
 		493E090F138DBC430030161D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4928614913A56B4500F169E9 /* libz.1.2.3.dylib */,
+				4928614713A56B1700F169E9 /* MobileCoreServices.framework */,
+				4928614513A56B1000F169E9 /* SystemConfiguration.framework */,
+				4928614313A56B0600F169E9 /* CFNetwork.framework */,
 				493E0910138DBC430030161D /* UIKit.framework */,
 				493E0912138DBC430030161D /* Foundation.framework */,
 				493E0914138DBC430030161D /* CoreGraphics.framework */,
@@ -1266,10 +1270,10 @@
 				4928614B13A56C7200F169E9 /* SeasonFooterView.xib */,
 				493E091F138DBC430030161D /* SasongsmatAppDelegate.h */,
 				493E0920138DBC430030161D /* SasongsmatAppDelegate.m */,
+				4981007713A6BB900066D51A /* Model */,
 				4925048713A563870021DFC8 /* Communication */,
 				490312E013A2AF44005EB2EC /* Recipes */,
 				490312DF13A2AEE7005EB2EC /* Items */,
-				4925045F13A562D30021DFC8 /* JSON */,
 				493E0917138DBC430030161D /* Supporting Files */,
 			);
 			path = Sasongsmat;
@@ -1304,6 +1308,15 @@
 				493E0942138DBC430030161D /* SasongsmatTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4981007713A6BB900066D51A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4981007313A6BB0E0066D51A /* FoodListItem.h */,
+				4981007413A6BB0E0066D51A /* FoodListItem.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		49E367C413A4038E00636828 /* Miniatures */ = {
@@ -1770,6 +1783,7 @@
 				4928613E13A566D200F169E9 /* ASIInputStream.m in Sources */,
 				4928613F13A566D200F169E9 /* ASINetworkQueue.m in Sources */,
 				4928614213A566EF00F169E9 /* Reachability.m in Sources */,
+				4981007513A6BB0E0066D51A /* FoodListItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

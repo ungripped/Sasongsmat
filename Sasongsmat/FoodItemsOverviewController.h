@@ -22,11 +22,16 @@ enum SeasonSectionRows {
     
     UIView *seasonHeaderView;
     UIView *seasonFooterView;
+    
+    NSArray *seasonFoodItems;
 }
 
 @property (nonatomic, retain) UIView *seasonHeaderView;
 @property (nonatomic, retain) UIView *seasonFooterView;
 
+@property (nonatomic, retain) NSArray *seasonFoodItems;
+
 - (void)loadFoodItems;
+
 
 @end
