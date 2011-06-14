@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define FEATURED_ROW_COUNT 4
+
 enum Sections {
     kSeasonSection = 0,
     NUM_SECTIONS
@@ -23,13 +25,18 @@ enum SeasonSectionRows {
     UIView *seasonHeaderView;
     UIView *seasonFooterView;
     
+    NSArray *featuredFoodItems;
     NSArray *seasonFoodItems;
+    
+    
+    BOOL isLoading;
 }
 
 @property (nonatomic, retain) UIView *seasonHeaderView;
 @property (nonatomic, retain) UIView *seasonFooterView;
 
 @property (nonatomic, retain) NSArray *seasonFoodItems;
+@property (nonatomic, retain) NSArray *featuredFoodItems;
 
 - (void)loadFoodItems;
 

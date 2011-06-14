@@ -7,7 +7,7 @@
 //
 
 #import "FoodItemsOverviewController.h"
-#import "FoodItemRow.h"
+#import "FoodItemsCompleteListController.h"
 #import "FoodListItem.h"
 
 #import "ASIHTTPRequest.h"
@@ -15,7 +15,7 @@
 
 @implementation FoodItemsOverviewController
 @synthesize seasonHeaderView, seasonFooterView;
-@synthesize seasonFoodItems;
+@synthesize seasonFoodItems, featuredFoodItems;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -31,6 +31,7 @@
     [seasonHeaderView release];
     [seasonFooterView release];
     [seasonFoodItems release];
+    [featuredFoodItems release];
     
     [super dealloc];
 }
@@ -48,6 +49,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.seasonFoodItems = [NSArray array];
+    self.featuredFoodItems = [NSArray array];
+    
+    isLoading = NO;
     
     UIViewController *tempController = [[UIViewController alloc] initWithNibName:@"SeasonHeaderView" bundle:nil];
     self.seasonHeaderView = tempController.view;
@@ -61,23 +66,20 @@
     
     [self loadFoodItems];
     
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.clearsSelectionOnViewWillAppear = YES;
 }
 
 - (void)loadFoodItems {
     
-    // TODO: Set load-indicator in table section footer
-    
     NSURL *url = [NSURL URLWithString:@"http://xn--ssongsmat-v2a.nu/ssm/Special:Ask/-5B-5B:+-5D-5D-20-5B-5BI_s%C3%A4song::1912-06-12-5D-5D/limit%3D500/format%3Djson"];
+    
+    //NSURL *url = [NSURL URLWithString:@"http://localhost/~matti/ssm/result-.json"];
+    //NSURL *url = [NSURL URLWithString:@"http://localhost/~matti/ssm/result-0.json"];
+    //NSURL *url = [NSURL URLWithString:@"http://localhost/~matti/ssm/result-full.json"];
     
     __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     request.defaultResponseEncoding = NSUTF8StringEncoding;
+    
     
     [request setCompletionBlock:^{
         NSString *responseString = [request responseString];
@@ -87,22 +89,28 @@
         
         self.seasonFoodItems = [FoodListItem listItemsForJsonArray:[responseJson objectForKey:@"items"]];
         
-        //[self.tableView reloadData];
+        NSRange range;
+        range.location = 0;
+        range.length = [seasonFoodItems count] > FEATURED_ROW_COUNT ? FEATURED_ROW_COUNT : [seasonFoodItems count];
         
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSeasonSection] withRowAnimation:UITableViewRowAnimationLeft];
+        self.featuredFoodItems = [seasonFoodItems subarrayWithRange:range];
         
-        NSLog(@"Items:\n%@", seasonFoodItems);
-        NSLog(@"Count: %i", [seasonFoodItems count]);
+        NSLog(@"Season food items count: %i", [seasonFoodItems count]);
+        NSLog(@"Featured food items count: %i", [featuredFoodItems count]);
         
+        isLoading = NO;
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSeasonSection] withRowAnimation:UITableViewRowAnimationBottom];
     }];
     
     [request setFailedBlock:^{
+        isLoading = NO;
         NSError *error = [request error];
         NSLog(@"Error: %@", error);
         
         // TODO: Set error message and tap-message in section footer
     }];
     
+    isLoading = YES;
     [request startAsynchronous];
 }
 
@@ -152,13 +160,7 @@
 {
     switch (section) {
         case kSeasonSection:
-            if (seasonFoodItems != nil) {
-                return [seasonFoodItems count];
-            }
-            else {
-                // TODO: Should be 0.
-                return NUM_SEASON_SECTION_ROWS;
-            }
+            return [seasonFoodItems count] > FEATURED_ROW_COUNT ? [featuredFoodItems count] + 1 : [featuredFoodItems count];
         default:
             return 0;
     }
@@ -166,27 +168,49 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"FoodItemRowCell";
-    
-    FoodItemRow *cell = (FoodItemRow *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        
-        UIViewController *tempController = [[UIViewController alloc] initWithNibName:@"FoodItemRow" bundle:nil];
-        cell = (FoodItemRow *)tempController.view;
-        
-        [tempController release];
-        //cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    NSLog(@"Getting cell for row: %i", indexPath.row);
+    switch (indexPath.section) {
+        case kSeasonSection:
+            if (indexPath.row == [featuredFoodItems count]) {
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreIndicator"];
+                if (cell == nil) {
+                    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MoreIndicator"] autorelease];
+                    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                }
+                cell.textLabel.text = @"Mer säsongsmat";
+                
+                return cell;
+            }
+            else {
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FoodItemRowCell"];
+                
+                if (cell == nil) {
+                    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"FoodItemRowCell"] autorelease];
+                    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                }
+                
+                FoodListItem *item = [featuredFoodItems objectAtIndex:indexPath.row];
+                cell.textLabel.text = item.label;
+                cell.detailTextLabel.text = @"6 dagar kvar";
+                
+                UIImage *image = [UIImage imageNamed:@"beetroot.png"];
+                cell.imageView.image = image;
+                
+                return cell;
+            }
+            break;
+            
+        default:
+            break;
     }
-    
-    FoodListItem *item = [seasonFoodItems objectAtIndex:indexPath.row];
-    cell.itemName.text = item.label;
-    
-    cell.itemSeason.text = @"6 jun - 9 jul";
+        //cell.itemSeason.text = @"6 jun - 9 jul";
     
     //cell.textLabel.text = @"Majrova";
     // Configure the cell...
     
-    return cell;
+    return nil;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -201,6 +225,13 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     switch (section) {
         case kSeasonSection:
+            // TODO: Show message in footer if there's no rows.
+            if (isLoading) {
+                seasonFooterView.hidden = NO;
+            }
+            else {
+                seasonFooterView.hidden = YES;
+            }
             return seasonFooterView;
         default:
             return nil;
@@ -216,6 +247,7 @@
     }
 }
 
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     switch (section) {
         case kSeasonSection:
@@ -228,7 +260,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     switch (section) {
         case kSeasonSection:
-            return 45;
+            if (isLoading) {
+                return 45;
+            }
+            else {
+                return 0;
+            }
         default:
             return 0;
     }
@@ -277,14 +314,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    switch (indexPath.section) {
+        case kSeasonSection:
+            if (indexPath.row == [featuredFoodItems count]) {
+                FoodItemsCompleteListController *completeListController = [[FoodItemsCompleteListController alloc] initWithNibName:@"FoodItemsCompleteListController" bundle:nil];
+                
+                completeListController.seasonFoodItems = self.seasonFoodItems;
+                
+                [self.navigationController pushViewController:completeListController animated:YES];
+                
+                [completeListController release];
+            }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

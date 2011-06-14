@@ -319,6 +319,8 @@
 		490312DE13A2A9B9005EB2EC /* glyphicons_309_flip.png in Resources */ = {isa = PBXBuildFile; fileRef = 490311A813A2A9B9005EB2EC /* glyphicons_309_flip.png */; };
 		490312F113A2BFEB005EB2EC /* FoodItemsOverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490312EF13A2BFEB005EB2EC /* FoodItemsOverviewController.m */; };
 		4903134213A2CB7A005EB2EC /* spring.png in Resources */ = {isa = PBXBuildFile; fileRef = 4903134113A2CB7A005EB2EC /* spring.png */; };
+		490B703B13A8199400F67C6A /* FoodItemsCompleteListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B703913A8199400F67C6A /* FoodItemsCompleteListController.m */; };
+		490B703C13A8199400F67C6A /* FoodItemsCompleteListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 490B703A13A8199400F67C6A /* FoodItemsCompleteListController.xib */; };
 		4912843713A360C500D82C0B /* FoodItemRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4912843613A360C500D82C0B /* FoodItemRow.xib */; };
 		4925047B13A562E50021DFC8 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 4925046313A562E50021DFC8 /* NSObject+SBJson.m */; };
 		4925047C13A562E50021DFC8 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4925046613A562E50021DFC8 /* SBJsonParser.m */; };
@@ -691,6 +693,9 @@
 		490312EE13A2BFEB005EB2EC /* FoodItemsOverviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemsOverviewController.h; sourceTree = "<group>"; };
 		490312EF13A2BFEB005EB2EC /* FoodItemsOverviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemsOverviewController.m; sourceTree = "<group>"; };
 		4903134113A2CB7A005EB2EC /* spring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spring.png; sourceTree = "<group>"; };
+		490B703813A8199400F67C6A /* FoodItemsCompleteListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemsCompleteListController.h; sourceTree = "<group>"; };
+		490B703913A8199400F67C6A /* FoodItemsCompleteListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemsCompleteListController.m; sourceTree = "<group>"; };
+		490B703A13A8199400F67C6A /* FoodItemsCompleteListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodItemsCompleteListController.xib; sourceTree = "<group>"; };
 		4912843613A360C500D82C0B /* FoodItemRow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodItemRow.xib; sourceTree = "<group>"; };
 		4925046113A562E50021DFC8 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		4925046213A562E50021DFC8 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
@@ -1135,6 +1140,9 @@
 				49E367C813A406DA00636828 /* Table Row */,
 				490312EE13A2BFEB005EB2EC /* FoodItemsOverviewController.h */,
 				490312EF13A2BFEB005EB2EC /* FoodItemsOverviewController.m */,
+				490B703813A8199400F67C6A /* FoodItemsCompleteListController.h */,
+				490B703913A8199400F67C6A /* FoodItemsCompleteListController.m */,
+				490B703A13A8199400F67C6A /* FoodItemsCompleteListController.xib */,
 			);
 			name = Items;
 			sourceTree = "<group>";
@@ -1722,6 +1730,7 @@
 				49E367C613A4038E00636828 /* beetroot.png in Resources */,
 				49E367CD13A41CD500636828 /* SeasonHeaderView.xib in Resources */,
 				4928614C13A56C7200F169E9 /* SeasonFooterView.xib in Resources */,
+				490B703C13A8199400F67C6A /* FoodItemsCompleteListController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1784,6 +1793,7 @@
 				4928613F13A566D200F169E9 /* ASINetworkQueue.m in Sources */,
 				4928614213A566EF00F169E9 /* Reachability.m in Sources */,
 				4981007513A6BB0E0066D51A /* FoodListItem.m in Sources */,
+				490B703B13A8199400F67C6A /* FoodItemsCompleteListController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
