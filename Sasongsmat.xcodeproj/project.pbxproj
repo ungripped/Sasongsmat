@@ -348,6 +348,10 @@
 		4928614813A56B1700F169E9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4928614713A56B1700F169E9 /* MobileCoreServices.framework */; };
 		4928614A13A56B4500F169E9 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4928614913A56B4500F169E9 /* libz.1.2.3.dylib */; };
 		4928614C13A56C7200F169E9 /* SeasonFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4928614B13A56C7200F169E9 /* SeasonFooterView.xib */; };
+		493671AD13A9484100434415 /* Insjöfiskar.png in Resources */ = {isa = PBXBuildFile; fileRef = 493671AC13A9484100434415 /* Insjöfiskar.png */; };
+		493671B013A94BC900434415 /* Grönsaker.png in Resources */ = {isa = PBXBuildFile; fileRef = 493671AF13A94BC900434415 /* Grönsaker.png */; };
+		493671B313A94D0A00434415 /* Kål.png in Resources */ = {isa = PBXBuildFile; fileRef = 493671B113A94D0A00434415 /* Kål.png */; };
+		493671B413A94D0A00434415 /* Lökar.png in Resources */ = {isa = PBXBuildFile; fileRef = 493671B213A94D0A00434415 /* Lökar.png */; };
 		493E0911138DBC430030161D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0910138DBC430030161D /* UIKit.framework */; };
 		493E0913138DBC430030161D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0912138DBC430030161D /* Foundation.framework */; };
 		493E0915138DBC430030161D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0914138DBC430030161D /* CoreGraphics.framework */; };
@@ -364,7 +368,7 @@
 		493E0944138DBC430030161D /* SasongsmatTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 493E0943138DBC430030161D /* SasongsmatTests.h */; };
 		493E0946138DBC430030161D /* SasongsmatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 493E0945138DBC430030161D /* SasongsmatTests.m */; };
 		4981007513A6BB0E0066D51A /* FoodListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4981007413A6BB0E0066D51A /* FoodListItem.m */; };
-		49E367C613A4038E00636828 /* beetroot.png in Resources */ = {isa = PBXBuildFile; fileRef = 49E367C513A4038E00636828 /* beetroot.png */; };
+		49E367C613A4038E00636828 /* Rotsaker.png in Resources */ = {isa = PBXBuildFile; fileRef = 49E367C513A4038E00636828 /* Rotsaker.png */; };
 		49E367CB13A4070600636828 /* FoodItemRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E367CA13A4070600636828 /* FoodItemRow.m */; };
 		49E367CD13A41CD500636828 /* SeasonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E367CC13A41CD500636828 /* SeasonHeaderView.xib */; };
 /* End PBXBuildFile section */
@@ -750,6 +754,10 @@
 		4928614713A56B1700F169E9 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4928614913A56B4500F169E9 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		4928614B13A56C7200F169E9 /* SeasonFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeasonFooterView.xib; sourceTree = "<group>"; };
+		493671AC13A9484100434415 /* Insjöfiskar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Insjöfiskar.png"; sourceTree = "<group>"; };
+		493671AF13A94BC900434415 /* Grönsaker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Grönsaker.png"; sourceTree = "<group>"; };
+		493671B113A94D0A00434415 /* Kål.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kål.png"; sourceTree = "<group>"; };
+		493671B213A94D0A00434415 /* Lökar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Lökar.png"; sourceTree = "<group>"; };
 		493E090C138DBC430030161D /* Sasongsmat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sasongsmat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		493E0910138DBC430030161D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		493E0912138DBC430030161D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -772,7 +780,7 @@
 		493E0945138DBC430030161D /* SasongsmatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SasongsmatTests.m; sourceTree = "<group>"; };
 		4981007313A6BB0E0066D51A /* FoodListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodListItem.h; sourceTree = "<group>"; };
 		4981007413A6BB0E0066D51A /* FoodListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodListItem.m; sourceTree = "<group>"; };
-		49E367C513A4038E00636828 /* beetroot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beetroot.png; sourceTree = "<group>"; };
+		49E367C513A4038E00636828 /* Rotsaker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rotsaker.png; sourceTree = "<group>"; };
 		49E367C913A4070600636828 /* FoodItemRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemRow.h; sourceTree = "<group>"; };
 		49E367CA13A4070600636828 /* FoodItemRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemRow.m; sourceTree = "<group>"; };
 		49E367CC13A41CD500636828 /* SeasonHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeasonHeaderView.xib; sourceTree = "<group>"; };
@@ -1330,7 +1338,11 @@
 		49E367C413A4038E00636828 /* Miniatures */ = {
 			isa = PBXGroup;
 			children = (
-				49E367C513A4038E00636828 /* beetroot.png */,
+				493671B113A94D0A00434415 /* Kål.png */,
+				493671B213A94D0A00434415 /* Lökar.png */,
+				493671AF13A94BC900434415 /* Grönsaker.png */,
+				493671AC13A9484100434415 /* Insjöfiskar.png */,
+				49E367C513A4038E00636828 /* Rotsaker.png */,
 			);
 			path = Miniatures;
 			sourceTree = "<group>";
@@ -1727,10 +1739,14 @@
 				490312DE13A2A9B9005EB2EC /* glyphicons_309_flip.png in Resources */,
 				4903134213A2CB7A005EB2EC /* spring.png in Resources */,
 				4912843713A360C500D82C0B /* FoodItemRow.xib in Resources */,
-				49E367C613A4038E00636828 /* beetroot.png in Resources */,
+				49E367C613A4038E00636828 /* Rotsaker.png in Resources */,
 				49E367CD13A41CD500636828 /* SeasonHeaderView.xib in Resources */,
 				4928614C13A56C7200F169E9 /* SeasonFooterView.xib in Resources */,
 				490B703C13A8199400F67C6A /* FoodItemsCompleteListController.xib in Resources */,
+				493671AD13A9484100434415 /* Insjöfiskar.png in Resources */,
+				493671B013A94BC900434415 /* Grönsaker.png in Resources */,
+				493671B313A94D0A00434415 /* Kål.png in Resources */,
+				493671B413A94D0A00434415 /* Lökar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

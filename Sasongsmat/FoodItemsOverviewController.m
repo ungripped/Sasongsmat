@@ -63,7 +63,6 @@
     self.seasonFooterView = tempController.view;
     
     [tempController release];
-    
     [self loadFoodItems];
     
     self.clearsSelectionOnViewWillAppear = YES;
@@ -89,6 +88,7 @@
         
         self.seasonFoodItems = [FoodListItem listItemsForJsonArray:[responseJson objectForKey:@"items"]];
         
+        NSLog(@"%@", seasonFoodItems);
         NSRange range;
         range.location = 0;
         range.length = [seasonFoodItems count] > FEATURED_ROW_COUNT ? FEATURED_ROW_COUNT : [seasonFoodItems count];
@@ -99,7 +99,10 @@
         NSLog(@"Featured food items count: %i", [featuredFoodItems count]);
         
         isLoading = NO;
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSeasonSection] withRowAnimation:UITableViewRowAnimationBottom];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSeasonSection] withRowAnimation:UITableViewRowAnimationFade];
+        self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
+        //[self.tableView reloadData];
+        //[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
     }];
     
     [request setFailedBlock:^{
@@ -168,7 +171,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Getting cell for row: %i", indexPath.row);
     switch (indexPath.section) {
         case kSeasonSection:
             if (indexPath.row == [featuredFoodItems count]) {
@@ -195,7 +197,7 @@
                 cell.textLabel.text = item.label;
                 cell.detailTextLabel.text = @"6 dagar kvar";
                 
-                UIImage *image = [UIImage imageNamed:@"beetroot.png"];
+                UIImage *image = [UIImage imageNamed:item.type];
                 cell.imageView.image = image;
                 
                 return cell;
@@ -211,6 +213,15 @@
     // Configure the cell...
     
     return nil;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch (section) {
+        case kCategoriesSection:
+            return @"Alla råvaror";            
+        default:
+            return nil;
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -252,6 +263,8 @@
     switch (section) {
         case kSeasonSection:
             return 45;
+        case kCategoriesSection:
+            return 36;
         default:
             return 0;
     }

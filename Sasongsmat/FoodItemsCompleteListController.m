@@ -110,7 +110,8 @@
     cell.textLabel.text = item.label;
     cell.detailTextLabel.text = @"6 dagar kvar";
     
-    UIImage *image = [UIImage imageNamed:@"beetroot.png"];
+    
+    UIImage *image = [UIImage imageNamed:item.type];
     cell.imageView.image = image;
     
     return cell;

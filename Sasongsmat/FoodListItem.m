@@ -33,7 +33,7 @@
 }
 
 - (NSString *)description {
-    return self.label;
+    return [NSString stringWithFormat:@"%@ : %@", self.label, self.type];
 }
 
 @end

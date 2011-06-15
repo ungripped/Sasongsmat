@@ -12,6 +12,7 @@
 
 enum Sections {
     kSeasonSection = 0,
+    kCategoriesSection,
     NUM_SECTIONS
 };
 
