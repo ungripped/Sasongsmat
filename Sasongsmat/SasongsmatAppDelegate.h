@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZBarSDK.h"
 
-@interface SasongsmatAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
+@interface SasongsmatAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, ZBarReaderDelegate> {
 
 }
+
+- (void)openBarcodeController;
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 

@@ -70,6 +70,44 @@
     [super dealloc];
 }
 
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    
+    if (viewController == [tabBarController.viewControllers objectAtIndex:1]) {
+        [self openBarcodeController];
+        return NO;
+    }
+    return YES;
+}
+
+- (void)openBarcodeController {
+    ZBarReaderViewController *reader = [ZBarReaderViewController new];
+    reader.readerDelegate = self;
+    /*
+    [reader.scanner setSymbology: ZBAR_QRCODE
+                          config: ZBAR_CFG_ENABLE
+                              to: 0];
+     */
+    reader.readerView.zoom = 1.0;
+    
+    [self.tabBarController presentModalViewController:reader animated:YES];
+}
+- (void) imagePickerController: (UIImagePickerController*) reader
+ didFinishPickingMediaWithInfo: (NSDictionary*) info
+{
+    id<NSFastEnumeration> results =
+    [info objectForKey: ZBarReaderControllerResults];
+    //UIImage *image = [info objectForKey: UIImagePickerControllerOriginalImage];
+    
+    ZBarSymbol *symbol = nil;
+    for(symbol in results)
+        // EXAMPLE: just grab the first barcode
+        break;
+    
+    [reader dismissModalViewControllerAnimated:YES];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Scanned" message:symbol.data delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
 /*
 // Optional UITabBarControllerDelegate method.
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
