@@ -21,6 +21,19 @@
     // Add the tab bar controller's current view as a subview of the window
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
+    
+    [ZBarReaderViewController class];
+
+    
+    UINavigationController *navController = [self.tabBarController.viewControllers objectAtIndex:1];
+    
+    ZBarReaderViewController *reader = (ZBarReaderViewController *)[navController topViewController];
+    reader.readerDelegate = self;
+    reader.showsZBarControls = NO;
+    reader.supportedOrientationsMask = ZBarOrientationMaskAll;
+
+    
+    
     return YES;
 }
 
@@ -70,6 +83,7 @@
     [super dealloc];
 }
 
+/*
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     
     if (viewController == [tabBarController.viewControllers objectAtIndex:1]) {
@@ -79,17 +93,19 @@
     return YES;
 }
 
+ */
 - (void)openBarcodeController {
+    /*
     ZBarReaderViewController *reader = [ZBarReaderViewController new];
     reader.readerDelegate = self;
-    /*
-    [reader.scanner setSymbology: ZBAR_QRCODE
-                          config: ZBAR_CFG_ENABLE
-                              to: 0];
-     */
+    
+    //[reader.scanner setSymbology: ZBAR_QRCODE
+    //                      config: ZBAR_CFG_ENABLE
+    //                          to: 0];
     reader.readerView.zoom = 1.0;
     
     [self.tabBarController presentModalViewController:reader animated:YES];
+     */
 }
 - (void) imagePickerController: (UIImagePickerController*) reader
  didFinishPickingMediaWithInfo: (NSDictionary*) info

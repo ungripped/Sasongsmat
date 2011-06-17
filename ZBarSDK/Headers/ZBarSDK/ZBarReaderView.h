@@ -46,17 +46,22 @@
     : UIView
 {
     id<ZBarReaderViewDelegate> readerDelegate;
-    CGRect scanCrop, zoomCrop;
+    ZBarCaptureReader *captureReader;
+    CGRect scanCrop, effectiveCrop;
     CGAffineTransform previewTransform;
     CGFloat zoom, zoom0;
+    UIColor *trackingColor;
     BOOL tracksSymbols, showsFPS;
     NSInteger torchMode;
+    UIInterfaceOrientation interfaceOrientation;
+    NSTimeInterval animationDuration;
 
-    CALayer *preview, *overlay, *tracking;
+    CALayer *preview, *overlay, *tracking, *cropLayer;
     UIView *fpsView;
     UILabel *fpsLabel;
     UIPinchGestureRecognizer *pinch;
     CGFloat imageScale;
+    CGSize imageSize;
     BOOL started, running;
 }
 
@@ -72,6 +77,10 @@
 // clear the internal result cache
 - (void) flushCache;
 
+// compensate for device/camera/interface orientation
+- (void) willRotateToInterfaceOrientation: (UIInterfaceOrientation) orient
+                                 duration: (NSTimeInterval) duration;
+
 // delegate is notified of decode results.
 @property (nonatomic, assign) id<ZBarReaderViewDelegate> readerDelegate;
 
@@ -81,6 +90,9 @@
 // whether to display the tracking annotation for uncertain barcodes
 // (default YES).
 @property (nonatomic) BOOL tracksSymbols;
+
+// color of the tracking box (default green)
+@property (nonatomic, retain) UIColor *trackingColor;
 
 // enable pinch gesture recognition for zooming the preview/decode
 // (default YES).
@@ -97,6 +109,8 @@
 // also updated by pinch-zoom gesture.  clipped to range [1,2],
 // defaults to 1.25
 @property (nonatomic) CGFloat zoom;
+- (void) setZoom: (CGFloat) zoom
+        animated: (BOOL) animated;
 
 // the region of the image that will be scanned.  normalized coordinates.
 @property (nonatomic) CGRect scanCrop;
