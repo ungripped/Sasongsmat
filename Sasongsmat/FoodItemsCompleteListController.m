@@ -8,6 +8,10 @@
 
 #import "FoodItemsCompleteListController.h"
 #import "FoodListItem.h"
+#import "ItemArticleViewController.h"
+
+#import "ASIHTTPRequest.h"
+#import "SBJson.h"
 
 @implementation FoodItemsCompleteListController
 
@@ -160,14 +164,46 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    FoodListItem *item = [seasonFoodItems objectAtIndex:indexPath.row];
+    
+    [self loadArticle:item.label];
 }
+
+- (void)loadArticle:(NSString *)name {
+    NSString *urlString = [NSString stringWithFormat:@"http://www.xn--ssongsmat-v2a.nu/w/api.php?action=parse&page=%@&format=json", [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSLog(@"Fetching article: %@", url);
+    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    request.defaultResponseEncoding = NSUTF8StringEncoding;
+    
+    [request setCompletionBlock:^{
+        NSString *responseString = [request responseString];
+        
+        NSDictionary *responseJson = (NSDictionary *)[responseString JSONValue];
+        
+        NSString *fullArticle = [responseJson valueForKeyPath:@"parse.text.*"];
+        
+        NSLog(@"response: %@", fullArticle);
+        
+        ItemArticleViewController *controller = [[ItemArticleViewController alloc] initWithNibName:@"ItemArticleView" bundle:nil];
+        controller.initialHTML = fullArticle;
+        controller.navigationItem.title = name;
+        
+        [self.navigationController pushViewController:controller animated:YES];
+        
+        
+    }];
+    
+    [request setFailedBlock:^{
+        NSError *error = [request error];
+        NSLog(@"Error: %@", error);
+        
+        // TODO: Set error message and tap-message in section footer
+    }];
+    
+    [request startAsynchronous];
+}
+
 
 @end

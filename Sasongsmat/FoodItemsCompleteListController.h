@@ -15,4 +15,7 @@
 }
 
 @property (nonatomic, retain) NSArray *seasonFoodItems;
+
+- (void)loadArticle:(NSString *)name;
+
 @end

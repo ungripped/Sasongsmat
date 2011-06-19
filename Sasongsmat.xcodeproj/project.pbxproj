@@ -319,6 +319,8 @@
 		490312DE13A2A9B9005EB2EC /* glyphicons_309_flip.png in Resources */ = {isa = PBXBuildFile; fileRef = 490311A813A2A9B9005EB2EC /* glyphicons_309_flip.png */; };
 		490312F113A2BFEB005EB2EC /* FoodItemsOverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490312EF13A2BFEB005EB2EC /* FoodItemsOverviewController.m */; };
 		4903134213A2CB7A005EB2EC /* spring.png in Resources */ = {isa = PBXBuildFile; fileRef = 4903134113A2CB7A005EB2EC /* spring.png */; };
+		490927B813AD443A009570F1 /* ItemArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490927B613AD443A009570F1 /* ItemArticleViewController.m */; };
+		490927B913AD443A009570F1 /* ItemArticleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 490927B713AD443A009570F1 /* ItemArticleView.xib */; };
 		490B703B13A8199400F67C6A /* FoodItemsCompleteListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B703913A8199400F67C6A /* FoodItemsCompleteListController.m */; };
 		490B703C13A8199400F67C6A /* FoodItemsCompleteListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 490B703A13A8199400F67C6A /* FoodItemsCompleteListController.xib */; };
 		4912843713A360C500D82C0B /* FoodItemRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4912843613A360C500D82C0B /* FoodItemRow.xib */; };
@@ -377,7 +379,8 @@
 		49E367C613A4038E00636828 /* Rotsaker.png in Resources */ = {isa = PBXBuildFile; fileRef = 49E367C513A4038E00636828 /* Rotsaker.png */; };
 		49E367CB13A4070600636828 /* FoodItemRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E367CA13A4070600636828 /* FoodItemRow.m */; };
 		49E367CD13A41CD500636828 /* SeasonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E367CC13A41CD500636828 /* SeasonHeaderView.xib */; };
-		49F4658613ABECEB003B97E4 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F4658013ABECEB003B97E4 /* libzbar.a */; };
+		49EC1D5F13AD5E4B00150FD6 /* article.css in Resources */ = {isa = PBXBuildFile; fileRef = 49EC1D5E13AD5E4B00150FD6 /* article.css */; };
+		49EC1D6313AD6AA400150FD6 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EC1D6213AD6AA400150FD6 /* libzbar.a */; };
 		49F4658713ABECEB003B97E4 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F4658213ABECEB003B97E4 /* zbar-back.png */; };
 		49F4658813ABECEB003B97E4 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 49F4658313ABECEB003B97E4 /* zbar-help.html */; };
 		49F4658913ABECEB003B97E4 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F4658413ABECEB003B97E4 /* zbar-helpicons.png */; };
@@ -712,6 +715,9 @@
 		490312EE13A2BFEB005EB2EC /* FoodItemsOverviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemsOverviewController.h; sourceTree = "<group>"; };
 		490312EF13A2BFEB005EB2EC /* FoodItemsOverviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemsOverviewController.m; sourceTree = "<group>"; };
 		4903134113A2CB7A005EB2EC /* spring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spring.png; sourceTree = "<group>"; };
+		490927B513AD443A009570F1 /* ItemArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemArticleViewController.h; sourceTree = "<group>"; };
+		490927B613AD443A009570F1 /* ItemArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemArticleViewController.m; sourceTree = "<group>"; };
+		490927B713AD443A009570F1 /* ItemArticleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemArticleView.xib; sourceTree = "<group>"; };
 		490B703813A8199400F67C6A /* FoodItemsCompleteListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemsCompleteListController.h; sourceTree = "<group>"; };
 		490B703913A8199400F67C6A /* FoodItemsCompleteListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemsCompleteListController.m; sourceTree = "<group>"; };
 		490B703A13A8199400F67C6A /* FoodItemsCompleteListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodItemsCompleteListController.xib; sourceTree = "<group>"; };
@@ -806,6 +812,8 @@
 		49E367C913A4070600636828 /* FoodItemRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemRow.h; sourceTree = "<group>"; };
 		49E367CA13A4070600636828 /* FoodItemRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemRow.m; sourceTree = "<group>"; };
 		49E367CC13A41CD500636828 /* SeasonHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeasonHeaderView.xib; sourceTree = "<group>"; };
+		49EC1D5E13AD5E4B00150FD6 /* article.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = article.css; sourceTree = "<group>"; };
+		49EC1D6213AD6AA400150FD6 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
 		49F4656C13ABECEB003B97E4 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		49F4656D13ABECEB003B97E4 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
 		49F4656E13ABECEB003B97E4 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
@@ -826,7 +834,6 @@
 		49F4657D13ABECEB003B97E4 /* ZBarReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderViewController.h; sourceTree = "<group>"; };
 		49F4657E13ABECEB003B97E4 /* ZBarSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSDK.h; sourceTree = "<group>"; };
 		49F4657F13ABECEB003B97E4 /* ZBarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
-		49F4658013ABECEB003B97E4 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
 		49F4658213ABECEB003B97E4 /* zbar-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-back.png"; sourceTree = "<group>"; };
 		49F4658313ABECEB003B97E4 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		49F4658413ABECEB003B97E4 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
@@ -854,7 +861,7 @@
 				493E0911138DBC430030161D /* UIKit.framework in Frameworks */,
 				493E0913138DBC430030161D /* Foundation.framework in Frameworks */,
 				493E0915138DBC430030161D /* CoreGraphics.framework in Frameworks */,
-				49F4658613ABECEB003B97E4 /* libzbar.a in Frameworks */,
+				49EC1D6313AD6AA400150FD6 /* libzbar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1210,6 +1217,9 @@
 				490B703813A8199400F67C6A /* FoodItemsCompleteListController.h */,
 				490B703913A8199400F67C6A /* FoodItemsCompleteListController.m */,
 				490B703A13A8199400F67C6A /* FoodItemsCompleteListController.xib */,
+				490927B513AD443A009570F1 /* ItemArticleViewController.h */,
+				490927B613AD443A009570F1 /* ItemArticleViewController.m */,
+				490927B713AD443A009570F1 /* ItemArticleView.xib */,
 			);
 			name = Items;
 			sourceTree = "<group>";
@@ -1312,6 +1322,7 @@
 				49AD6CA913AA9F50006D4675 /* libiconv.2.4.0.dylib */,
 				493E0916138DBC430030161D /* Sasongsmat */,
 				4903107113A2A9B8005EB2EC /* Images */,
+				49EC1D6113AD5E5E00150FD6 /* Web */,
 				493E090F138DBC430030161D /* Frameworks */,
 				493E093C138DBC430030161D /* SasongsmatTests */,
 				493E090D138DBC430030161D /* Products */,
@@ -1434,11 +1445,19 @@
 			name = "Table Row";
 			sourceTree = "<group>";
 		};
+		49EC1D6113AD5E5E00150FD6 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				49EC1D5E13AD5E4B00150FD6 /* article.css */,
+			);
+			name = Web;
+			sourceTree = "<group>";
+		};
 		49F4656813ABECEB003B97E4 /* ZBarSDK */ = {
 			isa = PBXGroup;
 			children = (
+				49EC1D6213AD6AA400150FD6 /* libzbar.a */,
 				49F4656913ABECEB003B97E4 /* Headers */,
-				49F4658013ABECEB003B97E4 /* libzbar.a */,
 				49F4658113ABECEB003B97E4 /* Resources */,
 			);
 			path = ZBarSDK;
@@ -1896,6 +1915,8 @@
 				49F4660213ABFC44003B97E4 /* Icon_Retina.png in Resources */,
 				49F4660413ABFC59003B97E4 /* Icon_Regular.png in Resources */,
 				49F4660613ABFC64003B97E4 /* Icon_Retina.png in Resources */,
+				490927B913AD443A009570F1 /* ItemArticleView.xib in Resources */,
+				49EC1D5F13AD5E4B00150FD6 /* article.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1960,6 +1981,7 @@
 				4981007513A6BB0E0066D51A /* FoodListItem.m in Sources */,
 				490B703B13A8199400F67C6A /* FoodItemsCompleteListController.m in Sources */,
 				49AD6CA813AA9D4E006D4675 /* ScannerViewController.m in Sources */,
+				490927B813AD443A009570F1 /* ItemArticleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
