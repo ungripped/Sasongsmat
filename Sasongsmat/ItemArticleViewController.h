@@ -13,8 +13,14 @@
     
     UIWebView *itemView;
     NSString *initialHTML;
+    NSString *urlString;
 }
 @property (nonatomic, retain) IBOutlet UIWebView *itemView;
-
 @property (nonatomic, retain) NSString *initialHTML;
+@property (nonatomic, retain) NSString *urlString;
+
+- (IBAction)reload:(id)sender;
+- (void)loadArticle;
+- (void)initJavaScript:(NSString *)fileName;
+
 @end
