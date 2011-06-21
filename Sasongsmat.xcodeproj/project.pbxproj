@@ -1432,40 +1432,8 @@
 				49C92B4A13B13B530001A9C6 /* libzbar-debugsim.a */,
 				49C92B4B13B13B530001A9C6 /* libzbar-releaseos.a */,
 				49C92B4C13B13B530001A9C6 /* libzbar-releasesim.a */,
-				49C92B3D13B137F00001A9C6 /* Debug-iphoneos */,
-				49C92B3F13B137F00001A9C6 /* Debug-iphonesimulator */,
-				49C92B4113B137F00001A9C6 /* Release-iphoneos */,
-				49C92B4313B137F00001A9C6 /* Release-iphonesimulator */,
 			);
 			path = lib;
-			sourceTree = "<group>";
-		};
-		49C92B3D13B137F00001A9C6 /* Debug-iphoneos */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Debug-iphoneos";
-			sourceTree = "<group>";
-		};
-		49C92B3F13B137F00001A9C6 /* Debug-iphonesimulator */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Debug-iphonesimulator";
-			sourceTree = "<group>";
-		};
-		49C92B4113B137F00001A9C6 /* Release-iphoneos */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Release-iphoneos";
-			sourceTree = "<group>";
-		};
-		49C92B4313B137F00001A9C6 /* Release-iphonesimulator */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Release-iphonesimulator";
 			sourceTree = "<group>";
 		};
 		49E367C413A4038E00636828 /* Miniatures */ = {
