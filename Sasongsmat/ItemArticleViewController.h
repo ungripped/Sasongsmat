@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface ItemArticleViewController : UIViewController {
+@interface ItemArticleViewController : UIViewController <UIWebViewDelegate> {
     
     UIWebView *itemView;
     NSString *initialHTML;
@@ -20,7 +20,7 @@
 @property (nonatomic, retain) NSString *urlString;
 
 - (IBAction)reload:(id)sender;
+- (void)loadNewArticle:(NSString *)article;
 - (void)loadArticle;
-- (void)initJavaScript:(NSString *)fileName;
 
 @end

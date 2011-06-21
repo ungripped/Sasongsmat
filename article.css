@@ -25,16 +25,31 @@ h2 {
 	text-shadow: 0 1px 0 #fff;
 }
 
+sup {
+    display: none;
+}
+
 #toc {
     display: none;
+}
+
+.vislink {
+    color: rgb(255, 153, 51);
+    font-weight: bold;
 }
 
 .infobox {
 	display: none;
 }
 
+.thumbcaption .magnify {
+    display: none;
+}
 .thumbcaption {
-	display: none;
+    padding-top: 5px;
+    font-size: 0.75em;
+    font-style: italic;
+    text-align: center;
 }
 
 .thumb {

@@ -25,6 +25,7 @@
 
 - (void)dealloc
 {
+    itemView.delegate = nil;
     [itemView release];
     [initialHTML release];
     [urlString release];
@@ -70,37 +71,76 @@
     
     NSString *html = [NSString stringWithFormat:@"%@%@%@", js, css, self.initialHTML];
     [itemView loadHTMLString:html baseURL:baseURL];
-    
-    //[self initJavaScript:@"jquery"];
-    //[self initJavaScript:@"article"];
 }
 
-- (void)initJavaScript:(NSString *)fileName {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"jquery" ofType:@"js" inDirectory:@""];
-    NSData *fileData = [NSData dataWithContentsOfFile:filePath];
-    NSString *jqString = [[NSMutableString alloc] initWithData:fileData encoding:NSUTF8StringEncoding];
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
-    NSString *jsString = [NSString stringWithFormat:@"var script = document.createElement('script');"  
-     "script.type = 'text/javascript';"  
-     "script.text = \"%@\";"  
-     "document.head.appendChild(script);", jqString]; 
+    NSURL *url = [request mainDocumentURL];
+    NSString *ret = [url path];
     
-    NSLog(@"%@", jsString);
-    [itemView stringByEvaluatingJavaScriptFromString:jsString];
+    NSLog(@"URL: %@", ret);
     
-    NSLog(@"Loading javascript: %@", fileName);
-    filePath = [[NSBundle mainBundle] pathForResource:@"article" ofType:@"js" inDirectory:@""];
-    fileData = [NSData dataWithContentsOfFile:filePath];
-    jsString = [[NSMutableString alloc] initWithData:fileData encoding:NSUTF8StringEncoding];
-              
+    NSLog(@"Navtype: %d", navigationType);
     
+    switch (navigationType) {
+        case UIWebViewNavigationTypeOther:
+            return YES;
+        case UIWebViewNavigationTypeLinkClicked:
+            if ([url pathExtension] != nil &&
+                ![[url pathExtension] isEqualToString:@""]) {
+                NSLog(@"Path with extension: '%@'", [url pathExtension]);
+                return NO;
+            }
+            NSString *obj = [url lastPathComponent];
+            [self loadNewArticle:obj];
+            return NO;
+        default:
+            return NO;
+    }
+}
+
+
+// TODO: loadNewArticle and reload are just proof of concept,
+// do refactor...
+- (void)loadNewArticle:(NSString *)article {
+    NSString *newUrlString = [NSString stringWithFormat:@"http://www.xn--ssongsmat-v2a.nu/w/api.php?action=parse&page=%@&format=json", [article stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURL *url = [NSURL URLWithString:newUrlString];
+    
+    NSLog(@"Fetching article: %@", url);
+    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    request.defaultResponseEncoding = NSUTF8StringEncoding;
+    
+    [request setCompletionBlock:^{
+        NSString *responseString = [request responseString];
         
-    NSLog(@"jsstring: %@", jsString);
-    NSString * js = [itemView stringByEvaluatingJavaScriptFromString:jsString];
+        NSDictionary *responseJson = (NSDictionary *)[responseString JSONValue];
+        
+        NSString *fullArticle = [responseJson valueForKeyPath:@"parse.text.*"];
+        
+        NSLog(@"response: %@", fullArticle);
+        
+        ItemArticleViewController *controller = [[ItemArticleViewController alloc] initWithNibName:@"ItemArticleView" bundle:nil];
+        controller.initialHTML = fullArticle;
+        controller.urlString = urlString;
+        controller.navigationItem.title = article;
+        
+        [self.navigationController pushViewController:controller animated:YES];
+        
+        
+    }];
     
-    NSLog(@"js: %@", js);
+    [request setFailedBlock:^{
+        NSError *error = [request error];
+        NSLog(@"Error: %@", error);
+        
+        // TODO: Set error message and tap-message in section footer
+    }];
+    
+    [request startAsynchronous];
 }
 
+
+// Reload is temporary for debugging.
 - (IBAction)reload:(id)sender {
     NSURL *url = [NSURL URLWithString:urlString];
     
