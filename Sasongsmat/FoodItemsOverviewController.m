@@ -10,6 +10,7 @@
 #import "FoodItemsCompleteListController.h"
 #import "FoodListItem.h"
 #import "ItemArticleViewController.h"
+#import "SSMNavigationBar.h"
 
 #import "ASIHTTPRequest.h"
 #import "SBJson.h"
@@ -52,6 +53,8 @@
     [super viewDidLoad];
     self.seasonFoodItems = [NSArray array];
     self.featuredFoodItems = [NSArray array];
+    
+    self.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:self.navigationItem.title];
     
     isLoading = NO;
     

@@ -7,7 +7,7 @@
 //
 
 #import "ScannerViewController.h"
-
+#import "SSMNavigationBar.h"
 
 @implementation ScannerViewController
 @synthesize readerView;
@@ -49,6 +49,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:self.navigationItem.title];
     
     /*
     readerView = [ZBarReaderView new];

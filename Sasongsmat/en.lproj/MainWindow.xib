@@ -106,7 +106,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSColor" key="IBUITintColor">
 							<int key="NSColorSpace">2</int>
-							<bytes key="NSRGB">MCAwLjUzNzI1NDkyOTUgMC4yMzUyOTQxMzM0AA</bytes>
+							<bytes key="NSRGB">MSAwLjYgMC4yAA</bytes>
 						</object>
 					</object>
 					<object class="NSMutableArray" key="IBUIViewControllers">
@@ -173,9 +173,9 @@
 							<bool key="IBUIClipsSubviews">YES</bool>
 							<bool key="IBUIMultipleTouchEnabled">YES</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							<object class="NSColor" key="IBUITintColor" id="857260192">
+							<object class="NSColor" key="IBUITintColor">
 								<int key="NSColorSpace">2</int>
-								<bytes key="NSRGB">MCAwLjUzNzI1NDkyOTUgMC4yMzUyOTQxMzM0AA</bytes>
+								<bytes key="NSRGB">MSAwLjYgMC4yAA</bytes>
 							</object>
 						</object>
 						<object class="NSMutableArray" key="IBUIViewControllers">
@@ -194,7 +194,10 @@
 											<int key="IBUIContentMode">3</int>
 											<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 											<string key="IBPlaceholder">Sök råvaror...</string>
-											<reference key="IBTintColor" ref="857260192"/>
+											<object class="NSColor" key="IBTintColor">
+												<int key="NSColorSpace">2</int>
+												<bytes key="NSRGB">MC42MjM1Mjk0MTE4IDAuODAzOTIxNTY4NiAwLjUxNzY0NzA1ODgAA</bytes>
+											</object>
 											<object class="IBUITextInputTraits" key="IBTextInputTraits">
 												<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 											</object>
@@ -252,7 +255,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 									<reference key="IBUITableHeaderView" ref="289242898"/>
 								</object>
 								<object class="IBUINavigationItem" key="IBUINavigationItem" id="278142656">
-									<reference key="IBUINavigationBar"/>
 									<string key="IBUITitle">Råvaror</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
@@ -597,6 +599,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					<string>109.IBPluginDependency</string>
 					<string>110.IBPluginDependency</string>
 					<string>127.IBPluginDependency</string>
+					<string>128.CustomClassName</string>
 					<string>128.IBPluginDependency</string>
 					<string>131.IBPluginDependency</string>
 					<string>132.CustomClassName</string>
@@ -604,6 +607,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					<string>139.IBPluginDependency</string>
 					<string>144.IBPluginDependency</string>
 					<string>162.IBPluginDependency</string>
+					<string>163.CustomClassName</string>
 					<string>163.IBPluginDependency</string>
 					<string>164.CustomClassName</string>
 					<string>164.IBPluginDependency</string>
@@ -626,6 +630,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>SSMNavigationBar</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>FoodItemsOverviewController</string>
@@ -633,6 +638,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>SSMNavigationBar</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>ZBarReaderViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

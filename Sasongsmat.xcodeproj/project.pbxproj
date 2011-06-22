@@ -319,6 +319,11 @@
 		490312DE13A2A9B9005EB2EC /* glyphicons_309_flip.png in Resources */ = {isa = PBXBuildFile; fileRef = 490311A813A2A9B9005EB2EC /* glyphicons_309_flip.png */; };
 		490312F113A2BFEB005EB2EC /* FoodItemsOverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490312EF13A2BFEB005EB2EC /* FoodItemsOverviewController.m */; };
 		4903134213A2CB7A005EB2EC /* spring.png in Resources */ = {isa = PBXBuildFile; fileRef = 4903134113A2CB7A005EB2EC /* spring.png */; };
+		4905541F13B28C190009EFD5 /* logo-summer.png in Resources */ = {isa = PBXBuildFile; fileRef = 4905541D13B28C190009EFD5 /* logo-summer.png */; };
+		4905542013B28C190009EFD5 /* logo-summer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4905541E13B28C190009EFD5 /* logo-summer@2x.png */; };
+		4905542513B290A60009EFD5 /* SSMNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4905542413B290A60009EFD5 /* SSMNavigationBar.m */; };
+		4905542813B290FC0009EFD5 /* summer-header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4905542713B290FC0009EFD5 /* summer-header@2x.png */; };
+		4905542A13B292770009EFD5 /* summer-header.png in Resources */ = {isa = PBXBuildFile; fileRef = 4905542913B292770009EFD5 /* summer-header.png */; };
 		490927B813AD443A009570F1 /* ItemArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490927B613AD443A009570F1 /* ItemArticleViewController.m */; };
 		490927B913AD443A009570F1 /* ItemArticleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 490927B713AD443A009570F1 /* ItemArticleView.xib */; };
 		490B703B13A8199400F67C6A /* FoodItemsCompleteListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 490B703913A8199400F67C6A /* FoodItemsCompleteListController.m */; };
@@ -715,6 +720,12 @@
 		490312EE13A2BFEB005EB2EC /* FoodItemsOverviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemsOverviewController.h; sourceTree = "<group>"; };
 		490312EF13A2BFEB005EB2EC /* FoodItemsOverviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemsOverviewController.m; sourceTree = "<group>"; };
 		4903134113A2CB7A005EB2EC /* spring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spring.png; sourceTree = "<group>"; };
+		4905541D13B28C190009EFD5 /* logo-summer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-summer.png"; sourceTree = "<group>"; };
+		4905541E13B28C190009EFD5 /* logo-summer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-summer@2x.png"; sourceTree = "<group>"; };
+		4905542313B290A60009EFD5 /* SSMNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSMNavigationBar.h; sourceTree = "<group>"; };
+		4905542413B290A60009EFD5 /* SSMNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSMNavigationBar.m; sourceTree = "<group>"; };
+		4905542713B290FC0009EFD5 /* summer-header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "summer-header@2x.png"; sourceTree = "<group>"; };
+		4905542913B292770009EFD5 /* summer-header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "summer-header.png"; sourceTree = "<group>"; };
 		490927B513AD443A009570F1 /* ItemArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemArticleViewController.h; sourceTree = "<group>"; };
 		490927B613AD443A009570F1 /* ItemArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemArticleViewController.m; sourceTree = "<group>"; };
 		490927B713AD443A009570F1 /* ItemArticleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemArticleView.xib; sourceTree = "<group>"; };
@@ -884,6 +895,7 @@
 		4903107113A2A9B8005EB2EC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4905542613B290FC0009EFD5 /* ui */,
 				49F4660513ABFC64003B97E4 /* Icon_Retina.png */,
 				49F4660313ABFC59003B97E4 /* Icon_Regular.png */,
 				49E367C413A4038E00636828 /* Miniatures */,
@@ -1240,10 +1252,30 @@
 		4903134013A2CB7A005EB2EC /* Logos */ = {
 			isa = PBXGroup;
 			children = (
+				4905541D13B28C190009EFD5 /* logo-summer.png */,
+				4905541E13B28C190009EFD5 /* logo-summer@2x.png */,
 				49C92B3913B132920001A9C6 /* spring@2x.png */,
 				4903134113A2CB7A005EB2EC /* spring.png */,
 			);
 			path = Logos;
+			sourceTree = "<group>";
+		};
+		4905542213B290740009EFD5 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				4905542313B290A60009EFD5 /* SSMNavigationBar.h */,
+				4905542413B290A60009EFD5 /* SSMNavigationBar.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		4905542613B290FC0009EFD5 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				4905542913B292770009EFD5 /* summer-header.png */,
+				4905542713B290FC0009EFD5 /* summer-header@2x.png */,
+			);
+			path = ui;
 			sourceTree = "<group>";
 		};
 		4925045F13A562D30021DFC8 /* JSON */ = {
@@ -1366,8 +1398,9 @@
 				4928614B13A56C7200F169E9 /* SeasonFooterView.xib */,
 				493E091F138DBC430030161D /* SasongsmatAppDelegate.h */,
 				493E0920138DBC430030161D /* SasongsmatAppDelegate.m */,
-				4981007713A6BB900066D51A /* Model */,
 				4925048713A563870021DFC8 /* Communication */,
+				4981007713A6BB900066D51A /* Model */,
+				4905542213B290740009EFD5 /* UI */,
 				490312E013A2AF44005EB2EC /* Recipes */,
 				49AD6CA513AA9CF3006D4675 /* Scanner */,
 				490312DF13A2AEE7005EB2EC /* Items */,
@@ -1933,6 +1966,10 @@
 				490927B913AD443A009570F1 /* ItemArticleView.xib in Resources */,
 				49EC1D5F13AD5E4B00150FD6 /* article.css in Resources */,
 				49C92B3A13B132920001A9C6 /* spring@2x.png in Resources */,
+				4905541F13B28C190009EFD5 /* logo-summer.png in Resources */,
+				4905542013B28C190009EFD5 /* logo-summer@2x.png in Resources */,
+				4905542813B290FC0009EFD5 /* summer-header@2x.png in Resources */,
+				4905542A13B292770009EFD5 /* summer-header.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1998,6 +2035,7 @@
 				490B703B13A8199400F67C6A /* FoodItemsCompleteListController.m in Sources */,
 				49AD6CA813AA9D4E006D4675 /* ScannerViewController.m in Sources */,
 				490927B813AD443A009570F1 /* ItemArticleViewController.m in Sources */,
+				4905542513B290A60009EFD5 /* SSMNavigationBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
