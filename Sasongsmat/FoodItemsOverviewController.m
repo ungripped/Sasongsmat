@@ -54,7 +54,7 @@
     self.seasonFoodItems = [NSArray array];
     self.featuredFoodItems = [NSArray array];
     
-    self.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:self.navigationItem.title];
+    //self.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:self.navigationItem.title];
     
     isLoading = NO;
     
@@ -184,7 +184,7 @@
                     cell.selectionStyle = UITableViewCellSelectionStyleGray;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 }
-                cell.textLabel.text = @"Mer säsongsmat";
+                cell.textLabel.text = @"Mer säsongsmat...";
                 
                 return cell;
             }
@@ -373,7 +373,7 @@
         ItemArticleViewController *controller = [[ItemArticleViewController alloc] initWithNibName:@"ItemArticleView" bundle:nil];
         controller.initialHTML = fullArticle;
         controller.urlString = urlString;
-        controller.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:name];
+        //controller.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:name];
 
         controller.navigationItem.title = name;
         

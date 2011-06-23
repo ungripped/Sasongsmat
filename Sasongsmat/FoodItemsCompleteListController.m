@@ -46,7 +46,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:@"Råvaror i säsong"];
+    self.navigationItem.title = @"Råvaror i säsong";
+    //self.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:@"Råvaror i säsong"];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -93,6 +94,10 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 55;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -189,6 +194,7 @@
         ItemArticleViewController *controller = [[ItemArticleViewController alloc] initWithNibName:@"ItemArticleView" bundle:nil];
         controller.initialHTML = fullArticle;
         controller.navigationItem.title = name;
+        //controller.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:name];
         
         [self.navigationController pushViewController:controller animated:YES];
         

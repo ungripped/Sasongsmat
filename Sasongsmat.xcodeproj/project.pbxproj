@@ -374,6 +374,37 @@
 		493E0941138DBC430030161D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 493E093F138DBC430030161D /* InfoPlist.strings */; };
 		493E0944138DBC430030161D /* SasongsmatTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 493E0943138DBC430030161D /* SasongsmatTests.h */; };
 		493E0946138DBC430030161D /* SasongsmatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 493E0945138DBC430030161D /* SasongsmatTests.m */; };
+		496DBD5813B3DED10059A898 /* Grönsaker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD5313B3DED10059A898 /* Grönsaker@2x.png */; };
+		496DBD5913B3DED10059A898 /* Insjöfiskar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD5413B3DED10059A898 /* Insjöfiskar@2x.png */; };
+		496DBD5A13B3DED10059A898 /* Kål@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD5513B3DED10059A898 /* Kål@2x.png */; };
+		496DBD5B13B3DED10059A898 /* Lökar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD5613B3DED10059A898 /* Lökar@2x.png */; };
+		496DBD5C13B3DED10059A898 /* Rotsaker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD5713B3DED10059A898 /* Rotsaker@2x.png */; };
+		496DBD6313B3E19D0059A898 /* app_ikon_sasongsmat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD6213B3E19D0059A898 /* app_ikon_sasongsmat@2x.png */; };
+		496DBD6513B3E1A30059A898 /* app_ikon_sasongsmat.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD6413B3E1A30059A898 /* app_ikon_sasongsmat.png */; };
+		496DBD9013B3E7BE0059A898 /* Bär.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD7A13B3E7BE0059A898 /* Bär.png */; };
+		496DBD9113B3E7BE0059A898 /* Bär@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD7B13B3E7BE0059A898 /* Bär@2x.png */; };
+		496DBD9213B3E7BE0059A898 /* Bladgrönsaker.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD7C13B3E7BE0059A898 /* Bladgrönsaker.png */; };
+		496DBD9313B3E7BE0059A898 /* Bladgrönsaker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD7D13B3E7BE0059A898 /* Bladgrönsaker@2x.png */; };
+		496DBD9413B3E7BE0059A898 /* Bönor.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD7E13B3E7BE0059A898 /* Bönor.png */; };
+		496DBD9513B3E7BE0059A898 /* Bönor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD7F13B3E7BE0059A898 /* Bönor@2x.png */; };
+		496DBD9613B3E7BE0059A898 /* Frukt.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD8013B3E7BE0059A898 /* Frukt.png */; };
+		496DBD9713B3E7BE0059A898 /* Frukt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD8113B3E7BE0059A898 /* Frukt@2x.png */; };
+		496DBD9813B3E7BE0059A898 /* Havsfiskar.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD8213B3E7BE0059A898 /* Havsfiskar.png */; };
+		496DBD9913B3E7BE0059A898 /* Havsfiskar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD8313B3E7BE0059A898 /* Havsfiskar@2x.png */; };
+		496DBD9A13B3E7BE0059A898 /* Kryddväxter.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD8413B3E7BE0059A898 /* Kryddväxter.png */; };
+		496DBD9B13B3E7BE0059A898 /* Kryddväxter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD8513B3E7BE0059A898 /* Kryddväxter@2x.png */; };
+		496DBD9C13B3E7BE0059A898 /* Laxfiskar.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD8613B3E7BE0059A898 /* Laxfiskar.png */; };
+		496DBD9D13B3E7BE0059A898 /* Laxfiskar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD8713B3E7BE0059A898 /* Laxfiskar@2x.png */; };
+		496DBD9E13B3E7BE0059A898 /* Nötter.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD8813B3E7BE0059A898 /* Nötter.png */; };
+		496DBD9F13B3E7BE0059A898 /* Nötter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD8913B3E7BE0059A898 /* Nötter@2x.png */; };
+		496DBDA013B3E7BE0059A898 /* Sallat.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD8A13B3E7BE0059A898 /* Sallat.png */; };
+		496DBDA113B3E7BE0059A898 /* Sallat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD8B13B3E7BE0059A898 /* Sallat@2x.png */; };
+		496DBDA213B3E7BE0059A898 /* Skaldjur.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD8C13B3E7BE0059A898 /* Skaldjur.png */; };
+		496DBDA313B3E7BE0059A898 /* Skaldjur@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD8D13B3E7BE0059A898 /* Skaldjur@2x.png */; };
+		496DBDA413B3E7BE0059A898 /* Vilda växter.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD8E13B3E7BE0059A898 /* Vilda växter.png */; };
+		496DBDA513B3E7BE0059A898 /* Vilda växter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD8F13B3E7BE0059A898 /* Vilda växter@2x.png */; };
+		496DBDA713B3E84E0059A898 /* Kött@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBDA613B3E84E0059A898 /* Kött@2x.png */; };
+		496DBDA913B3E8560059A898 /* Kött.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBDA813B3E8560059A898 /* Kött.png */; };
 		4981007513A6BB0E0066D51A /* FoodListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4981007413A6BB0E0066D51A /* FoodListItem.m */; };
 		49AD6C9913AA9434006D4675 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AD6C9813AA9434006D4675 /* AVFoundation.framework */; };
 		49AD6C9C13AA943D006D4675 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AD6C9B13AA943D006D4675 /* CoreMedia.framework */; };
@@ -818,6 +849,37 @@
 		493E0942138DBC430030161D /* SasongsmatTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SasongsmatTests-Prefix.pch"; sourceTree = "<group>"; };
 		493E0943138DBC430030161D /* SasongsmatTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SasongsmatTests.h; sourceTree = "<group>"; };
 		493E0945138DBC430030161D /* SasongsmatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SasongsmatTests.m; sourceTree = "<group>"; };
+		496DBD5313B3DED10059A898 /* Grönsaker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Grönsaker@2x.png"; sourceTree = "<group>"; };
+		496DBD5413B3DED10059A898 /* Insjöfiskar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Insjöfiskar@2x.png"; sourceTree = "<group>"; };
+		496DBD5513B3DED10059A898 /* Kål@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kål@2x.png"; sourceTree = "<group>"; };
+		496DBD5613B3DED10059A898 /* Lökar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Lökar@2x.png"; sourceTree = "<group>"; };
+		496DBD5713B3DED10059A898 /* Rotsaker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rotsaker@2x.png"; sourceTree = "<group>"; };
+		496DBD6213B3E19D0059A898 /* app_ikon_sasongsmat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "app_ikon_sasongsmat@2x.png"; path = "../../app_ikon_sasongsmat@2x.png"; sourceTree = "<group>"; };
+		496DBD6413B3E1A30059A898 /* app_ikon_sasongsmat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_ikon_sasongsmat.png; path = ../../app_ikon_sasongsmat.png; sourceTree = "<group>"; };
+		496DBD7A13B3E7BE0059A898 /* Bär.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bär.png"; sourceTree = "<group>"; };
+		496DBD7B13B3E7BE0059A898 /* Bär@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bär@2x.png"; sourceTree = "<group>"; };
+		496DBD7C13B3E7BE0059A898 /* Bladgrönsaker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bladgrönsaker.png"; sourceTree = "<group>"; };
+		496DBD7D13B3E7BE0059A898 /* Bladgrönsaker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bladgrönsaker@2x.png"; sourceTree = "<group>"; };
+		496DBD7E13B3E7BE0059A898 /* Bönor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bönor.png"; sourceTree = "<group>"; };
+		496DBD7F13B3E7BE0059A898 /* Bönor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bönor@2x.png"; sourceTree = "<group>"; };
+		496DBD8013B3E7BE0059A898 /* Frukt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Frukt.png; sourceTree = "<group>"; };
+		496DBD8113B3E7BE0059A898 /* Frukt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Frukt@2x.png"; sourceTree = "<group>"; };
+		496DBD8213B3E7BE0059A898 /* Havsfiskar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Havsfiskar.png; sourceTree = "<group>"; };
+		496DBD8313B3E7BE0059A898 /* Havsfiskar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Havsfiskar@2x.png"; sourceTree = "<group>"; };
+		496DBD8413B3E7BE0059A898 /* Kryddväxter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kryddväxter.png"; sourceTree = "<group>"; };
+		496DBD8513B3E7BE0059A898 /* Kryddväxter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kryddväxter@2x.png"; sourceTree = "<group>"; };
+		496DBD8613B3E7BE0059A898 /* Laxfiskar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Laxfiskar.png; sourceTree = "<group>"; };
+		496DBD8713B3E7BE0059A898 /* Laxfiskar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Laxfiskar@2x.png"; sourceTree = "<group>"; };
+		496DBD8813B3E7BE0059A898 /* Nötter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nötter.png"; sourceTree = "<group>"; };
+		496DBD8913B3E7BE0059A898 /* Nötter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nötter@2x.png"; sourceTree = "<group>"; };
+		496DBD8A13B3E7BE0059A898 /* Sallat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sallat.png; sourceTree = "<group>"; };
+		496DBD8B13B3E7BE0059A898 /* Sallat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sallat@2x.png"; sourceTree = "<group>"; };
+		496DBD8C13B3E7BE0059A898 /* Skaldjur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Skaldjur.png; sourceTree = "<group>"; };
+		496DBD8D13B3E7BE0059A898 /* Skaldjur@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Skaldjur@2x.png"; sourceTree = "<group>"; };
+		496DBD8E13B3E7BE0059A898 /* Vilda växter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Vilda växter.png"; sourceTree = "<group>"; };
+		496DBD8F13B3E7BE0059A898 /* Vilda växter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Vilda växter@2x.png"; sourceTree = "<group>"; };
+		496DBDA613B3E84E0059A898 /* Kött@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kött@2x.png"; sourceTree = "<group>"; };
+		496DBDA813B3E8560059A898 /* Kött.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kött.png"; sourceTree = "<group>"; };
 		4981007313A6BB0E0066D51A /* FoodListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodListItem.h; sourceTree = "<group>"; };
 		4981007413A6BB0E0066D51A /* FoodListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodListItem.m; sourceTree = "<group>"; };
 		49AD6C9813AA9434006D4675 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -912,6 +974,8 @@
 			isa = PBXGroup;
 			children = (
 				4905542613B290FC0009EFD5 /* ui */,
+				496DBD6413B3E1A30059A898 /* app_ikon_sasongsmat.png */,
+				496DBD6213B3E19D0059A898 /* app_ikon_sasongsmat@2x.png */,
 				49F4660513ABFC64003B97E4 /* Icon_Retina.png */,
 				49F4660313ABFC59003B97E4 /* Icon_Regular.png */,
 				49E367C413A4038E00636828 /* Miniatures */,
@@ -1496,6 +1560,35 @@
 		49E367C413A4038E00636828 /* Miniatures */ = {
 			isa = PBXGroup;
 			children = (
+				496DBDA813B3E8560059A898 /* Kött.png */,
+				496DBDA613B3E84E0059A898 /* Kött@2x.png */,
+				496DBD7A13B3E7BE0059A898 /* Bär.png */,
+				496DBD7B13B3E7BE0059A898 /* Bär@2x.png */,
+				496DBD7C13B3E7BE0059A898 /* Bladgrönsaker.png */,
+				496DBD7D13B3E7BE0059A898 /* Bladgrönsaker@2x.png */,
+				496DBD7E13B3E7BE0059A898 /* Bönor.png */,
+				496DBD7F13B3E7BE0059A898 /* Bönor@2x.png */,
+				496DBD8013B3E7BE0059A898 /* Frukt.png */,
+				496DBD8113B3E7BE0059A898 /* Frukt@2x.png */,
+				496DBD8213B3E7BE0059A898 /* Havsfiskar.png */,
+				496DBD8313B3E7BE0059A898 /* Havsfiskar@2x.png */,
+				496DBD8413B3E7BE0059A898 /* Kryddväxter.png */,
+				496DBD8513B3E7BE0059A898 /* Kryddväxter@2x.png */,
+				496DBD8613B3E7BE0059A898 /* Laxfiskar.png */,
+				496DBD8713B3E7BE0059A898 /* Laxfiskar@2x.png */,
+				496DBD8813B3E7BE0059A898 /* Nötter.png */,
+				496DBD8913B3E7BE0059A898 /* Nötter@2x.png */,
+				496DBD8A13B3E7BE0059A898 /* Sallat.png */,
+				496DBD8B13B3E7BE0059A898 /* Sallat@2x.png */,
+				496DBD8C13B3E7BE0059A898 /* Skaldjur.png */,
+				496DBD8D13B3E7BE0059A898 /* Skaldjur@2x.png */,
+				496DBD8E13B3E7BE0059A898 /* Vilda växter.png */,
+				496DBD8F13B3E7BE0059A898 /* Vilda växter@2x.png */,
+				496DBD5313B3DED10059A898 /* Grönsaker@2x.png */,
+				496DBD5413B3DED10059A898 /* Insjöfiskar@2x.png */,
+				496DBD5513B3DED10059A898 /* Kål@2x.png */,
+				496DBD5613B3DED10059A898 /* Lökar@2x.png */,
+				496DBD5713B3DED10059A898 /* Rotsaker@2x.png */,
 				493671B113A94D0A00434415 /* Kål.png */,
 				493671B213A94D0A00434415 /* Lökar.png */,
 				493671AF13A94BC900434415 /* Grönsaker.png */,
@@ -2002,6 +2095,37 @@
 				49BC49ED13B2A9C700C22B1D /* segment_selected@2x.png in Resources */,
 				49BC49F013B2AF0C00C22B1D /* segment_middle.png in Resources */,
 				49BC49F113B2AF0C00C22B1D /* segment_middle@2x.png in Resources */,
+				496DBD5813B3DED10059A898 /* Grönsaker@2x.png in Resources */,
+				496DBD5913B3DED10059A898 /* Insjöfiskar@2x.png in Resources */,
+				496DBD5A13B3DED10059A898 /* Kål@2x.png in Resources */,
+				496DBD5B13B3DED10059A898 /* Lökar@2x.png in Resources */,
+				496DBD5C13B3DED10059A898 /* Rotsaker@2x.png in Resources */,
+				496DBD6313B3E19D0059A898 /* app_ikon_sasongsmat@2x.png in Resources */,
+				496DBD6513B3E1A30059A898 /* app_ikon_sasongsmat.png in Resources */,
+				496DBD9013B3E7BE0059A898 /* Bär.png in Resources */,
+				496DBD9113B3E7BE0059A898 /* Bär@2x.png in Resources */,
+				496DBD9213B3E7BE0059A898 /* Bladgrönsaker.png in Resources */,
+				496DBD9313B3E7BE0059A898 /* Bladgrönsaker@2x.png in Resources */,
+				496DBD9413B3E7BE0059A898 /* Bönor.png in Resources */,
+				496DBD9513B3E7BE0059A898 /* Bönor@2x.png in Resources */,
+				496DBD9613B3E7BE0059A898 /* Frukt.png in Resources */,
+				496DBD9713B3E7BE0059A898 /* Frukt@2x.png in Resources */,
+				496DBD9813B3E7BE0059A898 /* Havsfiskar.png in Resources */,
+				496DBD9913B3E7BE0059A898 /* Havsfiskar@2x.png in Resources */,
+				496DBD9A13B3E7BE0059A898 /* Kryddväxter.png in Resources */,
+				496DBD9B13B3E7BE0059A898 /* Kryddväxter@2x.png in Resources */,
+				496DBD9C13B3E7BE0059A898 /* Laxfiskar.png in Resources */,
+				496DBD9D13B3E7BE0059A898 /* Laxfiskar@2x.png in Resources */,
+				496DBD9E13B3E7BE0059A898 /* Nötter.png in Resources */,
+				496DBD9F13B3E7BE0059A898 /* Nötter@2x.png in Resources */,
+				496DBDA013B3E7BE0059A898 /* Sallat.png in Resources */,
+				496DBDA113B3E7BE0059A898 /* Sallat@2x.png in Resources */,
+				496DBDA213B3E7BE0059A898 /* Skaldjur.png in Resources */,
+				496DBDA313B3E7BE0059A898 /* Skaldjur@2x.png in Resources */,
+				496DBDA413B3E7BE0059A898 /* Vilda växter.png in Resources */,
+				496DBDA513B3E7BE0059A898 /* Vilda växter@2x.png in Resources */,
+				496DBDA713B3E84E0059A898 /* Kött@2x.png in Resources */,
+				496DBDA913B3E8560059A898 /* Kött.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

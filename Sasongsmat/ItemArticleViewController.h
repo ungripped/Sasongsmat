@@ -12,11 +12,13 @@
 @interface ItemArticleViewController : UIViewController <UIWebViewDelegate> {
     
     UIWebView *itemView;
+    UITableView *recipeView;
     NSString *initialHTML;
     NSString *urlString;
     UISegmentedControl *segmentedControl;
 }
 @property (nonatomic, retain) IBOutlet UIWebView *itemView;
+@property (nonatomic, retain) IBOutlet UITableView *recipeView;
 @property (nonatomic, retain) NSString *initialHTML;
 @property (nonatomic, retain) NSString *urlString;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;

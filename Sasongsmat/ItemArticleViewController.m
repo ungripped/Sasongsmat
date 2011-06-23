@@ -9,10 +9,12 @@
 #import "ItemArticleViewController.h"
 #import "ASIHTTPRequest.h"
 #import "SBJson.h"
+#import "SSMNavigationBar.h"
 
 @implementation ItemArticleViewController
 @synthesize segmentedControl;
 @synthesize itemView;
+@synthesize recipeView;
 @synthesize initialHTML, urlString;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -31,6 +33,7 @@
     [initialHTML release];
     [urlString release];
     [segmentedControl release];
+    [recipeView release];
     [super dealloc];
 }
 
@@ -62,6 +65,7 @@
 {
     [self setItemView:nil];
     [self setSegmentedControl:nil];
+    [self setRecipeView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -85,6 +89,22 @@
 }
 
 - (IBAction)segmentSelected:(id)sender {
+    NSInteger selected = segmentedControl.selectedSegmentIndex;
+
+    switch (selected) {
+        case 0:
+            recipeView.hidden = YES;
+            itemView.hidden = NO;
+            break;
+            
+        case 1:
+            itemView.hidden = YES;
+            recipeView.hidden = NO;
+            break;
+        default:
+            NSLog(@"Selected: %d", selected);
+            break;
+    }
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
@@ -136,6 +156,7 @@
         controller.initialHTML = fullArticle;
         controller.urlString = urlString;
         controller.navigationItem.title = article;
+        //controller.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:article];
         
         [self.navigationController pushViewController:controller animated:YES];
         
