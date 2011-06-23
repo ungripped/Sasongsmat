@@ -11,6 +11,7 @@
 #import "SBJson.h"
 
 @implementation ItemArticleViewController
+@synthesize segmentedControl;
 @synthesize itemView;
 @synthesize initialHTML, urlString;
 
@@ -29,6 +30,7 @@
     [itemView release];
     [initialHTML release];
     [urlString release];
+    [segmentedControl release];
     [super dealloc];
 }
 
@@ -45,12 +47,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    /*
+    [segmentedControl setImage:[UIImage imageNamed:@"segment_selected.png"]forSegmentAtIndex:0];
+    [segmentedControl setImage:[UIImage imageNamed:@"segment_middle.png"]forSegmentAtIndex:1];
+    [segmentedControl setImage:[UIImage imageNamed:@"segment_normal.png"]forSegmentAtIndex:2];
+
+    */
+    
     [self loadArticle];
 }
 
 - (void)viewDidUnload
 {
     [self setItemView:nil];
+    [self setSegmentedControl:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -71,6 +82,9 @@
     
     NSString *html = [NSString stringWithFormat:@"%@%@%@", js, css, self.initialHTML];
     [itemView loadHTMLString:html baseURL:baseURL];
+}
+
+- (IBAction)segmentSelected:(id)sender {
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
@@ -100,8 +114,7 @@
 }
 
 
-// TODO: loadNewArticle and reload are just proof of concept,
-// do refactor...
+// TODO: loadNewArticle is just proof of concept, do refactor...
 - (void)loadNewArticle:(NSString *)article {
     NSString *newUrlString = [NSString stringWithFormat:@"http://www.xn--ssongsmat-v2a.nu/w/api.php?action=parse&page=%@&format=json", [article stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSURL *url = [NSURL URLWithString:newUrlString];
@@ -139,36 +152,4 @@
     [request startAsynchronous];
 }
 
-
-// Reload is temporary for debugging.
-- (IBAction)reload:(id)sender {
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    NSLog(@"Fetching article: %@", url);
-    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    request.defaultResponseEncoding = NSUTF8StringEncoding;
-    
-    [request setCompletionBlock:^{
-        NSString *responseString = [request responseString];
-        
-        NSDictionary *responseJson = (NSDictionary *)[responseString JSONValue];
-        
-        NSString *fullArticle = [responseJson valueForKeyPath:@"parse.text.*"];
-        
-        NSLog(@"response: %@", fullArticle);
-        
-        self.initialHTML = fullArticle;
-        
-        [self loadArticle];
-    }];
-    
-    [request setFailedBlock:^{
-        NSError *error = [request error];
-        NSLog(@"Error: %@", error);
-        
-        // TODO: Set error message and tap-message in section footer
-    }];
-    
-    [request startAsynchronous];
-}
 @end

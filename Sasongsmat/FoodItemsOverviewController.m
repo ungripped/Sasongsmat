@@ -373,6 +373,8 @@
         ItemArticleViewController *controller = [[ItemArticleViewController alloc] initWithNibName:@"ItemArticleView" bundle:nil];
         controller.initialHTML = fullArticle;
         controller.urlString = urlString;
+        controller.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:name];
+
         controller.navigationItem.title = name;
         
         [self.navigationController pushViewController:controller animated:YES];

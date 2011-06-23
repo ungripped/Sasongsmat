@@ -9,6 +9,7 @@
 #import "FoodItemsCompleteListController.h"
 #import "FoodListItem.h"
 #import "ItemArticleViewController.h"
+#import "SSMNavigationBar.h"
 
 #import "ASIHTTPRequest.h"
 #import "SBJson.h"
@@ -45,8 +46,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.navigationItem.title = @"Råvaror i säsong";
+    self.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:@"Råvaror i säsong"];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

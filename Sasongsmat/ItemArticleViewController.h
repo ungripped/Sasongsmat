@@ -14,13 +14,15 @@
     UIWebView *itemView;
     NSString *initialHTML;
     NSString *urlString;
+    UISegmentedControl *segmentedControl;
 }
 @property (nonatomic, retain) IBOutlet UIWebView *itemView;
 @property (nonatomic, retain) NSString *initialHTML;
 @property (nonatomic, retain) NSString *urlString;
+@property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
 
-- (IBAction)reload:(id)sender;
 - (void)loadNewArticle:(NSString *)article;
 - (void)loadArticle;
+- (IBAction)segmentSelected:(id)sender;
 
 @end
