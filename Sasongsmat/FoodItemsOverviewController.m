@@ -354,43 +354,15 @@
 }
 
 - (void)loadArticle:(NSString *)name {
-    NSString *urlString = [NSString stringWithFormat:@"http://www.xn--ssongsmat-v2a.nu/w/api.php?action=parse&page=%@&format=json", [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    NSLog(@"Fetching article: %@", url);
-    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    request.defaultResponseEncoding = NSUTF8StringEncoding;
-    
-    [request setCompletionBlock:^{
-        NSString *responseString = [request responseString];
-        
-        NSDictionary *responseJson = (NSDictionary *)[responseString JSONValue];
-        
-        NSString *fullArticle = [responseJson valueForKeyPath:@"parse.text.*"];
-
-        NSLog(@"response: %@", fullArticle);
-        
-        ItemArticleViewController *controller = [[ItemArticleViewController alloc] initWithNibName:@"ItemArticleView" bundle:nil];
-        controller.initialHTML = fullArticle;
-        controller.urlString = urlString;
-        //controller.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:name];
-
-        controller.navigationItem.title = name;
-        
+    // TODO: Show load indicator in table view.
+    [ItemArticleViewController articleControllerForArticle:name loadedBlock:^(ItemArticleViewController * controller) {
         [self.navigationController pushViewController:controller animated:YES];
-        
-        
-    }];
-    
-    [request setFailedBlock:^{
-        isLoading = NO;
-        NSError *error = [request error];
-        NSLog(@"Error: %@", error);
-        
+    } errorBlock:^(NSError * error) {
+        NSLog(@"Error loading article: %@", error);
         // TODO: Set error message and tap-message in section footer
+
     }];
-    
-    [request startAsynchronous];
+
 }
 
 @end

@@ -15,7 +15,36 @@
 @synthesize segmentedControl;
 @synthesize itemView;
 @synthesize recipeView;
-@synthesize initialHTML, urlString;
+@synthesize initialHTML;
+@synthesize article;
+@synthesize recipes;
+
++ (void)articleControllerForArticle:(NSString *)articleName loadedBlock:(ArticleLoadedBlock)articleLoadedBlock errorBlock:(ArticleLoadFailedBlock)articleFailedBlock {
+    
+    NSLog(@"Loading article: %@", articleName);
+    NSString *urlString = [NSString stringWithFormat:@"http://www.xn--ssongsmat-v2a.nu/w/api.php?action=parse&page=%@&format=json", [articleName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    request.defaultResponseEncoding = NSUTF8StringEncoding;
+    
+    [request setCompletionBlock:^{
+        NSString *responseString = [request responseString];
+        NSDictionary *responseJson = (NSDictionary *)[responseString JSONValue];
+        
+        ItemArticleViewController *controller = [[[ItemArticleViewController alloc] initWithNibName:@"ItemArticleView" bundle:nil] autorelease];
+        
+        controller.article = responseJson;
+        
+        articleLoadedBlock(controller);        
+    }];
+    
+    [request setFailedBlock:^{
+        articleFailedBlock([request error]);
+    }];
+    
+    [request startAsynchronous];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,9 +60,11 @@
     itemView.delegate = nil;
     [itemView release];
     [initialHTML release];
-    [urlString release];
     [segmentedControl release];
     [recipeView release];
+    [article release];
+    [recipes release];
+    
     [super dealloc];
 }
 
@@ -50,12 +81,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.initialHTML = [article valueForKeyPath:@"parse.text.*"];
+    self.navigationItem.title = [article valueForKeyPath:@"parse.displaytitle"];
+
+    NSMutableArray *articleReceipes = [NSMutableArray array];
     
+    NSArray *links = [article valueForKeyPath:@"parse.links"];
+    for (NSDictionary *link in links) {
+        
+        NSNumber *ns = [link objectForKey:@"ns"];
+        if ([ns isEqualToNumber:[NSNumber numberWithInt:550]]) {
+            NSString *fullRecipeName = [link objectForKey:@"*"];
+            
+            NSRange range = [fullRecipeName rangeOfString:@"Recept:"];
+            
+            if (range.location == 0) {
+                [articleReceipes addObject:[fullRecipeName substringFromIndex:range.length]];
+            }
+        }
+    }
+
+    NSLog(@"Recipes: %@", articleReceipes);
     /*
     [segmentedControl setImage:[UIImage imageNamed:@"segment_selected.png"]forSegmentAtIndex:0];
     [segmentedControl setImage:[UIImage imageNamed:@"segment_middle.png"]forSegmentAtIndex:1];
     [segmentedControl setImage:[UIImage imageNamed:@"segment_normal.png"]forSegmentAtIndex:2];
-
     */
     
     [self loadArticle];
@@ -67,8 +118,6 @@
     [self setSegmentedControl:nil];
     [self setRecipeView:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -114,8 +163,6 @@
     
     NSLog(@"URL: %@", ret);
     
-    NSLog(@"Navtype: %d", navigationType);
-    
     switch (navigationType) {
         case UIWebViewNavigationTypeOther:
             return YES;
@@ -134,43 +181,14 @@
 }
 
 
-// TODO: loadNewArticle is just proof of concept, do refactor...
-- (void)loadNewArticle:(NSString *)article {
-    NSString *newUrlString = [NSString stringWithFormat:@"http://www.xn--ssongsmat-v2a.nu/w/api.php?action=parse&page=%@&format=json", [article stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSURL *url = [NSURL URLWithString:newUrlString];
+- (void)loadNewArticle:(NSString *)articleName {
+    // TODO: Show load indicator...
     
-    NSLog(@"Fetching article: %@", url);
-    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    request.defaultResponseEncoding = NSUTF8StringEncoding;
-    
-    [request setCompletionBlock:^{
-        NSString *responseString = [request responseString];
-        
-        NSDictionary *responseJson = (NSDictionary *)[responseString JSONValue];
-        
-        NSString *fullArticle = [responseJson valueForKeyPath:@"parse.text.*"];
-        
-        NSLog(@"response: %@", fullArticle);
-        
-        ItemArticleViewController *controller = [[ItemArticleViewController alloc] initWithNibName:@"ItemArticleView" bundle:nil];
-        controller.initialHTML = fullArticle;
-        controller.urlString = urlString;
-        controller.navigationItem.title = article;
-        //controller.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:article];
-        
+    [ItemArticleViewController articleControllerForArticle:articleName loadedBlock:^(ItemArticleViewController * controller) {
         [self.navigationController pushViewController:controller animated:YES];
-        
-        
+    } errorBlock:^(NSError * error) {
+        NSLog(@"Error loading article: %@", error);
     }];
-    
-    [request setFailedBlock:^{
-        NSError *error = [request error];
-        NSLog(@"Error: %@", error);
-        
-        // TODO: Set error message and tap-message in section footer
-    }];
-    
-    [request startAsynchronous];
 }
 
 @end

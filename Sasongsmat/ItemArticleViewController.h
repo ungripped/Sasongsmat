@@ -8,23 +8,38 @@
 
 #import <UIKit/UIKit.h>
 
+@class ItemArticleViewController;
+
+typedef void (^ArticleLoadedBlock)(ItemArticleViewController *);
+typedef void (^ArticleLoadFailedBlock)(NSError *);
+
 
 @interface ItemArticleViewController : UIViewController <UIWebViewDelegate> {
     
+    UISegmentedControl *segmentedControl;
+    
     UIWebView *itemView;
     UITableView *recipeView;
+    
     NSString *initialHTML;
-    NSString *urlString;
-    UISegmentedControl *segmentedControl;
+    NSDictionary *article;
+    NSArray *recipes;
 }
-@property (nonatomic, retain) IBOutlet UIWebView *itemView;
-@property (nonatomic, retain) IBOutlet UITableView *recipeView;
-@property (nonatomic, retain) NSString *initialHTML;
-@property (nonatomic, retain) NSString *urlString;
+
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
 
-- (void)loadNewArticle:(NSString *)article;
+
+@property (nonatomic, retain) IBOutlet UIWebView *itemView;
+@property (nonatomic, retain) IBOutlet UITableView *recipeView;
+
+@property (nonatomic, retain) NSString *initialHTML;
+@property (nonatomic, retain) NSDictionary *article;
+@property (nonatomic, retain) NSArray *recipes;
+
+- (void)loadNewArticle:(NSString *)articleName;
 - (void)loadArticle;
 - (IBAction)segmentSelected:(id)sender;
+
++ (void)articleControllerForArticle:(NSString *)articleName loadedBlock:(ArticleLoadedBlock)articleLoadedBlock errorBlock:(ArticleLoadFailedBlock)articleFailedBlock;
 
 @end
