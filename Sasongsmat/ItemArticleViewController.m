@@ -15,7 +15,7 @@
 @synthesize segmentedControl;
 @synthesize itemView;
 @synthesize recipeView;
-@synthesize initialHTML;
+@synthesize initialHTML, itemName;
 @synthesize article;
 @synthesize recipes;
 
@@ -60,6 +60,7 @@
     itemView.delegate = nil;
     [itemView release];
     [initialHTML release];
+    [itemName release];
     [segmentedControl release];
     [recipeView release];
     [article release];
@@ -83,7 +84,8 @@
     [super viewDidLoad];
 
     self.initialHTML = [article valueForKeyPath:@"parse.text.*"];
-    self.navigationItem.title = [article valueForKeyPath:@"parse.displaytitle"];
+    self.itemName = [article valueForKeyPath:@"parse.displaytitle"];
+    self.navigationItem.title = self.itemName;
 
     NSMutableArray *articleReceipes = [NSMutableArray array];
     
@@ -102,7 +104,8 @@
         }
     }
 
-    NSLog(@"Recipes: %@", articleReceipes);
+    self.recipes = articleReceipes;
+    
     /*
     [segmentedControl setImage:[UIImage imageNamed:@"segment_selected.png"]forSegmentAtIndex:0];
     [segmentedControl setImage:[UIImage imageNamed:@"segment_middle.png"]forSegmentAtIndex:1];
@@ -190,5 +193,57 @@
         NSLog(@"Error loading article: %@", error);
     }];
 }
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if ([recipes count] > 0) {
+        return [recipes count];
+    }
+    else { 
+        return 1;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecipeCell"];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RecipeCell"] autorelease];
+        
+    }
+    
+    if ([recipes count] > 0) {
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.text = [recipes objectAtIndex:indexPath.row];
+    }
+    else {
+        cell.textLabel.text = [NSString stringWithFormat:@"Det finns ännu inga recept med %@", self.itemName];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    
+    return cell;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([recipes count] > 0) {
+        NSLog(@"Show recipe: %@", [recipes objectAtIndex:indexPath.row]);
+    }
+    else {
+        NSLog(@"No recipes.");
+    }
+}
+
 
 @end

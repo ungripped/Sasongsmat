@@ -14,7 +14,7 @@ typedef void (^ArticleLoadedBlock)(ItemArticleViewController *);
 typedef void (^ArticleLoadFailedBlock)(NSError *);
 
 
-@interface ItemArticleViewController : UIViewController <UIWebViewDelegate> {
+@interface ItemArticleViewController : UIViewController <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate> {
     
     UISegmentedControl *segmentedControl;
     
@@ -22,6 +22,7 @@ typedef void (^ArticleLoadFailedBlock)(NSError *);
     UITableView *recipeView;
     
     NSString *initialHTML;
+    NSString *itemName;
     NSDictionary *article;
     NSArray *recipes;
 }
@@ -33,6 +34,7 @@ typedef void (^ArticleLoadFailedBlock)(NSError *);
 @property (nonatomic, retain) IBOutlet UITableView *recipeView;
 
 @property (nonatomic, retain) NSString *initialHTML;
+@property (nonatomic, retain) NSString *itemName;
 @property (nonatomic, retain) NSDictionary *article;
 @property (nonatomic, retain) NSArray *recipes;
 
