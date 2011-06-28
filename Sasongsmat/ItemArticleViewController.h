@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SSMSegmentedControl.h"
 @class ItemArticleViewController;
 
 typedef void (^ArticleLoadedBlock)(ItemArticleViewController *);
@@ -16,7 +16,7 @@ typedef void (^ArticleLoadFailedBlock)(NSError *);
 
 @interface ItemArticleViewController : UIViewController <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate> {
     
-    UISegmentedControl *segmentedControl;
+    SSMSegmentedControl *segmentedControl;
     
     UIWebView *itemView;
     UITableView *recipeView;
@@ -27,7 +27,7 @@ typedef void (^ArticleLoadFailedBlock)(NSError *);
     NSArray *recipes;
 }
 
-@property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
+@property (nonatomic, retain) IBOutlet SSMSegmentedControl *segmentedControl;
 
 
 @property (nonatomic, retain) IBOutlet UIWebView *itemView;

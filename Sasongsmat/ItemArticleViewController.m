@@ -82,6 +82,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    segmentedControl.font = [UIFont boldSystemFontOfSize:12.0f];
+    
+    segmentedControl.selectedItemColor = [UIColor whiteColor];
+    segmentedControl.unselectedItemColor = [UIColor colorWithWhite:0.85f alpha:1.0f];
+    //segmentedControl.unselectedItemColor = [UIColor blackColor];
+    
+    segmentedControl.selectedItemImage = [UIImage imageNamed:@"button_selected.png"];
+    segmentedControl.unselectedItemImage = [UIImage imageNamed:@"button_normal"];
+    segmentedControl.separatorImage = [UIImage imageNamed:@"separator"];
+    segmentedControl.indicatorImage = [UIImage imageNamed:@"indicator"];
+
 
     self.initialHTML = [article valueForKeyPath:@"parse.text.*"];
     self.itemName = [article valueForKeyPath:@"parse.displaytitle"];
