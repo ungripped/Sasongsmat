@@ -14,8 +14,10 @@
 @implementation ItemArticleViewController
 @synthesize segmentedControl;
 @synthesize itemView;
+@synthesize infoView;
 @synthesize recipeView;
 @synthesize initialHTML, itemName;
+@synthesize infoHTML;
 @synthesize article;
 @synthesize recipes;
 
@@ -60,12 +62,13 @@
     itemView.delegate = nil;
     [itemView release];
     [initialHTML release];
+    [infoHTML release];
     [itemName release];
     [segmentedControl release];
     [recipeView release];
     [article release];
     [recipes release];
-    
+    [infoView release];
     [super dealloc];
 }
 
@@ -83,11 +86,10 @@
 {
     [super viewDidLoad];
     
+    // Set up the tabs
     segmentedControl.font = [UIFont boldSystemFontOfSize:12.0f];
-    
     segmentedControl.selectedItemColor = [UIColor whiteColor];
     segmentedControl.unselectedItemColor = [UIColor colorWithWhite:0.85f alpha:1.0f];
-    //segmentedControl.unselectedItemColor = [UIColor blackColor];
     
     segmentedControl.selectedItemImage = [UIImage imageNamed:@"button_selected.png"];
     segmentedControl.unselectedItemImage = [UIImage imageNamed:@"button_normal"];
@@ -95,7 +97,11 @@
     segmentedControl.indicatorImage = [UIImage imageNamed:@"indicator"];
 
 
+    // set up views
     self.initialHTML = [article valueForKeyPath:@"parse.text.*"];
+    
+    //NSLog(@"%@", self.initialHTML);
+    
     self.itemName = [article valueForKeyPath:@"parse.displaytitle"];
     self.navigationItem.title = self.itemName;
 
@@ -117,13 +123,7 @@
     }
 
     self.recipes = articleReceipes;
-    
-    /*
-    [segmentedControl setImage:[UIImage imageNamed:@"segment_selected.png"]forSegmentAtIndex:0];
-    [segmentedControl setImage:[UIImage imageNamed:@"segment_middle.png"]forSegmentAtIndex:1];
-    [segmentedControl setImage:[UIImage imageNamed:@"segment_normal.png"]forSegmentAtIndex:2];
-    */
-    
+        
     [self loadArticle];
 }
 
@@ -132,6 +132,7 @@
     [self setItemView:nil];
     [self setSegmentedControl:nil];
     [self setRecipeView:nil];
+    [self setInfoView:nil];
     [super viewDidUnload];
 }
 
@@ -150,28 +151,54 @@
     
     NSString *html = [NSString stringWithFormat:@"%@%@%@", js, css, self.initialHTML];
     [itemView loadHTMLString:html baseURL:baseURL];
+    
 }
+
+- (void)loadInfo {
+    self.infoHTML = [itemView stringByEvaluatingJavaScriptFromString:@"removeInfoBoxes();"];
+    
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSURL *baseURL = [NSURL fileURLWithPath:path];
+    
+    NSString *js = @"<script src=\"jquery.js\"></script><script src=\"articleInfo.js\"></script>";
+    NSString *css = @"<link rel=\"stylesheet\" href=\"articleInfo.css\" type=\"text/css\" media=\"screen\" charset=\"utf-8\">";
+    
+    NSString *html = [NSString stringWithFormat:@"%@%@%@", js, css, self.infoHTML];
+    
+    //NSLog(@"HTML: \n %@ \n", html);
+    
+    [infoView loadHTMLString:html baseURL:baseURL];
+    infoLoaded = YES;
+}
+
 
 - (IBAction)segmentSelected:(id)sender {
     NSInteger selected = segmentedControl.selectedSegmentIndex;
 
     switch (selected) {
         case 0:
-            recipeView.hidden = YES;
             itemView.hidden = NO;
+            recipeView.hidden = YES;
+            infoView.hidden = YES;
             break;
-            
         case 1:
             itemView.hidden = YES;
             recipeView.hidden = NO;
+            infoView.hidden = YES;
             break;
-        default:
-            NSLog(@"Selected: %d", selected);
+        case 2:
+            itemView.hidden = YES;
+            recipeView.hidden = YES;
+            infoView.hidden = NO;
+            
+            // TODO: perhaps move views into their own controllers...?
+            if (!infoLoaded) { [self loadInfo]; }
             break;
     }
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    
     
     NSURL *url = [request mainDocumentURL];
     NSString *ret = [url path];

@@ -5,7 +5,7 @@ $(document).ready(function() {
     $("img[alt^='QR-']").parents("p").hide();
     $("p:empty").remove();
 	$("a[class!='mw-redirect']").addClass('vislink');
-	
+    
 	$("a").click(function(event) {
 		var target = $(event.target);
 
@@ -20,3 +20,16 @@ $(document).ready(function() {
 		}
 	});
 });
+
+
+function removeInfoBoxes() {
+	var boxes = "";
+
+    $.each($("table.infobox"), function(idx, elm) {
+
+		boxes += elm.outerHTML;
+		$(elm).remove();
+	});
+
+	return boxes;
+}

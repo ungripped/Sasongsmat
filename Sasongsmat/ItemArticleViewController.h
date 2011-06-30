@@ -19,27 +19,34 @@ typedef void (^ArticleLoadFailedBlock)(NSError *);
     SSMSegmentedControl *segmentedControl;
     
     UIWebView *itemView;
+    UIWebView *infoView;
     UITableView *recipeView;
     
     NSString *initialHTML;
+    NSString *infoHTML;
     NSString *itemName;
     NSDictionary *article;
     NSArray *recipes;
+    
+    BOOL infoLoaded;
 }
 
 @property (nonatomic, retain) IBOutlet SSMSegmentedControl *segmentedControl;
 
 
 @property (nonatomic, retain) IBOutlet UIWebView *itemView;
+@property (nonatomic, retain) IBOutlet UIWebView *infoView;
 @property (nonatomic, retain) IBOutlet UITableView *recipeView;
 
 @property (nonatomic, retain) NSString *initialHTML;
+@property (nonatomic, retain) NSString *infoHTML;
 @property (nonatomic, retain) NSString *itemName;
 @property (nonatomic, retain) NSDictionary *article;
 @property (nonatomic, retain) NSArray *recipes;
 
 - (void)loadNewArticle:(NSString *)articleName;
 - (void)loadArticle;
+- (void)loadInfo;
 - (IBAction)segmentSelected:(id)sender;
 
 + (void)articleControllerForArticle:(NSString *)articleName loadedBlock:(ArticleLoadedBlock)articleLoadedBlock errorBlock:(ArticleLoadFailedBlock)articleFailedBlock;

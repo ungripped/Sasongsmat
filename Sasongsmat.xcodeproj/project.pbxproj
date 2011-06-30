@@ -383,6 +383,8 @@
 		493E0941138DBC430030161D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 493E093F138DBC430030161D /* InfoPlist.strings */; };
 		493E0944138DBC430030161D /* SasongsmatTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 493E0943138DBC430030161D /* SasongsmatTests.h */; };
 		493E0946138DBC430030161D /* SasongsmatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 493E0945138DBC430030161D /* SasongsmatTests.m */; };
+		4941EA0513BD151400FC59C3 /* articleInfo.css in Resources */ = {isa = PBXBuildFile; fileRef = 4941EA0413BD151400FC59C3 /* articleInfo.css */; };
+		4941EA0613BD15B300FC59C3 /* articleInfo.js in Resources */ = {isa = PBXBuildFile; fileRef = 4941EA0113BD150600FC59C3 /* articleInfo.js */; };
 		496DBD5813B3DED10059A898 /* Grönsaker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD5313B3DED10059A898 /* Grönsaker@2x.png */; };
 		496DBD5913B3DED10059A898 /* Insjöfiskar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD5413B3DED10059A898 /* Insjöfiskar@2x.png */; };
 		496DBD5A13B3DED10059A898 /* Kål@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496DBD5513B3DED10059A898 /* Kål@2x.png */; };
@@ -868,6 +870,8 @@
 		493E0942138DBC430030161D /* SasongsmatTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SasongsmatTests-Prefix.pch"; sourceTree = "<group>"; };
 		493E0943138DBC430030161D /* SasongsmatTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SasongsmatTests.h; sourceTree = "<group>"; };
 		493E0945138DBC430030161D /* SasongsmatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SasongsmatTests.m; sourceTree = "<group>"; };
+		4941EA0113BD150600FC59C3 /* articleInfo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = articleInfo.js; sourceTree = "<group>"; };
+		4941EA0413BD151400FC59C3 /* articleInfo.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = articleInfo.css; sourceTree = "<group>"; };
 		496DBD5313B3DED10059A898 /* Grönsaker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Grönsaker@2x.png"; sourceTree = "<group>"; };
 		496DBD5413B3DED10059A898 /* Insjöfiskar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Insjöfiskar@2x.png"; sourceTree = "<group>"; };
 		496DBD5513B3DED10059A898 /* Kål@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kål@2x.png"; sourceTree = "<group>"; };
@@ -1643,6 +1647,8 @@
 				49EC1D5E13AD5E4B00150FD6 /* article.css */,
 				49AFC25513AFF46D00924F81 /* jquery.js */,
 				49AFC25713AFF48500924F81 /* article.js */,
+				4941EA0113BD150600FC59C3 /* articleInfo.js */,
+				4941EA0413BD151400FC59C3 /* articleInfo.css */,
 			);
 			name = Web;
 			sourceTree = "<group>";
@@ -1778,6 +1784,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4941EA0613BD15B300FC59C3 /* articleInfo.js in Resources */,
 				49AFC25913AFF8E000924F81 /* jquery.js in Resources */,
 				49AFC25A13AFF8E100924F81 /* article.js in Resources */,
 				493E091B138DBC430030161D /* InfoPlist.strings in Resources */,
@@ -2163,6 +2170,7 @@
 				4904F03C13BA8490001195A7 /* indicator@2x.png in Resources */,
 				4904F03D13BA8490001195A7 /* separator.png in Resources */,
 				4904F03E13BA8490001195A7 /* separator@2x.png in Resources */,
+				4941EA0513BD151400FC59C3 /* articleInfo.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

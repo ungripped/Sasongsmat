@@ -1,0 +1,68 @@
+
+body {
+	font: 0.875em Georgia, "Times new roman", serif;
+	background-color: #f8f8f8;
+}
+
+p, td {
+	line-height: 1.5;
+}
+
+/*
+p.test {
+    color: #f0f;
+}
+
+ul, ol, li {
+	display: none;
+}
+
+
+
+h2 {
+	font-weight: normal;
+	text-shadow: 0 1px 0 #fff;
+}
+
+sup {
+    display: none;
+}
+
+#toc {
+    display: none;
+}
+*/
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+table {
+	width: 100%;
+}
+
+img {
+    width: 300px;
+    height: 132px;
+}
+
+caption {
+    font-weight: normal;
+    text-shadow: 0 1px 0 #fff;
+    font-size: 1.375em;    
+}
+
+caption.first {
+    padding-bottom: 10px;
+}
+
+td {
+    text-align: center;
+}
+
+.vislink {
+    color: rgb(255, 153, 51);
+    font-weight: bold;
+}
+
