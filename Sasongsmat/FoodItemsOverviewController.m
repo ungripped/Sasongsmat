@@ -343,14 +343,43 @@
                 [completeListController release];
             }
             else {
-                FoodListItem *item = [featuredFoodItems objectAtIndex:indexPath.row];
-                [self loadArticle:item.label];
+                [self loadArticleWithIndexPath:indexPath];
             }
             break;
             
         default:
             break;
     }
+}
+
+- (void)loadArticleWithIndexPath:(NSIndexPath *)indexPath {
+[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    UIView *accessoryView = [cell accessoryView];
+    
+    [cell setAccessoryView:indicator];
+    [indicator startAnimating];
+    
+    FoodListItem *item = [featuredFoodItems objectAtIndex:indexPath.row];
+    
+    [ItemArticleViewController articleControllerForArticle:item.label loadedBlock:^(ItemArticleViewController * controller) {
+
+        [self.navigationController pushViewController:controller animated:YES];
+        [indicator removeFromSuperview];
+        [cell setAccessoryView:accessoryView];
+        [indicator release];
+    } errorBlock:^(NSError * error) {
+        [indicator removeFromSuperview];
+        [cell setAccessoryView:accessoryView];
+        [indicator release];
+        
+        NSLog(@"Error loading article: %@", error);
+        // TODO: Set error message and tap-message in section footer
+        
+    }];
 }
 
 - (void)loadArticle:(NSString *)name {

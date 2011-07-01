@@ -40,6 +40,7 @@ enum SeasonSectionRows {
 @property (nonatomic, retain) NSArray *featuredFoodItems;
 
 - (void)loadFoodItems;
+- (void)loadArticleWithIndexPath:(NSIndexPath *)indexPath;
 - (void)loadArticle:(NSString *)name;
 
 
