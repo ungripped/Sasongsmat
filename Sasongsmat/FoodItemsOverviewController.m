@@ -74,7 +74,7 @@
 
 - (void)loadFoodItems {
     
-    NSURL *url = [NSURL URLWithString:@"http://xn--ssongsmat-v2a.nu/ssm/Special:Ask/-5B-5B:+-5D-5D-20-5B-5BI_s%C3%A4song::1912-06-12-5D-5D/limit%3D500/format%3Djson"];
+    NSURL *url = [NSURL URLWithString:@"http://xn--ssongsmat-v2a.nu/ssm/Special:Ask/-5B-5B:+-5D-5D-20-5B-5BI_s%C3%A4song::1912-07-01-5D-5D/limit%3D500/format%3Djson"];
     
     //NSURL *url = [NSURL URLWithString:@"http://localhost/~matti/ssm/result-.json"];
     //NSURL *url = [NSURL URLWithString:@"http://localhost/~matti/ssm/result-0.json"];

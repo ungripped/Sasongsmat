@@ -368,6 +368,7 @@
 		493671B013A94BC900434415 /* Grönsaker.png in Resources */ = {isa = PBXBuildFile; fileRef = 493671AF13A94BC900434415 /* Grönsaker.png */; };
 		493671B313A94D0A00434415 /* Kål.png in Resources */ = {isa = PBXBuildFile; fileRef = 493671B113A94D0A00434415 /* Kål.png */; };
 		493671B413A94D0A00434415 /* Lökar.png in Resources */ = {isa = PBXBuildFile; fileRef = 493671B213A94D0A00434415 /* Lökar.png */; };
+		493D7BD113C7AD820078464F /* aubergine.html in Resources */ = {isa = PBXBuildFile; fileRef = 493D7BD013C7AD820078464F /* aubergine.html */; };
 		493E0911138DBC430030161D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0910138DBC430030161D /* UIKit.framework */; };
 		493E0913138DBC430030161D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0912138DBC430030161D /* Foundation.framework */; };
 		493E0915138DBC430030161D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0914138DBC430030161D /* CoreGraphics.framework */; };
@@ -850,6 +851,7 @@
 		493671AF13A94BC900434415 /* Grönsaker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Grönsaker.png"; sourceTree = "<group>"; };
 		493671B113A94D0A00434415 /* Kål.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kål.png"; sourceTree = "<group>"; };
 		493671B213A94D0A00434415 /* Lökar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Lökar.png"; sourceTree = "<group>"; };
+		493D7BD013C7AD820078464F /* aubergine.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aubergine.html; sourceTree = "<group>"; };
 		493E090C138DBC430030161D /* Sasongsmat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sasongsmat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		493E0910138DBC430030161D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		493E0912138DBC430030161D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1649,6 +1651,7 @@
 				49AFC25713AFF48500924F81 /* article.js */,
 				4941EA0113BD150600FC59C3 /* articleInfo.js */,
 				4941EA0413BD151400FC59C3 /* articleInfo.css */,
+				493D7BD013C7AD820078464F /* aubergine.html */,
 			);
 			name = Web;
 			sourceTree = "<group>";
@@ -2171,6 +2174,7 @@
 				4904F03D13BA8490001195A7 /* separator.png in Resources */,
 				4904F03E13BA8490001195A7 /* separator@2x.png in Resources */,
 				4941EA0513BD151400FC59C3 /* articleInfo.css in Resources */,
+				493D7BD113C7AD820078464F /* aubergine.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
