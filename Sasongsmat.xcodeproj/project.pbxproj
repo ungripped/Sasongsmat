@@ -435,6 +435,7 @@
 		49BC49F113B2AF0C00C22B1D /* segment_middle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49BC49EF13B2AF0C00C22B1D /* segment_middle@2x.png */; };
 		49C92B3A13B132920001A9C6 /* spring@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C92B3913B132920001A9C6 /* spring@2x.png */; };
 		49D74A8313D4B41300AA993B /* RecipesOverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D74A8213D4B41300AA993B /* RecipesOverviewController.m */; };
+		49D74A8913D4C7CF00AA993B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 49D74A8813D4C7CF00AA993B /* LICENSE */; };
 		49E367C613A4038E00636828 /* Rotsaker.png in Resources */ = {isa = PBXBuildFile; fileRef = 49E367C513A4038E00636828 /* Rotsaker.png */; };
 		49E367CB13A4070600636828 /* FoodItemRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E367CA13A4070600636828 /* FoodItemRow.m */; };
 		49E367CD13A41CD500636828 /* SeasonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E367CC13A41CD500636828 /* SeasonHeaderView.xib */; };
@@ -929,6 +930,7 @@
 		49C92B4C13B13B530001A9C6 /* libzbar-releasesim.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libzbar-releasesim.a"; sourceTree = "<group>"; };
 		49D74A8113D4B41300AA993B /* RecipesOverviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipesOverviewController.h; sourceTree = "<group>"; };
 		49D74A8213D4B41300AA993B /* RecipesOverviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipesOverviewController.m; sourceTree = "<group>"; };
+		49D74A8813D4C7CF00AA993B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		49E367C513A4038E00636828 /* Rotsaker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rotsaker.png; sourceTree = "<group>"; };
 		49E367C913A4070600636828 /* FoodItemRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemRow.h; sourceTree = "<group>"; };
 		49E367CA13A4070600636828 /* FoodItemRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemRow.m; sourceTree = "<group>"; };
@@ -1483,6 +1485,7 @@
 				493E090F138DBC430030161D /* Frameworks */,
 				493E093C138DBC430030161D /* SasongsmatTests */,
 				493E090D138DBC430030161D /* Products */,
+				49D74A8813D4C7CF00AA993B /* LICENSE */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1764,6 +1767,9 @@
 /* Begin PBXProject section */
 		493E0903138DBC430030161D /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Matti Ryhänen, Säsongsmat.\n//\n//  Licensed under the BSD license\n//  Please consult the LICENSE file in the root directory for more information.";
+			};
 			buildConfigurationList = 493E0906138DBC430030161D /* Build configuration list for PBXProject "Sasongsmat" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -2175,6 +2181,7 @@
 				4904F03E13BA8490001195A7 /* separator@2x.png in Resources */,
 				4941EA0513BD151400FC59C3 /* articleInfo.css in Resources */,
 				493D7BD113C7AD820078464F /* aubergine.html in Resources */,
+				49D74A8913D4C7CF00AA993B /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
