@@ -376,7 +376,6 @@
 		493E091E138DBC430030161D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 493E091D138DBC430030161D /* main.m */; };
 		493E0921138DBC430030161D /* SasongsmatAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 493E0920138DBC430030161D /* SasongsmatAppDelegate.m */; };
 		493E0924138DBC430030161D /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 493E0922138DBC430030161D /* MainWindow.xib */; };
-		493E092A138DBC430030161D /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 493E0929138DBC430030161D /* SecondViewController.m */; };
 		493E0930138DBC430030161D /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 493E092E138DBC430030161D /* SecondView.xib */; };
 		493E0937138DBC430030161D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0910138DBC430030161D /* UIKit.framework */; };
 		493E0938138DBC430030161D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 493E0912138DBC430030161D /* Foundation.framework */; };
@@ -435,6 +434,7 @@
 		49BC49F013B2AF0C00C22B1D /* segment_middle.png in Resources */ = {isa = PBXBuildFile; fileRef = 49BC49EE13B2AF0C00C22B1D /* segment_middle.png */; };
 		49BC49F113B2AF0C00C22B1D /* segment_middle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49BC49EF13B2AF0C00C22B1D /* segment_middle@2x.png */; };
 		49C92B3A13B132920001A9C6 /* spring@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C92B3913B132920001A9C6 /* spring@2x.png */; };
+		49D74A8313D4B41300AA993B /* RecipesOverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D74A8213D4B41300AA993B /* RecipesOverviewController.m */; };
 		49E367C613A4038E00636828 /* Rotsaker.png in Resources */ = {isa = PBXBuildFile; fileRef = 49E367C513A4038E00636828 /* Rotsaker.png */; };
 		49E367CB13A4070600636828 /* FoodItemRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E367CA13A4070600636828 /* FoodItemRow.m */; };
 		49E367CD13A41CD500636828 /* SeasonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E367CC13A41CD500636828 /* SeasonHeaderView.xib */; };
@@ -863,8 +863,6 @@
 		493E091F138DBC430030161D /* SasongsmatAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SasongsmatAppDelegate.h; sourceTree = "<group>"; };
 		493E0920138DBC430030161D /* SasongsmatAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SasongsmatAppDelegate.m; sourceTree = "<group>"; };
 		493E0923138DBC430030161D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		493E0928138DBC430030161D /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		493E0929138DBC430030161D /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		493E092F138DBC430030161D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondView.xib; sourceTree = "<group>"; };
 		493E0936138DBC430030161D /* SasongsmatTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SasongsmatTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		493E093E138DBC430030161D /* SasongsmatTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SasongsmatTests-Info.plist"; sourceTree = "<group>"; };
@@ -929,6 +927,8 @@
 		49C92B4A13B13B530001A9C6 /* libzbar-debugsim.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libzbar-debugsim.a"; sourceTree = "<group>"; };
 		49C92B4B13B13B530001A9C6 /* libzbar-releaseos.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libzbar-releaseos.a"; sourceTree = "<group>"; };
 		49C92B4C13B13B530001A9C6 /* libzbar-releasesim.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libzbar-releasesim.a"; sourceTree = "<group>"; };
+		49D74A8113D4B41300AA993B /* RecipesOverviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipesOverviewController.h; sourceTree = "<group>"; };
+		49D74A8213D4B41300AA993B /* RecipesOverviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipesOverviewController.m; sourceTree = "<group>"; };
 		49E367C513A4038E00636828 /* Rotsaker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rotsaker.png; sourceTree = "<group>"; };
 		49E367C913A4070600636828 /* FoodItemRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemRow.h; sourceTree = "<group>"; };
 		49E367CA13A4070600636828 /* FoodItemRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemRow.m; sourceTree = "<group>"; };
@@ -1347,9 +1347,9 @@
 		490312E013A2AF44005EB2EC /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
-				493E0928138DBC430030161D /* SecondViewController.h */,
-				493E0929138DBC430030161D /* SecondViewController.m */,
 				493E092E138DBC430030161D /* SecondView.xib */,
+				49D74A8113D4B41300AA993B /* RecipesOverviewController.h */,
+				49D74A8213D4B41300AA993B /* RecipesOverviewController.m */,
 			);
 			name = Recipes;
 			sourceTree = "<group>";
@@ -2212,7 +2212,6 @@
 			files = (
 				493E091E138DBC430030161D /* main.m in Sources */,
 				493E0921138DBC430030161D /* SasongsmatAppDelegate.m in Sources */,
-				493E092A138DBC430030161D /* SecondViewController.m in Sources */,
 				490312F113A2BFEB005EB2EC /* FoodItemsOverviewController.m in Sources */,
 				49E367CB13A4070600636828 /* FoodItemRow.m in Sources */,
 				4925047B13A562E50021DFC8 /* NSObject+SBJson.m in Sources */,
@@ -2242,6 +2241,7 @@
 				490927B813AD443A009570F1 /* ItemArticleViewController.m in Sources */,
 				4905542513B290A60009EFD5 /* SSMNavigationBar.m in Sources */,
 				4904F03F13BA8490001195A7 /* SSMSegmentedControl.m in Sources */,
+				49D74A8313D4B41300AA993B /* RecipesOverviewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

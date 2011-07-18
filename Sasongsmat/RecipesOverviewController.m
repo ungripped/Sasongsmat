@@ -1,23 +1,22 @@
 //
-//  FoodItemsOverviewController.m
+//  RecipesOverviewController.m
 //  Sasongsmat
 //
-//  Created by Matti Ryhänen on 2011-06-10.
+//  Created by Matti Ryhänen on 2011-07-18.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "FoodItemsOverviewController.h"
-#import "FoodItemsCompleteListController.h"
-#import "FoodListItem.h"
-#import "ItemArticleViewController.h"
+#import "RecipesOverviewController.h"
+
 #import "SSMNavigationBar.h"
 
 #import "ASIHTTPRequest.h"
 #import "SBJson.h"
 
-@implementation FoodItemsOverviewController
+@implementation RecipesOverviewController
 @synthesize seasonHeaderView, seasonFooterView;
-@synthesize seasonFoodItems, featuredFoodItems;
+@synthesize seasonRecipes, featuredRecipes;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,8 +31,8 @@
 {
     [seasonHeaderView release];
     [seasonFooterView release];
-    [seasonFoodItems release];
-    [featuredFoodItems release];
+    [featuredRecipes release];
+    [seasonRecipes release];
     
     [super dealloc];
 }
@@ -46,13 +45,14 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.seasonFoodItems = [NSArray array];
-    self.featuredFoodItems = [NSArray array];
+    self.seasonRecipes = [NSArray array];
+    self.featuredRecipes = [NSArray array];
     
     //self.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:self.navigationItem.title];
     
@@ -67,13 +67,47 @@
     self.seasonFooterView = tempController.view;
     
     [tempController release];
-    [self loadFoodItems];
+    [self loadRecipes];
     
     self.clearsSelectionOnViewWillAppear = YES;
 }
 
-- (void)loadFoodItems {
-    
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    self.seasonHeaderView = nil;
+    self.seasonFooterView = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)loadRecipes {
+    /*
     NSURL *url = [NSURL URLWithString:@"http://xn--ssongsmat-v2a.nu/ssm/Special:Ask/-5B-5B:+-5D-5D-20-5B-5BI_s%C3%A4song::1912-07-01-5D-5D/limit%3D500/format%3Djson"];
     
     //NSURL *url = [NSURL URLWithString:@"http://localhost/~matti/ssm/result-.json"];
@@ -119,39 +153,7 @@
     
     isLoading = YES;
     [request startAsynchronous];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    self.seasonHeaderView = nil;
-    self.seasonFooterView = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+     */
 }
 
 #pragma mark - Table view data source
@@ -166,7 +168,7 @@
 {
     switch (section) {
         case kSeasonSection:
-            return [seasonFoodItems count] > FEATURED_ROW_COUNT ? [featuredFoodItems count] + 1 : [featuredFoodItems count];
+            return [seasonRecipes count] > FEATURED_ROW_COUNT ? [featuredRecipes count] + 1 : [featuredRecipes count];
         default:
             return 0;
     }
@@ -176,14 +178,14 @@
 {
     switch (indexPath.section) {
         case kSeasonSection:
-            if (indexPath.row == [featuredFoodItems count]) {
+            if (indexPath.row == [featuredRecipes count]) {
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreIndicator"];
                 if (cell == nil) {
                     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MoreIndicator"] autorelease];
                     cell.selectionStyle = UITableViewCellSelectionStyleGray;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 }
-                cell.textLabel.text = @"Mer säsongsmat...";
+                cell.textLabel.text = @"Fler säsongsrecept...";
                 
                 return cell;
             }
@@ -196,13 +198,14 @@
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 }
                 
+                /*
                 FoodListItem *item = [featuredFoodItems objectAtIndex:indexPath.row];
                 cell.textLabel.text = item.label;
                 cell.detailTextLabel.text = @"6 dagar kvar";
                 
                 UIImage *image = [UIImage imageNamed:item.type];
                 cell.imageView.image = image;
-                
+                */
                 return cell;
             }
             break;
@@ -210,7 +213,7 @@
         default:
             break;
     }
-        //cell.itemSeason.text = @"6 jun - 9 jul";
+    //cell.itemSeason.text = @"6 jun - 9 jul";
     
     //cell.textLabel.text = @"Majrova";
     // Configure the cell...
@@ -288,48 +291,49 @@
 }
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }   
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }   
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    /*
     switch (indexPath.section) {
         case kSeasonSection:
             if (indexPath.row == [featuredFoodItems count]) {
@@ -349,10 +353,12 @@
         default:
             break;
     }
+    */
 }
 
-- (void)loadArticleWithIndexPath:(NSIndexPath *)indexPath {
-[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+- (void)loadRecipeWithIndexPath:(NSIndexPath *)indexPath {
+    /*
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -365,7 +371,7 @@
     FoodListItem *item = [featuredFoodItems objectAtIndex:indexPath.row];
     
     [ItemArticleViewController articleControllerForArticle:item.label loadedBlock:^(ItemArticleViewController * controller) {
-
+        
         [self.navigationController pushViewController:controller animated:YES];
         [indicator removeFromSuperview];
         [cell setAccessoryView:accessoryView];
@@ -379,18 +385,23 @@
         // TODO: Set error message and tap-message in section footer
         
     }];
+    */
 }
 
-- (void)loadArticle:(NSString *)name {
+- (void)loadRecipe:(NSString *)name {
     // TODO: Show load indicator in table view.
+    /*
     [ItemArticleViewController articleControllerForArticle:name loadedBlock:^(ItemArticleViewController * controller) {
         [self.navigationController pushViewController:controller animated:YES];
     } errorBlock:^(NSError * error) {
         NSLog(@"Error loading article: %@", error);
         // TODO: Set error message and tap-message in section footer
-
+        
     }];
-
+     */
+    
 }
+
+
 
 @end
