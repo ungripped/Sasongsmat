@@ -119,12 +119,10 @@
     }
     
     FoodListItem *item = [seasonFoodItems objectAtIndex:indexPath.row];
-    cell.textLabel.text = item.label;
+    cell.textLabel.text = item.name;
     cell.detailTextLabel.text = @"6 dagar kvar";
     
-    
-    UIImage *image = [UIImage imageNamed:item.type];
-    cell.imageView.image = image;
+    cell.imageView.image = [UIImage imageNamed:item.iconName];
     
     return cell;
 }
@@ -174,14 +172,14 @@
 {
     FoodListItem *item = [seasonFoodItems objectAtIndex:indexPath.row];
     
-    [self loadArticle:item.label];
+    [self loadArticle:item.name];
 }
 
 - (void)loadArticle:(NSString *)name {
     // TODO: Show load indicator in table view.
     [ItemArticleViewController articleControllerForArticle:name loadedBlock:^(ItemArticleViewController * controller) {
         [self.navigationController pushViewController:controller animated:YES];
-    } errorBlock:^(NSError * error) {
+    } errorBlock:^(NSString *error) {
         NSLog(@"Error loading article: %@", error);
         // TODO: Set error message and tap-message in section footer
         

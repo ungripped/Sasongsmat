@@ -14,18 +14,31 @@
 
 @implementation FoodListItem
 
-@synthesize label, type, url;
+@synthesize name, iconName, baseCategory;
 
 + (NSArray *)listItemsForJsonArray:(NSArray *)items {
-    
+    NSLog(@"%@", items);
     NSMutableArray *objItems = [[[NSMutableArray alloc] init] autorelease];
     
     for(NSDictionary *dictItem in items) {
         FoodListItem *li = [[FoodListItem alloc] init];
         
-        li.url = [dictItem objectForKey:@"url"];
-        li.label = [dictItem objectForKey:@"label"];
-        li.type = [dictItem objectForKey:@"type"];
+        li.name = [dictItem objectForKey:@"namn"];
+        
+        NSString *bc = [dictItem objectForKey:@"baskategori"];
+        
+        if ([bc isEqualToString:@"Frukt och grönsaker"]) {
+            li.baseCategory = Fruit;
+            li.iconName = @"fruit";
+        }
+        else if ([bc isEqualToString:@"Fisk och skaldjur"]) {
+            li.baseCategory = Fish;
+            li.iconName = @"fish";
+        }
+        else if ([bc isEqualToString:@"Kött"]) {
+            li.baseCategory = Meat;
+            li.iconName = @"meat";
+        }
         
         [objItems addObject:li];
         
@@ -36,7 +49,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%@ : %@", self.label, self.type];
+    return [NSString stringWithFormat:@"%@ : %@", self.name, self.iconName];
 }
 
 @end

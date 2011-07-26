@@ -10,9 +10,8 @@
 //
 
 #import "ItemArticleViewController.h"
-#import "ASIHTTPRequest.h"
-#import "SBJson.h"
 #import "SSMNavigationBar.h"
+#import "SSMApi.h"
 
 @implementation ItemArticleViewController
 @synthesize segmentedControl;
@@ -26,30 +25,24 @@
 
 + (void)articleControllerForArticle:(NSString *)articleName loadedBlock:(ArticleLoadedBlock)articleLoadedBlock errorBlock:(ArticleLoadFailedBlock)articleFailedBlock {
     
-    NSLog(@"Loading article: %@", articleName);
-    NSString *urlString = [NSString stringWithFormat:@"http://www.xn--ssongsmat-v2a.nu/w/api.php?action=parse&page=%@&format=json", [articleName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSURL *url = [NSURL URLWithString:urlString];
+    SSMApi *api = [SSMApi sharedSSMApi];
     
-    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    request.defaultResponseEncoding = NSUTF8StringEncoding;
-    
-    [request setCompletionBlock:^{
-        NSString *responseString = [request responseString];
-        NSDictionary *responseJson = (NSDictionary *)[responseString JSONValue];
+    [api getArticleWithName:articleName loadedBlock:^(NSDictionary *article) {
         
         ItemArticleViewController *controller = [[[ItemArticleViewController alloc] initWithNibName:@"ItemArticleView" bundle:nil] autorelease];
         
-        controller.article = responseJson;
+        controller.article = article;
         
-        articleLoadedBlock(controller);        
+        articleLoadedBlock(controller);  
+        
+    } error:^(NSString *errorMessage) {
+        
+        articleFailedBlock(errorMessage);
+
     }];
-    
-    [request setFailedBlock:^{
-        articleFailedBlock([request error]);
-    }];
-    
-    [request startAsynchronous];
 }
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -231,7 +224,7 @@
     
     [ItemArticleViewController articleControllerForArticle:articleName loadedBlock:^(ItemArticleViewController * controller) {
         [self.navigationController pushViewController:controller animated:YES];
-    } errorBlock:^(NSError * error) {
+    } errorBlock:^(NSString * error) {
         NSLog(@"Error loading article: %@", error);
     }];
 }

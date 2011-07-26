@@ -11,15 +11,20 @@
 
 #import <Foundation/Foundation.h>
 
+enum BaseCategory {
+    Fruit,
+    Meat,
+    Fish
+};
+
 
 @interface FoodListItem : NSObject {
     
 }
 
-@property (nonatomic, retain) NSString *label;
-@property (nonatomic, retain) NSString *type;
-@property (nonatomic, retain) NSString *url;
-
+@property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *iconName;
+@property (nonatomic) enum BaseCategory baseCategory;
 
 + (NSArray *)listItemsForJsonArray:(NSArray *)items;
 

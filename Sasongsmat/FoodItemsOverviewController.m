@@ -14,9 +14,7 @@
 #import "FoodListItem.h"
 #import "ItemArticleViewController.h"
 #import "SSMNavigationBar.h"
-
-#import "ASIHTTPRequest.h"
-#import "SBJson.h"
+#import "SSMApi.h"
 
 @implementation FoodItemsOverviewController
 @synthesize seasonHeaderView, seasonFooterView;
@@ -76,26 +74,14 @@
 }
 
 - (void)loadFoodItems {
+    SSMApi *api = [SSMApi sharedSSMApi];
     
-    NSURL *url = [NSURL URLWithString:@"http://xn--ssongsmat-v2a.nu/ssm/Special:Ask/-5B-5B:+-5D-5D-20-5B-5BI_s%C3%A4song::1912-07-01-5D-5D/limit%3D500/format%3Djson"];
-    
-    //NSURL *url = [NSURL URLWithString:@"http://localhost/~matti/ssm/result-.json"];
-    //NSURL *url = [NSURL URLWithString:@"http://localhost/~matti/ssm/result-0.json"];
-    //NSURL *url = [NSURL URLWithString:@"http://localhost/~matti/ssm/result-full.json"];
-    
-    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    request.defaultResponseEncoding = NSUTF8StringEncoding;
-    
-    
-    [request setCompletionBlock:^{
-        NSString *responseString = [request responseString];
-        //NSLog(@"%@", responseString);
-        
-        NSDictionary *responseJson = (NSDictionary *)[responseString JSONValue];
-        
-        self.seasonFoodItems = [FoodListItem listItemsForJsonArray:[responseJson objectForKey:@"items"]];
+    isLoading = YES;
+    [api getSeasonItemsWithBlock:^(NSArray *items) {
+        self.seasonFoodItems = items;
         
         NSLog(@"%@", seasonFoodItems);
+        
         NSRange range;
         range.location = 0;
         range.length = [seasonFoodItems count] > FEATURED_ROW_COUNT ? FEATURED_ROW_COUNT : [seasonFoodItems count];
@@ -106,22 +92,18 @@
         NSLog(@"Featured food items count: %i", [featuredFoodItems count]);
         
         isLoading = NO;
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSeasonSection] withRowAnimation:UITableViewRowAnimationFade];
-        self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
-        //[self.tableView reloadData];
-        //[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
-    }];
-    
-    [request setFailedBlock:^{
-        isLoading = NO;
-        NSError *error = [request error];
-        NSLog(@"Error: %@", error);
         
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSeasonSection] withRowAnimation:UITableViewRowAnimationFade];
+        
+        self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
+
+    } error:^(NSString *errorMessage) {
+        isLoading = NO;
+        NSLog(@"Error: %@", errorMessage);
+
         // TODO: Set error message and tap-message in section footer
+
     }];
-    
-    isLoading = YES;
-    [request startAsynchronous];
 }
 
 - (void)viewDidUnload
@@ -200,10 +182,10 @@
                 }
                 
                 FoodListItem *item = [featuredFoodItems objectAtIndex:indexPath.row];
-                cell.textLabel.text = item.label;
+                cell.textLabel.text = item.name;
                 cell.detailTextLabel.text = @"6 dagar kvar";
                 
-                UIImage *image = [UIImage imageNamed:item.type];
+                UIImage *image = [UIImage imageNamed:item.iconName];
                 cell.imageView.image = image;
                 
                 return cell;
@@ -367,13 +349,13 @@
     
     FoodListItem *item = [featuredFoodItems objectAtIndex:indexPath.row];
     
-    [ItemArticleViewController articleControllerForArticle:item.label loadedBlock:^(ItemArticleViewController * controller) {
+    [ItemArticleViewController articleControllerForArticle:item.name loadedBlock:^(ItemArticleViewController * controller) {
 
         [self.navigationController pushViewController:controller animated:YES];
         [indicator removeFromSuperview];
         [cell setAccessoryView:accessoryView];
         [indicator release];
-    } errorBlock:^(NSError * error) {
+    } errorBlock:^(NSString * error) {
         [indicator removeFromSuperview];
         [cell setAccessoryView:accessoryView];
         [indicator release];
@@ -388,7 +370,7 @@
     // TODO: Show load indicator in table view.
     [ItemArticleViewController articleControllerForArticle:name loadedBlock:^(ItemArticleViewController * controller) {
         [self.navigationController pushViewController:controller animated:YES];
-    } errorBlock:^(NSError * error) {
+    } errorBlock:^(NSString * error) {
         NSLog(@"Error loading article: %@", error);
         // TODO: Set error message and tap-message in section footer
 
