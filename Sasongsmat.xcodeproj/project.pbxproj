@@ -340,6 +340,7 @@
 		490F046B13DF5DEA00959092 /* fruit.png in Resources */ = {isa = PBXBuildFile; fileRef = 490F046A13DF5DE900959092 /* fruit.png */; };
 		490F046D13DF5E3200959092 /* fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 490F046C13DF5E3200959092 /* fish.png */; };
 		4912843713A360C500D82C0B /* FoodItemRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4912843613A360C500D82C0B /* FoodItemRow.xib */; };
+		4920652313EF288E0057F8D9 /* RecipeListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4920652213EF288E0057F8D9 /* RecipeListItem.m */; };
 		4925047B13A562E50021DFC8 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 4925046313A562E50021DFC8 /* NSObject+SBJson.m */; };
 		4925047C13A562E50021DFC8 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4925046613A562E50021DFC8 /* SBJsonParser.m */; };
 		4925047D13A562E50021DFC8 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4925046813A562E50021DFC8 /* SBJsonStreamParser.m */; };
@@ -771,6 +772,8 @@
 		490F046A13DF5DE900959092 /* fruit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fruit.png; sourceTree = "<group>"; };
 		490F046C13DF5E3200959092 /* fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish.png; sourceTree = "<group>"; };
 		4912843613A360C500D82C0B /* FoodItemRow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodItemRow.xib; sourceTree = "<group>"; };
+		4920652113EF288E0057F8D9 /* RecipeListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeListItem.h; sourceTree = "<group>"; };
+		4920652213EF288E0057F8D9 /* RecipeListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeListItem.m; sourceTree = "<group>"; };
 		4925046113A562E50021DFC8 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		4925046213A562E50021DFC8 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		4925046313A562E50021DFC8 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
@@ -1520,6 +1523,8 @@
 			children = (
 				4981007313A6BB0E0066D51A /* FoodListItem.h */,
 				4981007413A6BB0E0066D51A /* FoodListItem.m */,
+				4920652113EF288E0057F8D9 /* RecipeListItem.h */,
+				4920652213EF288E0057F8D9 /* RecipeListItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2152,6 +2157,7 @@
 				4904F03F13BA8490001195A7 /* SSMSegmentedControl.m in Sources */,
 				49D74A8313D4B41300AA993B /* RecipesOverviewController.m in Sources */,
 				498C7B3D13D8B8FD00B5CEA1 /* SSMApi.m in Sources */,
+				4920652313EF288E0057F8D9 /* RecipeListItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

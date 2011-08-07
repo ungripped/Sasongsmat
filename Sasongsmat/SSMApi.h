@@ -28,10 +28,10 @@ typedef void (^APIErrorBlock)(NSString *);
 
 + (SSMApi *)sharedSSMApi;
 
-- (NSURL *)createAPIUrl;
+- (NSURL *)createAPIUrl:(NSString *)ns;
 
 - (void)getArticleWithName:(NSString *)name loadedBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock;
 
-- (void)getSeasonItemsWithBlock:(ArrayLoadedBlock)successBlock error:(APIErrorBlock)errorBlock;
+- (void)getSeasonItemsInNamespace:(NSString *)ns withBlock:(ArrayLoadedBlock)successBlock error:(APIErrorBlock)errorBlock;
 
 @end

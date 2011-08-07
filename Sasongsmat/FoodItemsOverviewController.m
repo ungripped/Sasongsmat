@@ -77,8 +77,8 @@
     SSMApi *api = [SSMApi sharedSSMApi];
     
     isLoading = YES;
-    [api getSeasonItemsWithBlock:^(NSArray *items) {
-        self.seasonFoodItems = items;
+    [api getSeasonItemsInNamespace:@"0" withBlock:^(NSArray *items) {
+        self.seasonFoodItems = [FoodListItem listItemsForJsonArray:items];
         
         NSLog(@"%@", seasonFoodItems);
         
@@ -102,7 +102,6 @@
         NSLog(@"Error: %@", errorMessage);
 
         // TODO: Set error message and tap-message in section footer
-
     }];
 }
 

@@ -12,6 +12,7 @@
 #import "RecipesOverviewController.h"
 
 #import "SSMNavigationBar.h"
+#import "SSMApi.h"
 
 #import "ASIHTTPRequest.h"
 #import "SBJson.h"
@@ -110,53 +111,37 @@
 }
 
 - (void)loadRecipes {
-    /*
-    NSURL *url = [NSURL URLWithString:@"http://xn--ssongsmat-v2a.nu/ssm/Special:Ask/-5B-5B:+-5D-5D-20-5B-5BI_s%C3%A4song::1912-07-01-5D-5D/limit%3D500/format%3Djson"];
+    SSMApi *api = [SSMApi sharedSSMApi];
     
-    //NSURL *url = [NSURL URLWithString:@"http://localhost/~matti/ssm/result-.json"];
-    //NSURL *url = [NSURL URLWithString:@"http://localhost/~matti/ssm/result-0.json"];
-    //NSURL *url = [NSURL URLWithString:@"http://localhost/~matti/ssm/result-full.json"];
-    
-    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    request.defaultResponseEncoding = NSUTF8StringEncoding;
-    
-    
-    [request setCompletionBlock:^{
-        NSString *responseString = [request responseString];
-        //NSLog(@"%@", responseString);
+    isLoading = YES;
+    [api getSeasonItemsInNamespace:@"550" withBlock:^(NSArray *items) {
         
-        NSDictionary *responseJson = (NSDictionary *)[responseString JSONValue];
+        self.seasonRecipes = items;
         
-        self.seasonFoodItems = [FoodListItem listItemsForJsonArray:[responseJson objectForKey:@"items"]];
+        NSLog(@"%@", seasonRecipes);
+
         
-        NSLog(@"%@", seasonFoodItems);
         NSRange range;
         range.location = 0;
-        range.length = [seasonFoodItems count] > FEATURED_ROW_COUNT ? FEATURED_ROW_COUNT : [seasonFoodItems count];
+        range.length = [seasonRecipes count] > FEATURED_ROW_COUNT ? FEATURED_ROW_COUNT : [seasonRecipes count];
         
-        self.featuredFoodItems = [seasonFoodItems subarrayWithRange:range];
+        self.featuredRecipes = [seasonRecipes subarrayWithRange:range];
         
-        NSLog(@"Season food items count: %i", [seasonFoodItems count]);
-        NSLog(@"Featured food items count: %i", [featuredFoodItems count]);
+        NSLog(@"Season food items count: %i", [seasonRecipes count]);
+        NSLog(@"Featured food items count: %i", [featuredRecipes count]);
         
         isLoading = NO;
+        
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSeasonSection] withRowAnimation:UITableViewRowAnimationFade];
+        
         self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
-        //[self.tableView reloadData];
-        //[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
-    }];
-    
-    [request setFailedBlock:^{
+        
+    } error:^(NSString *errorMessage) {
         isLoading = NO;
-        NSError *error = [request error];
-        NSLog(@"Error: %@", error);
+        NSLog(@"Error: %@", errorMessage);
         
         // TODO: Set error message and tap-message in section footer
     }];
-    
-    isLoading = YES;
-    [request startAsynchronous];
-     */
 }
 
 #pragma mark - Table view data source

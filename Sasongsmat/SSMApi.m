@@ -20,8 +20,8 @@
     return [NSString stringWithFormat:@"%@%@?action=%@&format=json", host, apiUrl, action];
 }
 
-- (NSURL *)createAPIUrl {
-    NSString *urlString = [NSString stringWithFormat:@"%@%@?action=ssmlista&ns=0&props=Baskategori&format=json", host, apiUrl];
+- (NSURL *)createAPIUrl:(NSString *)ns {
+    NSString *urlString = [NSString stringWithFormat:@"%@%@?action=ssmlista&ns=%@&props=Baskategori,bild&format=json", host, apiUrl, ns];
     
     return [NSURL URLWithString:urlString];
 }
@@ -48,8 +48,9 @@
     [request startAsynchronous];
 
 }
-- (void)getSeasonItemsWithBlock:(ArrayLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
-    NSURL *url = [self createAPIUrl];
+
+- (void)getSeasonItemsInNamespace:(NSString *)ns withBlock:(ArrayLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
+    NSURL *url = [self createAPIUrl:ns];
     __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     request.defaultResponseEncoding = NSUTF8StringEncoding;
     
@@ -59,7 +60,7 @@
         //NSLog(@"%@", responseString);
         
         NSDictionary *responseJson = (NSDictionary *)[responseString JSONValue];
-        successBlock([FoodListItem listItemsForJsonArray:[[responseJson objectForKey:@"ssm"] allValues]]);
+        successBlock([[responseJson objectForKey:@"ssm"] allValues]);
     }];
     
     [request setFailedBlock:^{
@@ -67,8 +68,25 @@
     }];
     
     [request startAsynchronous];
-
 }
+
+/*
+- (void)getSeasonRecipesWithBlock:(ArrayLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
+    NSURL *url = [self createAPIUrl:@"550"];
+    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    request.defaultResponseEncoding = NSUTF8StringEncoding;
+    
+    [request setCompletionBlock:^{
+        NSString *responseString = [request
+    }];
+    
+    [request setFailedBlock:^{
+        
+    }];
+     
+    [request startAsynchronous];
+}
+ */
 
 - (id)init {
     self = [super init];
