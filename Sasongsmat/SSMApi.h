@@ -34,4 +34,6 @@ typedef void (^APIErrorBlock)(NSString *);
 
 - (void)getSeasonItemsInNamespace:(NSString *)ns withBlock:(ArrayLoadedBlock)successBlock error:(APIErrorBlock)errorBlock;
 
+- (void)getBarcodeDataForBarcode:(NSString *)barcode withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock;
+
 @end

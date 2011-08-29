@@ -10,6 +10,7 @@
 //
 
 #import "SasongsmatAppDelegate.h"
+#import "ScannerResultViewController.h"
 
 @implementation SasongsmatAppDelegate
 
@@ -33,7 +34,10 @@
     ZBarReaderViewController *reader = (ZBarReaderViewController *)[navController topViewController];
     reader.readerDelegate = self;
     reader.showsZBarControls = NO;
+    reader.showsCameraControls = NO;
     reader.supportedOrientationsMask = ZBarOrientationMaskAll;
+    reader.readerView.frame = CGRectMake(0, 0, reader.view.frame.size.width, reader.view.frame.size.height);
+    //reader.readerView.frame = reader.view.frame;
 
     
     
@@ -122,10 +126,16 @@
         // EXAMPLE: just grab the first barcode
         break;
     
-    [reader dismissModalViewControllerAnimated:YES];
+    //[reader dismissModalViewControllerAnimated:YES];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Scanned" message:symbol.data delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+    UINavigationController *navController = [self.tabBarController.viewControllers objectAtIndex:1];
+    
+    ScannerResultViewController *vc = [[ScannerResultViewController alloc] initWithNibName:@"ScannerResultViewController" bundle:nil];
+    
+    vc.barcodeData = symbol.data;
+    vc.typeName = symbol.typeName;
+    
+    [navController pushViewController:vc animated:YES];
 }
 /*
 // Optional UITabBarControllerDelegate method.

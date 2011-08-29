@@ -14,6 +14,12 @@
 #import "FoodListItem.h"
 #import "SBJson.h"
 
+@interface SSMApi(Private)
+
+- (void)asyncCallTo:(NSURL *)url withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock;
+
+@end
+
 @implementation SSMApi
 
 - (NSString *)baseUrlForAction:(NSString *)action {
@@ -26,13 +32,9 @@
     return [NSURL URLWithString:urlString];
 }
 
-- (void)getArticleWithName:(NSString *)name loadedBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
-    
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@&page=%@", [self baseUrlForAction:@"parse"], name]];
-
+- (void)asyncCallTo:(NSURL *)url withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
     __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     request.defaultResponseEncoding = NSUTF8StringEncoding;
-    
     
     [request setCompletionBlock:^{
         NSString *responseString = [request responseString];
@@ -47,6 +49,19 @@
     
     [request startAsynchronous];
 
+}
+
+- (void)getBarcodeDataForBarcode:(NSString *)barcode withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%&kod=%@", [self baseUrlForAction:@"ssmstreckkod"], barcode]];
+    
+    [self asyncCallTo:url withBlock:successBlock error:errorBlock];
+}
+
+- (void)getArticleWithName:(NSString *)name loadedBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@&page=%@", [self baseUrlForAction:@"parse"], name]];
+
+    [self asyncCallTo:url withBlock:successBlock error:errorBlock];
 }
 
 - (void)getSeasonItemsInNamespace:(NSString *)ns withBlock:(ArrayLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {

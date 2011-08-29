@@ -421,6 +421,8 @@
 		49F4658A13ABECEB003B97E4 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F4658513ABECEB003B97E4 /* zbar-samples.png */; };
 		49F4660413ABFC59003B97E4 /* Icon_Regular.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F4660313ABFC59003B97E4 /* Icon_Regular.png */; };
 		49F4660613ABFC64003B97E4 /* Icon_Retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F4660513ABFC64003B97E4 /* Icon_Retina.png */; };
+		BEC600D5140C3EF1009CE3E2 /* ScannerResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC600D3140C3EF1009CE3E2 /* ScannerResultViewController.m */; };
+		BEC600D6140C3EF1009CE3E2 /* ScannerResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC600D4140C3EF1009CE3E2 /* ScannerResultViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -913,6 +915,9 @@
 		49F4658513ABECEB003B97E4 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
 		49F4660313ABFC59003B97E4 /* Icon_Regular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon_Regular.png; path = ../../Icon_Regular.png; sourceTree = "<group>"; };
 		49F4660513ABFC64003B97E4 /* Icon_Retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon_Retina.png; path = ../../Icon_Retina.png; sourceTree = "<group>"; };
+		BEC600D2140C3EF1009CE3E2 /* ScannerResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerResultViewController.h; sourceTree = "<group>"; };
+		BEC600D3140C3EF1009CE3E2 /* ScannerResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerResultViewController.m; sourceTree = "<group>"; };
+		BEC600D4140C3EF1009CE3E2 /* ScannerResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScannerResultViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1543,6 +1548,9 @@
 			children = (
 				49AD6CA613AA9D4E006D4675 /* ScannerViewController.h */,
 				49AD6CA713AA9D4E006D4675 /* ScannerViewController.m */,
+				BEC600D2140C3EF1009CE3E2 /* ScannerResultViewController.h */,
+				BEC600D3140C3EF1009CE3E2 /* ScannerResultViewController.m */,
+				BEC600D4140C3EF1009CE3E2 /* ScannerResultViewController.xib */,
 			);
 			name = Scanner;
 			sourceTree = "<group>";
@@ -2089,6 +2097,7 @@
 				49D74A8913D4C7CF00AA993B /* LICENSE in Resources */,
 				490F046B13DF5DEA00959092 /* fruit.png in Resources */,
 				490F046D13DF5E3200959092 /* fish.png in Resources */,
+				BEC600D6140C3EF1009CE3E2 /* ScannerResultViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2158,6 +2167,7 @@
 				49D74A8313D4B41300AA993B /* RecipesOverviewController.m in Sources */,
 				498C7B3D13D8B8FD00B5CEA1 /* SSMApi.m in Sources */,
 				4920652313EF288E0057F8D9 /* RecipeListItem.m in Sources */,
+				BEC600D5140C3EF1009CE3E2 /* ScannerResultViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2230,8 +2240,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PROVISIONING_PROFILE = "946BF2A7-10CE-4B34-9BCB-635DC0D8F0CF";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "946BF2A7-10CE-4B34-9BCB-635DC0D8F0CF";
+				PROVISIONING_PROFILE = "4C79A0E9-8CB1-4C34-A692-65C81D5D8FAB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4C79A0E9-8CB1-4C34-A692-65C81D5D8FAB";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2248,8 +2258,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "946BF2A7-10CE-4B34-9BCB-635DC0D8F0CF";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "946BF2A7-10CE-4B34-9BCB-635DC0D8F0CF";
+				PROVISIONING_PROFILE = "4C79A0E9-8CB1-4C34-A692-65C81D5D8FAB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4C79A0E9-8CB1-4C34-A692-65C81D5D8FAB";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -2258,6 +2268,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Matti Ryhänen (9HJ66JSYJU)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matti Ryhänen (9HJ66JSYJU)";
 				COPY_PHASE_STRIP = NO;
@@ -2272,8 +2283,8 @@
 				"OTHER_LDFLAGS[sdk=iphoneos*][arch=*]" = "-lzbar-debugos";
 				"OTHER_LDFLAGS[sdk=iphonesimulator*][arch=*]" = "-lzbar-debugsim";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "946BF2A7-10CE-4B34-9BCB-635DC0D8F0CF";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "946BF2A7-10CE-4B34-9BCB-635DC0D8F0CF";
+				PROVISIONING_PROFILE = "13887506-84B4-4C60-AFCD-DD1F19139BD2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "13887506-84B4-4C60-AFCD-DD1F19139BD2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2295,8 +2306,8 @@
 				"OTHER_LDFLAGS[sdk=iphoneos*][arch=*]" = "-lzbar-releaseos";
 				"OTHER_LDFLAGS[sdk=iphonesimulator*][arch=*]" = "-lzbar-releasesim";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "946BF2A7-10CE-4B34-9BCB-635DC0D8F0CF";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "946BF2A7-10CE-4B34-9BCB-635DC0D8F0CF";
+				PROVISIONING_PROFILE = "13887506-84B4-4C60-AFCD-DD1F19139BD2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "13887506-84B4-4C60-AFCD-DD1F19139BD2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
