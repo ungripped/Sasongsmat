@@ -24,6 +24,7 @@ enum BaseCategory {
 
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *iconName;
+@property (nonatomic) int interestWeight;
 @property (nonatomic) enum BaseCategory baseCategory;
 
 + (NSArray *)listItemsForJsonArray:(NSArray *)items;

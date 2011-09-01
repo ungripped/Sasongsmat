@@ -120,7 +120,6 @@
         
         NSLog(@"%@", seasonRecipes);
 
-        
         NSRange range;
         range.location = 0;
         range.length = [seasonRecipes count] > FEATURED_ROW_COUNT ? FEATURED_ROW_COUNT : [seasonRecipes count];

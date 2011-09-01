@@ -78,7 +78,12 @@
     
     isLoading = YES;
     [api getSeasonItemsInNamespace:@"0" withBlock:^(NSArray *items) {
-        self.seasonFoodItems = [FoodListItem listItemsForJsonArray:items];
+        NSSortDescriptor *sd = [[NSSortDescriptor alloc] initWithKey:@"interestWeight" ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObject:sd];
+        self.seasonFoodItems = [[FoodListItem listItemsForJsonArray:items] sortedArrayUsingDescriptors:sortDescriptors];
+        
+        
+        [sd release];
         
         NSLog(@"%@", seasonFoodItems);
         

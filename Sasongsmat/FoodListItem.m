@@ -14,7 +14,7 @@
 
 @implementation FoodListItem
 
-@synthesize name, iconName, baseCategory;
+@synthesize name, iconName, baseCategory, interestWeight;
 
 + (NSArray *)listItemsForJsonArray:(NSArray *)items {
     NSLog(@"%@", items);
@@ -24,6 +24,7 @@
         FoodListItem *li = [[FoodListItem alloc] init];
         
         li.name = [dictItem objectForKey:@"namn"];
+        li.interestWeight = [[dictItem objectForKey:@"nyckel"] intValue];
         
         NSString *bc = [dictItem objectForKey:@"baskategori"];
         
@@ -49,7 +50,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%@ : %@", self.name, self.iconName];
+    return [NSString stringWithFormat:@"%@ : %@ (%i)", self.name, self.iconName, self.interestWeight];
 }
 
 @end
