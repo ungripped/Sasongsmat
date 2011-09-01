@@ -83,9 +83,10 @@
         self.seasonFoodItems = [[FoodListItem listItemsForJsonArray:items] sortedArrayUsingDescriptors:sortDescriptors];
         
         
+        
         [sd release];
         
-        NSLog(@"%@", seasonFoodItems);
+        NSLog(@"season food items: %@", seasonFoodItems);
         
         NSRange range;
         range.location = 0;
