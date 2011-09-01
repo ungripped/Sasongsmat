@@ -27,7 +27,7 @@
 }
 
 - (NSURL *)createAPIUrl:(NSString *)ns {
-    NSString *urlString = [NSString stringWithFormat:@"%@%@?action=ssmlista&ns=%@&props=Baskategori,Kategori,bild,Nyckel&format=json", host, apiUrl, ns];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@?action=ssmlista&sasong=3&ns=%@&props=Baskategori,Kategori,bild,Nyckel&format=json", host, apiUrl, ns];
     
     return [NSURL URLWithString:urlString];
 }

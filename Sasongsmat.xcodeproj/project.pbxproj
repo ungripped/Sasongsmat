@@ -421,6 +421,7 @@
 		49F4658A13ABECEB003B97E4 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F4658513ABECEB003B97E4 /* zbar-samples.png */; };
 		49F4660413ABFC59003B97E4 /* Icon_Regular.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F4660313ABFC59003B97E4 /* Icon_Regular.png */; };
 		49F4660613ABFC64003B97E4 /* Icon_Retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F4660513ABFC64003B97E4 /* Icon_Retina.png */; };
+		BE15A6D91410208A00C236EB /* SeasonInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15A6D81410208A00C236EB /* SeasonInfoItem.m */; };
 		BEC600D5140C3EF1009CE3E2 /* ScannerResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC600D3140C3EF1009CE3E2 /* ScannerResultViewController.m */; };
 		BEC600D6140C3EF1009CE3E2 /* ScannerResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC600D4140C3EF1009CE3E2 /* ScannerResultViewController.xib */; };
 /* End PBXBuildFile section */
@@ -915,6 +916,8 @@
 		49F4658513ABECEB003B97E4 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
 		49F4660313ABFC59003B97E4 /* Icon_Regular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon_Regular.png; path = ../../Icon_Regular.png; sourceTree = "<group>"; };
 		49F4660513ABFC64003B97E4 /* Icon_Retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon_Retina.png; path = ../../Icon_Retina.png; sourceTree = "<group>"; };
+		BE15A6D71410208A00C236EB /* SeasonInfoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonInfoItem.h; sourceTree = "<group>"; };
+		BE15A6D81410208A00C236EB /* SeasonInfoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonInfoItem.m; sourceTree = "<group>"; };
 		BEC600D2140C3EF1009CE3E2 /* ScannerResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerResultViewController.h; sourceTree = "<group>"; };
 		BEC600D3140C3EF1009CE3E2 /* ScannerResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerResultViewController.m; sourceTree = "<group>"; };
 		BEC600D4140C3EF1009CE3E2 /* ScannerResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScannerResultViewController.xib; sourceTree = "<group>"; };
@@ -1530,6 +1533,8 @@
 				4981007413A6BB0E0066D51A /* FoodListItem.m */,
 				4920652113EF288E0057F8D9 /* RecipeListItem.h */,
 				4920652213EF288E0057F8D9 /* RecipeListItem.m */,
+				BE15A6D71410208A00C236EB /* SeasonInfoItem.h */,
+				BE15A6D81410208A00C236EB /* SeasonInfoItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2168,6 +2173,7 @@
 				498C7B3D13D8B8FD00B5CEA1 /* SSMApi.m in Sources */,
 				4920652313EF288E0057F8D9 /* RecipeListItem.m in Sources */,
 				BEC600D5140C3EF1009CE3E2 /* ScannerResultViewController.m in Sources */,
+				BE15A6D91410208A00C236EB /* SeasonInfoItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

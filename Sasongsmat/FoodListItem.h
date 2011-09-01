@@ -10,6 +10,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SeasonInfoItem.h"
 
 enum BaseCategory {
     Fruit,
@@ -26,6 +27,7 @@ enum BaseCategory {
 @property (nonatomic, retain) NSString *iconName;
 @property (nonatomic) int interestWeight;
 @property (nonatomic) enum BaseCategory baseCategory;
+@property (nonatomic, retain) SeasonInfoItem *seasonInfo;
 
 + (NSArray *)listItemsForJsonArray:(NSArray *)items;
 

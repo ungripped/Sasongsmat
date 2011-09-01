@@ -14,7 +14,7 @@
 
 @implementation FoodListItem
 
-@synthesize name, iconName, baseCategory, interestWeight;
+@synthesize name, iconName, baseCategory, interestWeight, seasonInfo;
 
 + (NSArray *)listItemsForJsonArray:(NSArray *)items {
     NSLog(@"%@", items);
@@ -40,6 +40,9 @@
             li.baseCategory = Meat;
             li.iconName = @"meat";
         }
+        SeasonInfoItem *info = [[SeasonInfoItem alloc] initWithDictionary:[dictItem objectForKey:@"sasong"]];
+        li.seasonInfo = info;
+        [info release];
         
         [objItems addObject:li];
         
@@ -49,8 +52,11 @@
     return objItems;
 }
 
+
+// todo -(void)dealloc;
+
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%@ : %@ (%i)", self.name, self.iconName, self.interestWeight];
+    return [NSString stringWithFormat:@"%@ : %@ (%i) - %@", self.name, self.iconName, self.interestWeight, self.seasonInfo];
 }
 
 @end
