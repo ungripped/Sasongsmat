@@ -188,7 +188,15 @@
                 
                 FoodListItem *item = [featuredFoodItems objectAtIndex:indexPath.row];
                 cell.textLabel.text = item.name;
-                cell.detailTextLabel.text = @"6 dagar kvar";
+                
+                UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"month_indicator"]];
+                imageView.contentMode = UIViewContentModeTopLeft;
+                imageView.frame = CGRectMake(60, 30, 230, 20);
+                
+                [cell addSubview:imageView];
+                
+                [imageView release];
+                cell.detailTextLabel.text = @" ";
                 
                 UIImage *image = [UIImage imageNamed:item.iconName];
                 cell.imageView.image = image;
