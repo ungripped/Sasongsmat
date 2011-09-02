@@ -17,7 +17,7 @@
 @synthesize name, iconName, baseCategory, interestWeight, seasonInfo;
 
 + (NSArray *)listItemsForJsonArray:(NSArray *)items {
-    NSLog(@"%@", items);
+    //NSLog(@"%@", items);
     NSMutableArray *objItems = [[[NSMutableArray alloc] init] autorelease];
     
     for(NSDictionary *dictItem in items) {

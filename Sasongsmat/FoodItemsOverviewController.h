@@ -44,7 +44,6 @@ enum SeasonSectionRows {
 
 - (void)loadFoodItems;
 - (void)loadArticleWithIndexPath:(NSIndexPath *)indexPath;
-- (void)loadArticle:(NSString *)name;
 
 
 @end

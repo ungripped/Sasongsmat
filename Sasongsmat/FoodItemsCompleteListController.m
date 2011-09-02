@@ -13,7 +13,7 @@
 #import "FoodListItem.h"
 #import "ItemArticleViewController.h"
 #import "SSMNavigationBar.h"
-
+#import "FoodItemsUtilities.h"
 #import "ASIHTTPRequest.h"
 #import "SBJson.h"
 
@@ -110,21 +110,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SeasonFoodItemCell"];
-    
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SeasonFoodItemCell"] autorelease];
-        cell.selectionStyle = UITableViewCellSelectionStyleGray;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
-    
     FoodListItem *item = [seasonFoodItems objectAtIndex:indexPath.row];
-    cell.textLabel.text = item.name;
-    cell.detailTextLabel.text = @"6 dagar kvar";
-    
-    cell.imageView.image = [UIImage imageNamed:item.iconName];
-    
-    return cell;
+    return [FoodItemsUtilities foodItemCell:tableView indexPath:indexPath forItem:item];
 }
 
 /*

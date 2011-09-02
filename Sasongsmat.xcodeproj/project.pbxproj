@@ -421,8 +421,10 @@
 		49F4658A13ABECEB003B97E4 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F4658513ABECEB003B97E4 /* zbar-samples.png */; };
 		49F4660413ABFC59003B97E4 /* Icon_Regular.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F4660313ABFC59003B97E4 /* Icon_Regular.png */; };
 		49F4660613ABFC64003B97E4 /* Icon_Retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F4660513ABFC64003B97E4 /* Icon_Retina.png */; };
+		BE02B35514110DE4000839D0 /* FoodItemsUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = BE02B35414110DE3000839D0 /* FoodItemsUtilities.m */; };
 		BE15A6D91410208A00C236EB /* SeasonInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15A6D81410208A00C236EB /* SeasonInfoItem.m */; };
 		BE15A6DB14102A9600C236EB /* month_indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BE15A6DA14102A9600C236EB /* month_indicator.png */; };
+		BE52650D1410E78500EF209C /* SeasonIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE52650C1410E78500EF209C /* SeasonIndicatorView.m */; };
 		BEC600D5140C3EF1009CE3E2 /* ScannerResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC600D3140C3EF1009CE3E2 /* ScannerResultViewController.m */; };
 		BEC600D6140C3EF1009CE3E2 /* ScannerResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC600D4140C3EF1009CE3E2 /* ScannerResultViewController.xib */; };
 /* End PBXBuildFile section */
@@ -917,9 +919,13 @@
 		49F4658513ABECEB003B97E4 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
 		49F4660313ABFC59003B97E4 /* Icon_Regular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon_Regular.png; path = ../../Icon_Regular.png; sourceTree = "<group>"; };
 		49F4660513ABFC64003B97E4 /* Icon_Retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon_Retina.png; path = ../../Icon_Retina.png; sourceTree = "<group>"; };
+		BE02B35314110DE3000839D0 /* FoodItemsUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemsUtilities.h; sourceTree = "<group>"; };
+		BE02B35414110DE3000839D0 /* FoodItemsUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemsUtilities.m; sourceTree = "<group>"; };
 		BE15A6D71410208A00C236EB /* SeasonInfoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonInfoItem.h; sourceTree = "<group>"; };
 		BE15A6D81410208A00C236EB /* SeasonInfoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonInfoItem.m; sourceTree = "<group>"; };
 		BE15A6DA14102A9600C236EB /* month_indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = month_indicator.png; sourceTree = SOURCE_ROOT; };
+		BE52650B1410E78500EF209C /* SeasonIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonIndicatorView.h; sourceTree = "<group>"; };
+		BE52650C1410E78500EF209C /* SeasonIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonIndicatorView.m; sourceTree = "<group>"; };
 		BEC600D2140C3EF1009CE3E2 /* ScannerResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerResultViewController.h; sourceTree = "<group>"; };
 		BEC600D3140C3EF1009CE3E2 /* ScannerResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerResultViewController.m; sourceTree = "<group>"; };
 		BEC600D4140C3EF1009CE3E2 /* ScannerResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScannerResultViewController.xib; sourceTree = "<group>"; };
@@ -1304,6 +1310,10 @@
 				490927B513AD443A009570F1 /* ItemArticleViewController.h */,
 				490927B613AD443A009570F1 /* ItemArticleViewController.m */,
 				490927B713AD443A009570F1 /* ItemArticleView.xib */,
+				BE52650B1410E78500EF209C /* SeasonIndicatorView.h */,
+				BE52650C1410E78500EF209C /* SeasonIndicatorView.m */,
+				BE02B35314110DE3000839D0 /* FoodItemsUtilities.h */,
+				BE02B35414110DE3000839D0 /* FoodItemsUtilities.m */,
 			);
 			name = Items;
 			sourceTree = "<group>";
@@ -2178,6 +2188,8 @@
 				4920652313EF288E0057F8D9 /* RecipeListItem.m in Sources */,
 				BEC600D5140C3EF1009CE3E2 /* ScannerResultViewController.m in Sources */,
 				BE15A6D91410208A00C236EB /* SeasonInfoItem.m in Sources */,
+				BE52650D1410E78500EF209C /* SeasonIndicatorView.m in Sources */,
+				BE02B35514110DE4000839D0 /* FoodItemsUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

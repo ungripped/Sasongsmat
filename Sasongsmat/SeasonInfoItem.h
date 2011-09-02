@@ -14,13 +14,15 @@
 enum SeasonStatus {
     NotInSeason,
     PartlyInSeason,
+    LargelyInSeason,
     InSeason
 };
 
 
 @interface SeasonInfoItem : NSObject {
-    int seasonData[12];
 }
+
+@property (nonatomic, retain) NSArray *seasonData;
 
 - (id)initWithDictionary:(NSDictionary *)months;
 

@@ -15,6 +15,8 @@
 #import "ItemArticleViewController.h"
 #import "SSMNavigationBar.h"
 #import "SSMApi.h"
+#import "SeasonIndicatorView.h"
+#import "FoodItemsUtilities.h"
 
 @implementation FoodItemsOverviewController
 @synthesize seasonHeaderView, seasonFooterView;
@@ -86,7 +88,7 @@
         
         [sd release];
         
-        NSLog(@"season food items: %@", seasonFoodItems);
+        //NSLog(@"season food items: %@", seasonFoodItems);
         
         NSRange range;
         range.location = 0;
@@ -178,30 +180,8 @@
                 return cell;
             }
             else {
-                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FoodItemRowCell"];
-                
-                if (cell == nil) {
-                    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"FoodItemRowCell"] autorelease];
-                    cell.selectionStyle = UITableViewCellSelectionStyleGray;
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                }
-                
                 FoodListItem *item = [featuredFoodItems objectAtIndex:indexPath.row];
-                cell.textLabel.text = item.name;
-                
-                UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"month_indicator"]];
-                imageView.contentMode = UIViewContentModeTopLeft;
-                imageView.frame = CGRectMake(60, 30, 230, 20);
-                
-                [cell addSubview:imageView];
-                
-                [imageView release];
-                cell.detailTextLabel.text = @" ";
-                
-                UIImage *image = [UIImage imageNamed:item.iconName];
-                cell.imageView.image = image;
-                
-                return cell;
+                return [FoodItemsUtilities foodItemCell:tableView indexPath:indexPath forItem:item];
             }
             break;
             
@@ -350,7 +330,7 @@
 }
 
 - (void)loadArticleWithIndexPath:(NSIndexPath *)indexPath {
-[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -377,18 +357,6 @@
         // TODO: Set error message and tap-message in section footer
         
     }];
-}
-
-- (void)loadArticle:(NSString *)name {
-    // TODO: Show load indicator in table view.
-    [ItemArticleViewController articleControllerForArticle:name loadedBlock:^(ItemArticleViewController * controller) {
-        [self.navigationController pushViewController:controller animated:YES];
-    } errorBlock:^(NSString * error) {
-        NSLog(@"Error loading article: %@", error);
-        // TODO: Set error message and tap-message in section footer
-
-    }];
-
 }
 
 @end

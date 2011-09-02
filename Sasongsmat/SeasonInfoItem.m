@@ -12,6 +12,7 @@
 #import "SeasonInfoItem.h"
 
 @implementation SeasonInfoItem
+@synthesize seasonData;
 
 - (id)init
 {
@@ -26,34 +27,53 @@
 - (id)initWithDictionary:(NSDictionary *)months {
     
     self = [self init];
+    
     if (self) {
         NSArray *keys = [months allKeys];
+        NSMutableArray *tempData = [NSMutableArray arrayWithCapacity:12];
+        for (int i = 0; i < 12; i++) {
+            [tempData addObject:[NSNull null]];
+        }
         
         for (NSString *key in keys) {
             int monthIndex = [[key substringFromIndex:6] intValue] - 1;
             int val = [[months objectForKey:key] intValue];
             
             if (val == 0) {
-                seasonData[monthIndex] = NotInSeason;
+                [tempData replaceObjectAtIndex:monthIndex withObject:[NSNumber numberWithInt:NotInSeason]];
             }
-            else if (val > 0 && val < 28) {
-                seasonData[monthIndex] = PartlyInSeason;
+            else if (val > 15 && val < 28) {
+                [tempData replaceObjectAtIndex:monthIndex withObject:[NSNumber numberWithInt:LargelyInSeason]];
+            }
+            else if (val > 0 && val <= 15) {
+                [tempData replaceObjectAtIndex:monthIndex withObject:[NSNumber numberWithInt:PartlyInSeason]];
             }
             else if (val >= 28) {
-                seasonData[monthIndex] = InSeason;
+                 [tempData replaceObjectAtIndex:monthIndex withObject:[NSNumber numberWithInt:InSeason]];
             }
             else {
-                seasonData[monthIndex] = -1; // Invalid
+                [tempData insertObject:[NSNumber numberWithInt:-1] atIndex:monthIndex];
             }
         }
+        self.seasonData = [NSArray arrayWithArray:tempData];
     }
     
     return self;
 }
 
+- (void)dealloc {
+    [seasonData release];
+    [super dealloc];
+}
+
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d",
-            seasonData[0], seasonData[1], seasonData[2], seasonData[3],seasonData[4], seasonData[5], seasonData[6], seasonData[7], seasonData[8], seasonData[9], seasonData[10], seasonData[11]];
+    NSMutableString *str = [NSMutableString stringWithCapacity:24];
+    
+    for (NSNumber *s in seasonData) {
+        [str appendFormat:@"%d:", [s intValue]];
+    }
+    
+    return str;
 }
 
 @end
