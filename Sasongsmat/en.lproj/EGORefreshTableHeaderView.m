@@ -118,7 +118,6 @@
 		[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
         
         NSString *label = NSLocalizedString(@"Last updated: %@", @"Show last updated time");
-        NSLog(@"%@", label);
         _lastUpdatedLabel.text = [NSString stringWithFormat:label, [dateFormatter stringFromDate:date]];
 		
 		[[NSUserDefaults standardUserDefaults] setObject:_lastUpdatedLabel.text forKey:@"EGORefreshTableView_LastRefresh"];
@@ -139,7 +138,6 @@
 			
 			_statusLabel.text = NSLocalizedString(@"Release to refresh...", @"Release to refresh status");
             
-            NSLog(@"%@", NSLocalizedString(@"Release to refresh...", @"Release to refresh status"));
 			[CATransaction begin];
 			[CATransaction setAnimationDuration:FLIP_ANIMATION_DURATION];
 			_arrowImage.transform = CATransform3DMakeRotation((M_PI / 180.0) * 180.0f, 0.0f, 0.0f, 1.0f);

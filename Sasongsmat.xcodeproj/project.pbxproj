@@ -940,9 +940,9 @@
 		BE13A8C614117EDC00C2EA46 /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
 		BE13A8C714117EDC00C2EA46 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		BE13A8C814117EDC00C2EA46 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
-		BE13A8D51411885900C2EA46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BE13A8D51411885900C2EA46 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BE13A8D81411885C00C2EA46 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = en; path = en.lproj/EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
-		BE13A8DA1411891F00C2EA46 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BE13A8DA1411891F00C2EA46 /* sv */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BE15A6D71410208A00C236EB /* SeasonInfoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonInfoItem.h; sourceTree = "<group>"; };
 		BE15A6D81410208A00C236EB /* SeasonInfoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonInfoItem.m; sourceTree = "<group>"; };
 		BE15A6DA14102A9600C236EB /* month_indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = month_indicator.png; sourceTree = SOURCE_ROOT; };
