@@ -205,6 +205,9 @@
 		} else if (_state == EGOOPullRefreshNormal && scrollView.contentOffset.y < -65.0f && !_loading) {
 			[self setState:EGOOPullRefreshPulling];
 		}
+        else if (_loading) {
+            [self setState:EGOOPullRefreshLoading];
+        }
 		
 		if (scrollView.contentInset.top != 0) {
 			scrollView.contentInset = UIEdgeInsetsZero;

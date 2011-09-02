@@ -118,7 +118,7 @@
         
         self.seasonRecipes = items;
         
-        NSLog(@"%@", seasonRecipes);
+        //NSLog(@"%@", seasonRecipes);
 
         NSRange range;
         range.location = 0;
@@ -126,8 +126,8 @@
         
         self.featuredRecipes = [seasonRecipes subarrayWithRange:range];
         
-        NSLog(@"Season food items count: %i", [seasonRecipes count]);
-        NSLog(@"Featured food items count: %i", [featuredRecipes count]);
+        NSLog(@"Season recipes count: %i", [seasonRecipes count]);
+        NSLog(@"Featured recipes count: %i", [featuredRecipes count]);
         
         isLoading = NO;
         

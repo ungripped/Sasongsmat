@@ -121,20 +121,26 @@
         NSLog(@"Featured food items count: %i", [featuredFoodItems count]);
         
         seasonFooterView.hidden = YES;
-        _reloading = NO;
+        
         
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSeasonSection] withRowAnimation:UITableViewRowAnimationFade];
         
         self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
+        
+        _reloading = NO;
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 
     } error:^(NSError *error) {
-        _reloading = NO;
         seasonFooterView.hidden = NO;
         UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[seasonFooterView viewWithTag:1];
         [spinner stopAnimating];
         spinner.hidden = YES;
         UILabel *footerMessage = (UILabel *)[seasonFooterView viewWithTag:2];
         footerMessage.text = [error localizedDescription];
+        
+        _reloading = NO;
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+
         //NSLog(@"Error: %@", [error localizedDescription]);
         
         // TODO: Set error message and tap-message in section footer
