@@ -59,7 +59,9 @@
     
     //self.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:self.navigationItem.title];
     
-    isLoading = NO;
+    //isLoading = NO;
+    _reloading = NO;
+    seasonFooterView.hidden = NO;
     
     UIViewController *tempController = [[UIViewController alloc] initWithNibName:@"SeasonHeaderView" bundle:nil];
     self.seasonHeaderView = tempController.view;
@@ -72,13 +74,32 @@
     [tempController release];
     [self loadFoodItems];
     
+    if (_refreshHeaderView == nil) {
+		
+		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+		view.delegate = self;
+		[self.tableView addSubview:view];
+		_refreshHeaderView = view;
+		[view release];
+	}
+	
+	//  update the last update date
+	[_refreshHeaderView refreshLastUpdatedDate];
+    
     self.clearsSelectionOnViewWillAppear = YES;
 }
 
 - (void)loadFoodItems {
     SSMApi *api = [SSMApi sharedSSMApi];
     
-    isLoading = YES;
+    _reloading = YES;
+    self.seasonFooterView.hidden = NO;
+    UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[seasonFooterView viewWithTag:1];
+    spinner.hidden = NO;
+    [spinner startAnimating];
+    UILabel *footerMessage = (UILabel *)[seasonFooterView viewWithTag:2];
+    footerMessage.text = @"Laddar aktuell säsongsmat...";
+    
     [api getSeasonItemsInNamespace:@"0" withBlock:^(NSArray *items) {
         NSSortDescriptor *sd = [[NSSortDescriptor alloc] initWithKey:@"interestWeight" ascending:YES];
         NSArray *sortDescriptors = [NSArray arrayWithObject:sd];
@@ -99,16 +120,23 @@
         NSLog(@"Season food items count: %i", [seasonFoodItems count]);
         NSLog(@"Featured food items count: %i", [featuredFoodItems count]);
         
-        isLoading = NO;
+        seasonFooterView.hidden = YES;
+        _reloading = NO;
         
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSeasonSection] withRowAnimation:UITableViewRowAnimationFade];
         
         self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
 
     } error:^(NSError *error) {
-        isLoading = NO;
-        NSLog(@"Error: %@", [error localizedDescription]);
-
+        _reloading = NO;
+        seasonFooterView.hidden = NO;
+        UIActivityIndicatorView *spinner = (UIActivityIndicatorView *)[seasonFooterView viewWithTag:1];
+        [spinner stopAnimating];
+        spinner.hidden = YES;
+        UILabel *footerMessage = (UILabel *)[seasonFooterView viewWithTag:2];
+        footerMessage.text = [error localizedDescription];
+        //NSLog(@"Error: %@", [error localizedDescription]);
+        
         // TODO: Set error message and tap-message in section footer
     }];
 }
@@ -217,13 +245,6 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     switch (section) {
         case kSeasonSection:
-            // TODO: Show message in footer if there's no rows.
-            if (isLoading) {
-                seasonFooterView.hidden = NO;
-            }
-            else {
-                seasonFooterView.hidden = YES;
-            }
             return seasonFooterView;
         default:
             return nil;
@@ -254,11 +275,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     switch (section) {
         case kSeasonSection:
-            if (isLoading) {
-                return 45;
+            if (seasonFooterView.hidden) {
+                return 0;
             }
             else {
-                return 0;
+                return 45;
             }
         default:
             return 0;
@@ -333,6 +354,36 @@
     FoodListItem *item = [featuredFoodItems objectAtIndex:indexPath.row];
     
     [FoodItemsUtilities loadArticleWithIndexPath:indexPath onTableView:self.tableView foodListItem:item navigationController:self.navigationController];
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
+	
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+	
+}
+
+#pragma mark - EGORefreshTableHeaderDelegate methods
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view {
+    
+    NSLog(@"Did trigger refresh...");
+    [self loadFoodItems];
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view {
+    return _reloading;
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view {
+    return [NSDate date];
 }
 
 @end

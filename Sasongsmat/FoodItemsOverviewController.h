@@ -10,6 +10,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EGORefreshTableHeaderView.h"
 
 #define FEATURED_ROW_COUNT 4
 
@@ -24,7 +25,9 @@ enum SeasonSectionRows {
     NUM_SEASON_SECTION_ROWS
 };
 
-@interface FoodItemsOverviewController : UITableViewController <UITableViewDataSource, UITableViewDelegate> {
+@interface FoodItemsOverviewController : UITableViewController <EGORefreshTableHeaderDelegate, UITableViewDataSource, UITableViewDelegate> {
+    
+    EGORefreshTableHeaderView *_refreshHeaderView;
     
     UIView *seasonHeaderView;
     UIView *seasonFooterView;
@@ -33,7 +36,8 @@ enum SeasonSectionRows {
     NSArray *seasonFoodItems;
     
     
-    BOOL isLoading;
+    //BOOL isLoading;
+    BOOL _reloading;
 }
 
 @property (nonatomic, retain) UIView *seasonHeaderView;
