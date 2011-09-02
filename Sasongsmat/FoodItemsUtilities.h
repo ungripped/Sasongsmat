@@ -17,5 +17,6 @@
 
 + (UITableViewCell *)foodItemCell:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath forItem:(FoodListItem *)item;
 
++ (void)loadArticleWithIndexPath:(NSIndexPath *)indexPath onTableView:(UITableView *)tableView foodListItem:(FoodListItem *)item navigationController:(UINavigationController *)navigationController;
 
 @end

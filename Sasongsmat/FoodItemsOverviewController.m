@@ -330,33 +330,9 @@
 }
 
 - (void)loadArticleWithIndexPath:(NSIndexPath *)indexPath {
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    
-    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    
-    UIView *accessoryView = [cell accessoryView];
-    
-    [cell setAccessoryView:indicator];
-    [indicator startAnimating];
-    
     FoodListItem *item = [featuredFoodItems objectAtIndex:indexPath.row];
     
-    [ItemArticleViewController articleControllerForArticle:item.name loadedBlock:^(ItemArticleViewController * controller) {
-
-        [self.navigationController pushViewController:controller animated:YES];
-        [indicator removeFromSuperview];
-        [cell setAccessoryView:accessoryView];
-        [indicator release];
-    } errorBlock:^(NSString * error) {
-        [indicator removeFromSuperview];
-        [cell setAccessoryView:accessoryView];
-        [indicator release];
-        
-        NSLog(@"Error loading article: %@", error);
-        // TODO: Set error message and tap-message in section footer
-        
-    }];
+    [FoodItemsUtilities loadArticleWithIndexPath:indexPath onTableView:self.tableView foodListItem:item navigationController:self.navigationController];
 }
 
 @end

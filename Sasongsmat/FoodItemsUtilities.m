@@ -12,6 +12,7 @@
 #import "FoodItemsUtilities.h"
 #import "SeasonIndicatorView.h"
 #import "FoodListItem.h"
+#import "ItemArticleViewController.h"
 
 @implementation FoodItemsUtilities
 
@@ -38,6 +39,37 @@
     UIImage *image = [UIImage imageNamed:item.iconName];
     cell.imageView.image = image;
     return cell;
+}
+
++ (void)loadArticleWithIndexPath:(NSIndexPath *)indexPath onTableView:(UITableView *)tableView foodListItem:(FoodListItem *)item navigationController:(UINavigationController *)navigationController {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    UIView *accessoryView = [cell accessoryView];
+    
+    [cell setAccessoryView:indicator];
+    [indicator startAnimating];
+    
+    
+    [ItemArticleViewController articleControllerForArticle:item.name loadedBlock:^(ItemArticleViewController * controller) {
+        
+        [navigationController pushViewController:controller animated:YES];
+        [indicator removeFromSuperview];
+        [cell setAccessoryView:accessoryView];
+        [indicator release];
+    } errorBlock:^(NSString * error) {
+        [indicator removeFromSuperview];
+        [cell setAccessoryView:accessoryView];
+        [indicator release];
+        
+        NSLog(@"Error loading article: %@", error);
+        // TODO: Set error message and tap-message in section footer
+        
+    }];
+
 }
 
 

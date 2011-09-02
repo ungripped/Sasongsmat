@@ -159,19 +159,7 @@
 {
     FoodListItem *item = [seasonFoodItems objectAtIndex:indexPath.row];
     
-    [self loadArticle:item.name];
-}
-
-- (void)loadArticle:(NSString *)name {
-    // TODO: Show load indicator in table view.
-    [ItemArticleViewController articleControllerForArticle:name loadedBlock:^(ItemArticleViewController * controller) {
-        [self.navigationController pushViewController:controller animated:YES];
-    } errorBlock:^(NSString *error) {
-        NSLog(@"Error loading article: %@", error);
-        // TODO: Set error message and tap-message in section footer
-        
-    }];
-    
+    [FoodItemsUtilities loadArticleWithIndexPath:indexPath onTableView:self.tableView foodListItem:item navigationController:self.navigationController];
 }
 
 @end
