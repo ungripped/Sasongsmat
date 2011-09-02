@@ -71,6 +71,9 @@
         
         CGContextDrawPath(context, kCGPathFillStroke);
         
+        CGPathRelease(path);
+    
+        
         CGSize fs = [letters[i] sizeWithFont:font];
         
         CGContextSetFillColorWithColor(context, [[UIColor blackColor] CGColor]);

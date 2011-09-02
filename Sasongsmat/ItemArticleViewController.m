@@ -199,8 +199,6 @@
     NSURL *url = [request mainDocumentURL];
     NSString *ret = [url path];
     
-    NSLog(@"URL: %@", ret);
-    
     switch (navigationType) {
         case UIWebViewNavigationTypeOther:
             return YES;

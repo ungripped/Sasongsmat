@@ -18,6 +18,7 @@
 
 - (void)asyncCallTo:(NSURL *)url withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock;
 
+- (void)asyncCallToUrlString:(NSString *)urlString withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock;
 @end
 
 @implementation SSMApi
@@ -29,7 +30,7 @@
 - (NSURL *)createAPIUrl:(NSString *)ns {
     NSString *urlString = [NSString stringWithFormat:@"%@%@?action=ssmlista&sasong=3&ns=%@&props=Baskategori,Kategori,bild,Nyckel&format=json", host, apiUrl, ns];
     
-    return [NSURL URLWithString:urlString];
+    return [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
 }
 
 - (void)asyncCallTo:(NSURL *)url withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
@@ -51,17 +52,22 @@
 
 }
 
-- (void)getBarcodeDataForBarcode:(NSString *)barcode withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%&kod=%@", [self baseUrlForAction:@"ssmstreckkod"], barcode]];
-    
+- (void)asyncCallToUrlString:(NSString *)urlString withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
+    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:urlString];
     [self asyncCallTo:url withBlock:successBlock error:errorBlock];
+
+}
+
+- (void)getBarcodeDataForBarcode:(NSString *)barcode withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
+    NSString *urlString = [NSString stringWithFormat:@"%@%&kod=%@", [self baseUrlForAction:@"ssmstreckkod"], barcode];
+    [self asyncCallToUrlString:urlString withBlock:successBlock error:errorBlock];
 }
 
 - (void)getArticleWithName:(NSString *)name loadedBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@&page=%@", [self baseUrlForAction:@"parse"], name]];
-
-    [self asyncCallTo:url withBlock:successBlock error:errorBlock];
+    NSString *urlString = [NSString stringWithFormat:@"%@&page=%@", [self baseUrlForAction:@"parse"], name];    
+    [self asyncCallToUrlString:urlString withBlock:successBlock error:errorBlock];
 }
 
 - (void)getSeasonItemsInNamespace:(NSString *)ns withBlock:(ArrayLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
