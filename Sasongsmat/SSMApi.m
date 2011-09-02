@@ -16,9 +16,9 @@
 
 @interface SSMApi(Private)
 
-- (void)asyncCallTo:(NSURL *)url withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock;
+- (ASIHTTPRequest *)asyncCallTo:(NSURL *)url withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock;
 
-- (void)asyncCallToUrlString:(NSString *)urlString withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock;
+- (ASIHTTPRequest *)asyncCallToUrlString:(NSString *)urlString withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock;
 @end
 
 @implementation SSMApi
@@ -33,7 +33,7 @@
     return [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
 }
 
-- (void)asyncCallTo:(NSURL *)url withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
+- (ASIHTTPRequest *)asyncCallTo:(NSURL *)url withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
     __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     request.defaultResponseEncoding = NSUTF8StringEncoding;
     
@@ -45,18 +45,17 @@
     }];
     
     [request setFailedBlock:^{
-        errorBlock([[request error] localizedDescription]);
+        errorBlock(request.error);
     }];
     
     [request startAsynchronous];
-
+    return request;
 }
 
-- (void)asyncCallToUrlString:(NSString *)urlString withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
+- (ASIHTTPRequest *)asyncCallToUrlString:(NSString *)urlString withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:urlString];
-    [self asyncCallTo:url withBlock:successBlock error:errorBlock];
-
+    return [self asyncCallTo:url withBlock:successBlock error:errorBlock];
 }
 
 - (void)getBarcodeDataForBarcode:(NSString *)barcode withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
@@ -66,8 +65,17 @@
 
 - (void)getArticleWithName:(NSString *)name loadedBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
     
-    NSString *urlString = [NSString stringWithFormat:@"%@&page=%@", [self baseUrlForAction:@"parse"], name];    
-    [self asyncCallToUrlString:urlString withBlock:successBlock error:errorBlock];
+    if (articleRequest != nil) {
+        [articleRequest cancel];
+        [articleRequest release];
+        articleRequest = nil;
+    }
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@&page=%@", [self baseUrlForAction:@"parse"], name];
+    
+    ASIHTTPRequest *req = [self asyncCallToUrlString:urlString withBlock:successBlock error:errorBlock];
+    
+    articleRequest = [req retain];
 }
 
 - (void)getSeasonItemsInNamespace:(NSString *)ns withBlock:(ArrayLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
@@ -85,7 +93,7 @@
     }];
     
     [request setFailedBlock:^{
-        errorBlock([[request error] localizedDescription]);
+        errorBlock(request.error);
     }];
     
     [request startAsynchronous];
@@ -114,6 +122,8 @@
     if (self) {
         host    = @"http://xn--ssongsmat-v2a.nu/";
         apiUrl  = @"w/api.php";
+        // Use in development only:
+        [ASIHTTPRequest setMaxBandwidthPerSecond:ASIWWANBandwidthThrottleAmount];
     }
     
     return self;
@@ -145,9 +155,11 @@ static SSMApi *_sharedSSMApi;
     return NSUIntegerMax;
 }
 
+/*
 - (void)release {
     // Nopes
 }
+*/
 
 - (id)autorelease {
     return self;

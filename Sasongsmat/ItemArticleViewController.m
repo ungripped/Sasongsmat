@@ -10,6 +10,7 @@
 //
 
 #import "ItemArticleViewController.h"
+#import "ASIHTTPRequest.h"
 #import "SSMNavigationBar.h"
 #import "SSMApi.h"
 
@@ -35,10 +36,8 @@
         
         articleLoadedBlock(controller);  
         
-    } error:^(NSString *errorMessage) {
-        
-        articleFailedBlock(errorMessage);
-
+    } error:^(NSError *error) {
+        articleFailedBlock(error);
     }];
 }
 
@@ -197,7 +196,7 @@
     
     
     NSURL *url = [request mainDocumentURL];
-    NSString *ret = [url path];
+    //NSString *ret = [url path];
     
     switch (navigationType) {
         case UIWebViewNavigationTypeOther:
@@ -222,8 +221,14 @@
     
     [ItemArticleViewController articleControllerForArticle:articleName loadedBlock:^(ItemArticleViewController * controller) {
         [self.navigationController pushViewController:controller animated:YES];
-    } errorBlock:^(NSString * error) {
-        NSLog(@"Error loading article: %@", error);
+    } errorBlock:^(NSError * error) {
+        if(error.code == ASIRequestCancelledErrorType) {
+            NSLog(@"Request cancelled, ignoring error callback block.");
+        }
+        else {
+            // Handle error
+            NSLog(@"Error loading article: %@", [error localizedDescription]);
+        }
     }];
 }
 

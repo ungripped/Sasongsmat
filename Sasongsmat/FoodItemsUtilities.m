@@ -13,6 +13,7 @@
 #import "SeasonIndicatorView.h"
 #import "FoodListItem.h"
 #import "ItemArticleViewController.h"
+#import "ASIHTTPRequest.h"
 
 @implementation FoodItemsUtilities
 
@@ -60,13 +61,18 @@
         [indicator removeFromSuperview];
         [cell setAccessoryView:accessoryView];
         [indicator release];
-    } errorBlock:^(NSString * error) {
+    } errorBlock:^(NSError * error) {
         [indicator removeFromSuperview];
         [cell setAccessoryView:accessoryView];
         [indicator release];
         
-        NSLog(@"Error loading article: %@", error);
-        // TODO: Set error message and tap-message in section footer
+        if(error.code == ASIRequestCancelledErrorType) {
+            NSLog(@"Request cancelled, ignoring error callback block.");
+        }
+        else {
+            NSLog(@"Error loading article: %@", error);
+            // TODO: Set error message and tap-message in section footer
+        }
         
     }];
 

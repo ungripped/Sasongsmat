@@ -11,11 +11,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class ASIHTTPRequest;
+
 //typedef void (^ArticleLoadedBlock)(ItemArticleViewController *);
 typedef void (^ArrayLoadedBlock)(NSArray *);
 typedef void (^DictionaryLoadedBlock)(NSDictionary *);
 typedef void (^StringLoadedBlock)(NSString *);
-typedef void (^APIErrorBlock)(NSString *);
+typedef void (^APIErrorBlock)(NSError *);
 //typedef void (^APIErrorBlock)(NSError *);
 
 
@@ -23,6 +25,8 @@ typedef void (^APIErrorBlock)(NSString *);
     
     NSString *host;
     NSString *apiUrl;
+    
+    ASIHTTPRequest *articleRequest;
     
 }
 
@@ -34,6 +38,6 @@ typedef void (^APIErrorBlock)(NSString *);
 
 - (void)getSeasonItemsInNamespace:(NSString *)ns withBlock:(ArrayLoadedBlock)successBlock error:(APIErrorBlock)errorBlock;
 
-- (void)getBarcodeDataForBarcode:(NSString *)barcode withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock;
+- (void)getBarcodeDataForBarcode:(NSString *)barcode withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlocl;
 
 @end

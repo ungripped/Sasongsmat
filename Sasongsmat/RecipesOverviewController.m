@@ -135,9 +135,9 @@
         
         self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
         
-    } error:^(NSString *errorMessage) {
+    } error:^(NSError *error) {
         isLoading = NO;
-        NSLog(@"Error: %@", errorMessage);
+        NSLog(@"Error: %@", [error localizedDescription]);
         
         // TODO: Set error message and tap-message in section footer
     }];

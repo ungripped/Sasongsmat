@@ -53,8 +53,8 @@
     [api getBarcodeDataForBarcode:self.barcodeData withBlock:^(NSDictionary *result) {
         NSLog(@"Result: %@", result);
         [self.indicatorView stopAnimating];
-    } error:^(NSString *errorMessage) {
-        NSLog(@"Error: %@", errorMessage);
+    } error:^(NSError *error) {
+        NSLog(@"Error: %@", [error localizedDescription]);
         [self.indicatorView stopAnimating];
     }];
 

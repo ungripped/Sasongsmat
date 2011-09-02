@@ -14,7 +14,7 @@
 @class ItemArticleViewController;
 
 typedef void (^ArticleLoadedBlock)(ItemArticleViewController *);
-typedef void (^ArticleLoadFailedBlock)(NSString *);
+typedef void (^ArticleLoadFailedBlock)(NSError *);
 
 
 @interface ItemArticleViewController : UIViewController <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate> {
