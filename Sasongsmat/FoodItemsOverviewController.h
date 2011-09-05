@@ -16,7 +16,6 @@
 
 enum Sections {
     kSeasonSection = 0,
-    kCategoriesSection,
     NUM_SECTIONS
 };
 
@@ -32,7 +31,6 @@ enum SeasonSectionRows {
     UIView *seasonHeaderView;
     UIView *seasonFooterView;
     
-    NSArray *featuredFoodItems;
     NSArray *seasonFoodItems;
     
     
@@ -44,7 +42,6 @@ enum SeasonSectionRows {
 @property (nonatomic, retain) UIView *seasonFooterView;
 
 @property (nonatomic, retain) NSArray *seasonFoodItems;
-@property (nonatomic, retain) NSArray *featuredFoodItems;
 
 - (void)loadFoodItems;
 - (void)loadArticleWithIndexPath:(NSIndexPath *)indexPath;

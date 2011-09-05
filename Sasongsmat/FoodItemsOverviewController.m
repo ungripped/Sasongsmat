@@ -20,7 +20,7 @@
 
 @implementation FoodItemsOverviewController
 @synthesize seasonHeaderView, seasonFooterView;
-@synthesize seasonFoodItems, featuredFoodItems;
+@synthesize seasonFoodItems;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -36,7 +36,6 @@
     [seasonHeaderView release];
     [seasonFooterView release];
     [seasonFoodItems release];
-    [featuredFoodItems release];
     
     [super dealloc];
 }
@@ -55,7 +54,6 @@
 {
     [super viewDidLoad];
     self.seasonFoodItems = [NSArray array];
-    self.featuredFoodItems = [NSArray array];
     
     //self.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:self.navigationItem.title];
     
@@ -111,6 +109,7 @@
         
         //NSLog(@"season food items: %@", seasonFoodItems);
         
+        /*
         NSRange range;
         range.location = 0;
         range.length = [seasonFoodItems count] > FEATURED_ROW_COUNT ? FEATURED_ROW_COUNT : [seasonFoodItems count];
@@ -119,7 +118,7 @@
         
         NSLog(@"Season food items count: %i", [seasonFoodItems count]);
         NSLog(@"Featured food items count: %i", [featuredFoodItems count]);
-        
+        */
         seasonFooterView.hidden = YES;
         
         
@@ -192,7 +191,7 @@
 {
     switch (section) {
         case kSeasonSection:
-            return [seasonFoodItems count] > FEATURED_ROW_COUNT ? [featuredFoodItems count] + 1 : [featuredFoodItems count];
+            return [seasonFoodItems count];
         default:
             return 0;
     }
@@ -202,19 +201,8 @@
 {
     switch (indexPath.section) {
         case kSeasonSection:
-            if (indexPath.row == [featuredFoodItems count]) {
-                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreIndicator"];
-                if (cell == nil) {
-                    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MoreIndicator"] autorelease];
-                    cell.selectionStyle = UITableViewCellSelectionStyleGray;
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                }
-                cell.textLabel.text = @"Mer säsongsmat...";
-                
-                return cell;
-            }
-            else {
-                FoodListItem *item = [featuredFoodItems objectAtIndex:indexPath.row];
+            if (true) {
+                FoodListItem *item = [seasonFoodItems objectAtIndex:indexPath.row];
                 return [FoodItemsUtilities foodItemCell:tableView indexPath:indexPath forItem:item];
             }
             break;
@@ -231,12 +219,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case kCategoriesSection:
-            return @"Alla råvaror";            
-        default:
-            return nil;
-    }
+    return nil;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -271,8 +254,6 @@
     switch (section) {
         case kSeasonSection:
             return 45;
-        case kCategoriesSection:
-            return 36;
         default:
             return 0;
     }
@@ -337,18 +318,7 @@
 {
     switch (indexPath.section) {
         case kSeasonSection:
-            if (indexPath.row == [featuredFoodItems count]) {
-                FoodItemsCompleteListController *completeListController = [[FoodItemsCompleteListController alloc] initWithNibName:@"FoodItemsCompleteListController" bundle:nil];
-                
-                completeListController.seasonFoodItems = self.seasonFoodItems;
-                
-                [self.navigationController pushViewController:completeListController animated:YES];
-                
-                [completeListController release];
-            }
-            else {
-                [self loadArticleWithIndexPath:indexPath];
-            }
+            [self loadArticleWithIndexPath:indexPath];
             break;
             
         default:
@@ -357,7 +327,7 @@
 }
 
 - (void)loadArticleWithIndexPath:(NSIndexPath *)indexPath {
-    FoodListItem *item = [featuredFoodItems objectAtIndex:indexPath.row];
+    FoodListItem *item = [seasonFoodItems objectAtIndex:indexPath.row];
     
     [FoodItemsUtilities loadArticleWithIndexPath:indexPath onTableView:self.tableView foodListItem:item navigationController:self.navigationController];
 }
