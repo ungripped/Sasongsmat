@@ -64,6 +64,8 @@ sup {
 .thumbimage {
 	border: 7px solid #fff;
 	-webkit-box-shadow: 0 2px 5px #777;
+    width: 287px;
+    margin: 0 auto;
 	box-shadow: 0 2px 5px #777;
 }
 
