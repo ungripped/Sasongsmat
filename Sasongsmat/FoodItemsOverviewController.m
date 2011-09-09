@@ -21,6 +21,7 @@
 @implementation FoodItemsOverviewController
 @synthesize seasonHeaderView, seasonFooterView;
 @synthesize seasonFoodItems;
+@synthesize searchDelegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -36,7 +37,7 @@
     [seasonHeaderView release];
     [seasonFooterView release];
     [seasonFoodItems release];
-    
+    [searchDelegate release];
     [super dealloc];
 }
 
@@ -148,6 +149,7 @@
 
 - (void)viewDidUnload
 {
+    [self setSearchDelegate:nil];
     [super viewDidUnload];
     self.seasonHeaderView = nil;
     self.seasonFooterView = nil;

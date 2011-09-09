@@ -12,6 +12,8 @@
 #import <UIKit/UIKit.h>
 #import "EGORefreshTableHeaderView.h"
 
+@class ItemSearchDelegate; 
+
 #define FEATURED_ROW_COUNT 4
 
 enum Sections {
@@ -32,6 +34,7 @@ enum SeasonSectionRows {
     UIView *seasonFooterView;
     
     NSArray *seasonFoodItems;
+    ItemSearchDelegate *searchDelegate;
     
     
     //BOOL isLoading;
@@ -43,6 +46,7 @@ enum SeasonSectionRows {
 
 @property (nonatomic, retain) NSArray *seasonFoodItems;
 
+@property (nonatomic, retain) IBOutlet ItemSearchDelegate *searchDelegate;
 - (void)loadFoodItems;
 - (void)loadArticleWithIndexPath:(NSIndexPath *)indexPath;
 
