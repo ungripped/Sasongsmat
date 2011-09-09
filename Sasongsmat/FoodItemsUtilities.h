@@ -19,4 +19,6 @@
 
 + (void)loadArticleWithIndexPath:(NSIndexPath *)indexPath onTableView:(UITableView *)tableView foodListItem:(FoodListItem *)item navigationController:(UINavigationController *)navigationController;
 
+//+ (void)loadArticleWithIndexPath:(NSIndexPath *)indexPath onTableView:(UITableView *)tableView articleName:(NSString *)name navigationController:(UINavigationController *)navigationController;
+
 @end

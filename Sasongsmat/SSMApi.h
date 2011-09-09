@@ -40,4 +40,6 @@ typedef void (^APIErrorBlock)(NSError *);
 
 - (void)getBarcodeDataForBarcode:(NSString *)barcode withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlocl;
 
+- (NSArray *)search:(NSString *)searchString;
+
 @end

@@ -159,9 +159,7 @@
     NSString *css = @"<link rel=\"stylesheet\" href=\"articleInfo.css\" type=\"text/css\" media=\"screen\" charset=\"utf-8\">";
     
     NSString *html = [NSString stringWithFormat:@"%@%@%@", js, css, self.infoHTML];
-    
-    NSLog(@"HTML: \n %@ \n", html);
-    
+
     [infoView loadHTMLString:html baseURL:baseURL];
     infoLoaded = YES;
 }

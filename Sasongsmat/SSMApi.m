@@ -27,10 +27,16 @@
     return [NSString stringWithFormat:@"%@%@?action=%@&format=json", host, apiUrl, action];
 }
 
+- (NSURL *)createSearchUrl:(NSString *)searchString {
+    NSString *urlString = [NSString stringWithFormat:@"%@&list=search&srsearch=%@&srprop=Baskategori|bild", [self baseUrlForAction:@"query"], searchString];
+    
+    return [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+}
+
 - (NSURL *)createAPIUrl:(NSString *)ns {
     NSString *urlString = [NSString stringWithFormat:@"%@%@?action=ssmlista&sasong=3&ns=%@&props=Baskategori,Kategori,bild,Nyckel&format=json", host, apiUrl, ns];
     
-    return [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    return [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
 - (ASIHTTPRequest *)asyncCallTo:(NSURL *)url withBlock:(DictionaryLoadedBlock)successBlock error:(APIErrorBlock)errorBlock {
@@ -41,6 +47,7 @@
         NSString *responseString = [request responseString];
         NSDictionary *responseJson = (NSDictionary *)[responseString JSONValue];
         
+        NSLog(@"Json response: %@", responseJson);
         successBlock(responseJson);
     }];
     
@@ -97,6 +104,43 @@
     }];
     
     [request startAsynchronous];
+}
+
+- (NSArray *)search:(NSString *)searchString {
+    
+    NSURL *url = [self createSearchUrl:[NSString stringWithFormat:@"*%@*", searchString]];
+    
+    NSLog(@"Searching: %@", url);
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request appendPostData:[searchString dataUsingEncoding:NSUTF8StringEncoding]]; // Set the POST data to our search string
+    [request startSynchronous];
+    NSError *error = [request error];
+    if (!error) {
+        //NSLog(@"Got result for %@", searchString);
+        NSString *responseString = [request responseString];
+        NSDictionary *responseJson = (NSDictionary *)[responseString JSONValue];
+            
+        NSArray *tmp = [[[responseJson objectForKey:@"query"] allValues] objectAtIndex:0];
+        
+        if ([tmp count] > 0) {
+            NSMutableArray *result = [NSMutableArray arrayWithCapacity:[tmp count]];
+            NSLog(@"%@", tmp);
+            for (NSDictionary *obj in tmp) {
+                [result addObject:[obj objectForKey:@"title"]];
+            }
+            return result;
+        }
+        else {
+            return tmp;
+        }
+        
+    }
+    else {
+        NSLog(@"Error: %@", error);
+        return nil;
+    }
+    
+    return nil;
 }
 
 /*
