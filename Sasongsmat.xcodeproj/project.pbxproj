@@ -434,6 +434,8 @@
 		BE13A8D71411885C00C2EA46 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE13A8D91411885C00C2EA46 /* EGORefreshTableHeaderView.m */; };
 		BE15A6D91410208A00C236EB /* SeasonInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15A6D81410208A00C236EB /* SeasonInfoItem.m */; };
 		BE15A6DB14102A9600C236EB /* month_indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BE15A6DA14102A9600C236EB /* month_indicator.png */; };
+		BE1B27ED141AD325004D3273 /* autumn.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1B27EB141AD325004D3273 /* autumn.png */; };
+		BE1B27EE141AD325004D3273 /* autumn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1B27EC141AD325004D3273 /* autumn@2x.png */; };
 		BE52650D1410E78500EF209C /* SeasonIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE52650C1410E78500EF209C /* SeasonIndicatorView.m */; };
 		BEC600D5140C3EF1009CE3E2 /* ScannerResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC600D3140C3EF1009CE3E2 /* ScannerResultViewController.m */; };
 		BEC600D6140C3EF1009CE3E2 /* ScannerResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC600D4140C3EF1009CE3E2 /* ScannerResultViewController.xib */; };
@@ -948,6 +950,8 @@
 		BE15A6D71410208A00C236EB /* SeasonInfoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonInfoItem.h; sourceTree = "<group>"; };
 		BE15A6D81410208A00C236EB /* SeasonInfoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonInfoItem.m; sourceTree = "<group>"; };
 		BE15A6DA14102A9600C236EB /* month_indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = month_indicator.png; sourceTree = SOURCE_ROOT; };
+		BE1B27EB141AD325004D3273 /* autumn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autumn.png; sourceTree = "<group>"; };
+		BE1B27EC141AD325004D3273 /* autumn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "autumn@2x.png"; sourceTree = "<group>"; };
 		BE52650B1410E78500EF209C /* SeasonIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonIndicatorView.h; sourceTree = "<group>"; };
 		BE52650C1410E78500EF209C /* SeasonIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonIndicatorView.m; sourceTree = "<group>"; };
 		BEC600D2140C3EF1009CE3E2 /* ScannerResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerResultViewController.h; sourceTree = "<group>"; };
@@ -1360,6 +1364,8 @@
 		4903134013A2CB7A005EB2EC /* Logos */ = {
 			isa = PBXGroup;
 			children = (
+				BE1B27EB141AD325004D3273 /* autumn.png */,
+				BE1B27EC141AD325004D3273 /* autumn@2x.png */,
 				4905541D13B28C190009EFD5 /* logo-summer.png */,
 				4905541E13B28C190009EFD5 /* logo-summer@2x.png */,
 				49C92B3913B132920001A9C6 /* spring@2x.png */,
@@ -2193,6 +2199,8 @@
 				BE13A8D014117EDC00C2EA46 /* whiteArrow@2x.png in Resources */,
 				BE13A8D41411885900C2EA46 /* Localizable.strings in Resources */,
 				BEE3A337141A5C1D003E3C1F /* FoodItemsOverviewView.xib in Resources */,
+				BE1B27ED141AD325004D3273 /* autumn.png in Resources */,
+				BE1B27EE141AD325004D3273 /* autumn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

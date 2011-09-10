@@ -82,6 +82,7 @@
     [super viewDidLoad];
     
     // Set up the tabs
+    /*
     segmentedControl.font = [UIFont boldSystemFontOfSize:12.0f];
     segmentedControl.selectedItemColor = [UIColor whiteColor];
     segmentedControl.unselectedItemColor = [UIColor colorWithWhite:0.85f alpha:1.0f];
@@ -91,7 +92,7 @@
     segmentedControl.separatorImage = [UIImage imageNamed:@"separator"];
     segmentedControl.indicatorImage = [UIImage imageNamed:@"indicator"];
 
-
+     */
     // set up views
     self.initialHTML = [article valueForKeyPath:@"parse.text.*"];
     

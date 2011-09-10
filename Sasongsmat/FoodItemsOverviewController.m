@@ -56,6 +56,11 @@
     [super viewDidLoad];
     self.seasonFoodItems = [NSArray array];
     
+    UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"autumn.png"]];
+    self.navigationItem.titleView = titleView;
+    [titleView release];
+    
+    self.navigationItem.title = @"Råvaror";
     //self.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:self.navigationItem.title];
     
     //isLoading = NO;
@@ -223,7 +228,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return nil;
 }
-
+/*
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     switch (section) {
         case kSeasonSection:
@@ -232,6 +237,7 @@
             return nil;
     }
 }
+ */
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     switch (section) {

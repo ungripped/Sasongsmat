@@ -2,6 +2,7 @@
 body {
 	font: 0.875em Georgia, "Times new roman", serif;
 	background-color: #f8f8f8;
+    padding-top: 35px;
 }
 
 p, td {

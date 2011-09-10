@@ -56,7 +56,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSColor" key="IBTintColor">
 							<int key="NSColorSpace">2</int>
-							<bytes key="NSRGB">MC44NjY2NjY2NjY3IDAuMTUyOTQxMTc2NSAwLjI1NDkwMTk2MDgAA</bytes>
+							<bytes key="NSRGB">MSAwLjggMAA</bytes>
 						</object>
 						<object class="IBUITextInputTraits" key="IBTextInputTraits">
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>

@@ -31,8 +31,25 @@
 }
 
 - (void)drawRect:(CGRect)rect {
+    UIColor *color = [UIColor colorWithRed:1 green:0.8 blue:0 alpha:1]; /*#ffcc00*/
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColor(context, CGColorGetComponents( [color CGColor]));
+    CGContextFillRect(context, rect);
+    self.tintColor = color;
+    
+    UIColor *lineColor = [UIColor colorWithRed:0.6 green:0.2 blue:0 alpha:1]; /*#993300*/
+    
+    CGContextSetLineWidth(context, 2);
+    CGContextSetRGBStrokeColor(context, 0.6f, 0.2f, 0.0f, 1.0f);
+    CGContextBeginPath(context);
+    CGContextMoveToPoint(context, 0, rect.size.height);
+    CGContextAddLineToPoint(context, rect.size.width, rect.size.height);
+    CGContextStrokePath(context);
+    
+    /*
     UIImage *image = [UIImage imageNamed: @"summer-header.png"];
     [image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+     */
 }
 
 @end
