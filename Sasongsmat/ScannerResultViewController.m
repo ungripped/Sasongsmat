@@ -11,6 +11,7 @@
 
 #import "ScannerResultViewController.h"
 #import "SSMApi.h"
+#import "UnknownItemViewController.h"
 
 @implementation ScannerResultViewController
 @synthesize loaderView;
@@ -53,6 +54,19 @@
     [api getBarcodeDataForBarcode:self.barcodeData withBlock:^(NSDictionary *result) {
         NSLog(@"Result: %@", result);
         [self.indicatorView stopAnimating];
+        
+        NSDictionary *codeInfo = [result objectForKey:@"streckkod"];
+        
+        if ([codeInfo objectForKey:@"Artikel"] == nil) {
+            UnknownItemViewController *controller = [[UnknownItemViewController alloc] initWithNibName:@"UnknownItemViewController" bundle:nil];
+            
+            controller.barcodeInfo = codeInfo;
+            
+            [self.navigationController pushViewController:controller animated:YES];
+                        
+            [controller release];
+        }
+        
     } error:^(NSError *error) {
         NSLog(@"Error: %@", [error localizedDescription]);
         [self.indicatorView stopAnimating];
