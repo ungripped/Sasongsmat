@@ -46,15 +46,16 @@
 
     self.loaderView = [[LoaderView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     self.loaderView.alpha = 1.0;
-    self.loaderView.loadingLabel.text = @"Laddar artikel...";
+    self.loaderView.loadingLabel.text = @"Laddar recept...";
     
     [self.view addSubview:self.loaderView];
     
     
     //http://xn--ssongsmat-v2a.nu/w/api.php?action=parse&format=json&page=Mangold
     
+    NSString *articleName = [NSString stringWithFormat:@"Recept:%@", self.recipeName];
     NSDictionary *dict = [NSDictionary 
-                          dictionaryWithObjects:[NSArray arrayWithObjects:@"parse", @"json", self.recipeName, nil]
+                          dictionaryWithObjects:[NSArray arrayWithObjects:@"parse", @"json", articleName, nil]
                           
                           forKeys:[NSArray arrayWithObjects:@"action", @"format", @"page", nil]];
     
@@ -63,32 +64,8 @@
         recipe = [(NSDictionary *)object retain];
         
         self.initialHTML = [recipe valueForKeyPath:@"parse.text.*"];
-        
-        //NSLog(@"%@", self.initialHTML);
-        
-        self.recipeName = [recipe valueForKeyPath:@"parse.displaytitle"];
         self.navigationItem.title = self.recipeName;
         
-        /*
-        NSMutableArray *articleReceipes = [NSMutableArray array];
-        
-        NSArray *links = [article valueForKeyPath:@"parse.links"];
-        for (NSDictionary *link in links) {
-            
-            NSNumber *ns = [link objectForKey:@"ns"];
-            if ([ns isEqualToNumber:[NSNumber numberWithInt:550]]) {
-                NSString *fullRecipeName = [link objectForKey:@"*"];
-                
-                NSRange range = [fullRecipeName rangeOfString:@"Recept:"];
-                
-                if (range.location == 0) {
-                    [articleReceipes addObject:[fullRecipeName substringFromIndex:range.length]];
-                }
-            }
-        }
-        
-        self.recipes = articleReceipes;
-        */
         [self loadArticle];
         
         
@@ -102,8 +79,8 @@
     NSLog(@"%@", path);
     NSURL *baseURL = [NSURL fileURLWithPath:path];
     
-    NSString *js = @"<script src=\"jquery.js\"></script><script src=\"recipe.js\"></script>";
-    NSString *css = @"<link rel=\"stylesheet\" href=\"recipe.css\" type=\"text/css\" media=\"screen\" charset=\"utf-8\">";
+    NSString *js = @"<script src='jquery.js'></script><script src='recipe.js'></script>";
+    NSString *css = @"<link rel='stylesheet' href='recipe.css' type='text/css' media='screen' charset='utf-8'>";
     
     NSString *html = [NSString stringWithFormat:@"%@%@%@", js, css, self.initialHTML];
     
