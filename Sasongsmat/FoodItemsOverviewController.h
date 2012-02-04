@@ -11,6 +11,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EGORefreshTableHeaderView.h"
+#import "LoaderView.h"
 
 @class ItemSearchDelegate; 
 
@@ -26,29 +27,28 @@ enum SeasonSectionRows {
     NUM_SEASON_SECTION_ROWS
 };
 
-@interface FoodItemsOverviewController : UITableViewController <EGORefreshTableHeaderDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface FoodItemsOverviewController : UIViewController <EGORefreshTableHeaderDelegate, UIWebViewDelegate, UIScrollViewDelegate> {
     
     EGORefreshTableHeaderView *_refreshHeaderView;
     
-    UIView *seasonHeaderView;
-    UIView *seasonFooterView;
-    
-    NSArray *seasonFoodItems;
     ItemSearchDelegate *searchDelegate;
-    
-    
-    //BOOL isLoading;
     BOOL _reloading;
+    UIWebView *_itemsView;
+    LoaderView *_loaderView;
+    UIScrollView *_parentScrollView;
+    UIScrollView *_itemsScrollView;
+    
+    
 }
+@property (nonatomic, retain) IBOutlet UIWebView *itemsView;
 
-@property (nonatomic, retain) UIView *seasonHeaderView;
-@property (nonatomic, retain) UIView *seasonFooterView;
-
-@property (nonatomic, retain) NSArray *seasonFoodItems;
+@property (nonatomic, retain) LoaderView *loaderView;
+@property (nonatomic, retain) IBOutlet UIScrollView *parentScrollView;
+@property (nonatomic, retain) UIScrollView *itemsScrollView;
 
 @property (nonatomic, retain) IBOutlet ItemSearchDelegate *searchDelegate;
-- (void)loadFoodItems;
-- (void)loadArticleWithIndexPath:(NSIndexPath *)indexPath;
 
+- (void)loadFoodItems;
+- (void)loadArticle:(NSString *)article;
 
 @end

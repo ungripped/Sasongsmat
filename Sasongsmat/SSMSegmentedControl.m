@@ -308,7 +308,7 @@
 	if (![self mustCustomize]) {
 		[super insertSegmentWithTitle:title atIndex:segment animated:animated];
 	} else {
-		if (segment < 0 || segment >= self.numberOfSegments) return;
+		if (segment >= self.numberOfSegments) return;
 		[super insertSegmentWithTitle:title atIndex:segment animated:animated];
 		[self.items insertObject:title atIndex:segment];
 		[self setNeedsDisplay];
@@ -319,7 +319,7 @@
 	if (![self mustCustomize]) {
 		[super insertSegmentWithImage:image atIndex:segment animated:animated];
 	} else {
-		if (segment < 0 || segment >= self.numberOfSegments) return;
+		if (segment >= self.numberOfSegments) return;
 		[super insertSegmentWithImage:image atIndex:segment animated:animated];
 		[self.items insertObject:image atIndex:segment];
 		[self setNeedsDisplay];
@@ -330,7 +330,7 @@
 	if (![self mustCustomize]) {
 		[super removeSegmentAtIndex:segment animated:animated];
 	} else {
-		if (segment < 0 || segment >= self.numberOfSegments) return;
+		if (segment >= self.numberOfSegments) return;
 		[self.items removeObjectAtIndex:segment];
 		[self setNeedsDisplay];
 	}

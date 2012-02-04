@@ -10,9 +10,9 @@
 //
 
 #import "ItemArticleViewController.h"
-#import "ASIHTTPRequest.h"
 #import "SSMNavigationBar.h"
-#import "SSMApi.h"
+#import "LoaderView.h"
+#import "SSMApiClient.h"
 
 @implementation ItemArticleViewController
 @synthesize segmentedControl;
@@ -23,7 +23,9 @@
 @synthesize infoHTML;
 @synthesize article;
 @synthesize recipes;
+@synthesize loaderView;
 
+/*
 + (void)articleControllerForArticle:(NSString *)articleName loadedBlock:(ArticleLoadedBlock)articleLoadedBlock errorBlock:(ArticleLoadFailedBlock)articleFailedBlock {
     
     SSMApi *api = [SSMApi sharedSSMApi];
@@ -40,7 +42,7 @@
         articleFailedBlock(error);
     }];
 }
-
+*/
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -64,6 +66,7 @@
     [article release];
     [recipes release];
     [infoView release];
+    [loaderView release];
     [super dealloc];
 }
 
@@ -81,46 +84,59 @@
 {
     [super viewDidLoad];
     
-    // Set up the tabs
-    /*
-    segmentedControl.font = [UIFont boldSystemFontOfSize:12.0f];
-    segmentedControl.selectedItemColor = [UIColor whiteColor];
-    segmentedControl.unselectedItemColor = [UIColor colorWithWhite:0.85f alpha:1.0f];
+    self.loaderView = [[LoaderView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    self.loaderView.alpha = 1.0;
+    self.loaderView.loadingLabel.text = @"Laddar artikel...";
     
-    segmentedControl.selectedItemImage = [UIImage imageNamed:@"button_selected.png"];
-    segmentedControl.unselectedItemImage = [UIImage imageNamed:@"button_normal"];
-    segmentedControl.separatorImage = [UIImage imageNamed:@"separator"];
-    segmentedControl.indicatorImage = [UIImage imageNamed:@"indicator"];
+    [self.view addSubview:self.loaderView];
+    
+    
+    //http://xn--ssongsmat-v2a.nu/w/api.php?action=parse&format=json&page=Mangold
+    
+    NSDictionary *dict = [NSDictionary 
+                          dictionaryWithObjects:[NSArray arrayWithObjects:@"parse", @"json", self.itemName, nil]
+                          
+                          forKeys:[NSArray arrayWithObjects:@"action", @"format", @"page", nil]];
 
-     */
-    // set up views
-    self.initialHTML = [article valueForKeyPath:@"parse.text.*"];
-    
-    //NSLog(@"%@", self.initialHTML);
-    
-    self.itemName = [article valueForKeyPath:@"parse.displaytitle"];
-    self.navigationItem.title = self.itemName;
-
-    NSMutableArray *articleReceipes = [NSMutableArray array];
-    
-    NSArray *links = [article valueForKeyPath:@"parse.links"];
-    for (NSDictionary *link in links) {
+    SSMApiClient *client = [SSMApiClient sharedClient];
+    [client getPath:@"w/api.php" parameters:dict success:^(id object) {
+        article = [(NSDictionary *)object retain];
         
-        NSNumber *ns = [link objectForKey:@"ns"];
-        if ([ns isEqualToNumber:[NSNumber numberWithInt:550]]) {
-            NSString *fullRecipeName = [link objectForKey:@"*"];
+        self.initialHTML = [article valueForKeyPath:@"parse.text.*"];
+        
+        //NSLog(@"%@", self.initialHTML);
+        
+        self.itemName = [article valueForKeyPath:@"parse.displaytitle"];
+        self.navigationItem.title = self.itemName;
+        
+        NSMutableArray *articleReceipes = [NSMutableArray array];
+        
+        NSArray *links = [article valueForKeyPath:@"parse.links"];
+        for (NSDictionary *link in links) {
             
-            NSRange range = [fullRecipeName rangeOfString:@"Recept:"];
-            
-            if (range.location == 0) {
-                [articleReceipes addObject:[fullRecipeName substringFromIndex:range.length]];
+            NSNumber *ns = [link objectForKey:@"ns"];
+            if ([ns isEqualToNumber:[NSNumber numberWithInt:550]]) {
+                NSString *fullRecipeName = [link objectForKey:@"*"];
+                
+                NSRange range = [fullRecipeName rangeOfString:@"Recept:"];
+                
+                if (range.location == 0) {
+                    [articleReceipes addObject:[fullRecipeName substringFromIndex:range.length]];
+                }
             }
         }
-    }
-
-    self.recipes = articleReceipes;
         
-    [self loadArticle];
+        self.recipes = articleReceipes;
+        
+        [self loadArticle];
+
+        
+    } failure:^(NSHTTPURLResponse *response, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+        // set up views
+     /*
+          */
 }
 
 - (void)viewDidUnload
@@ -146,8 +162,10 @@
     NSString *css = @"<link rel=\"stylesheet\" href=\"article.css\" type=\"text/css\" media=\"screen\" charset=\"utf-8\">";
     
     NSString *html = [NSString stringWithFormat:@"%@%@%@", js, css, self.initialHTML];
-    [itemView loadHTMLString:html baseURL:baseURL];
     
+    NSLog(@"%@", html);
+    [itemView loadHTMLString:html baseURL:baseURL];
+    [self.loaderView fadeOut];
 }
 
 - (void)loadInfo {
@@ -214,6 +232,18 @@
     }
 }
 
+- (void)loadNewArticle:(NSString *)articleName {
+    
+    ItemArticleViewController *controller = [[ItemArticleViewController alloc] initWithNibName:@"ItemArticleView" bundle:nil];
+    controller.itemName = articleName;
+    
+    [self.navigationController pushViewController:controller animated:YES];
+    
+    [controller release];
+}
+
+
+/*
 
 - (void)loadNewArticle:(NSString *)articleName {
     // TODO: Show load indicator...
@@ -231,6 +261,7 @@
     }];
 }
 
+ */
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

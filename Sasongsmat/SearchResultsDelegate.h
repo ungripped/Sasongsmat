@@ -24,5 +24,6 @@
 @property (nonatomic, retain) ASIHTTPRequest *activeRequest;
 
 - (void)searchRequest:(NSString *)searchString;
-- (void)loadArticleWithIndexPath:(NSIndexPath *)indexPath onTableView:(UITableView *)tableView articleName:(NSString *)item navigationController:(UINavigationController *)navigationController;
+
+- (void)showResults:(NSArray *)result;
 @end

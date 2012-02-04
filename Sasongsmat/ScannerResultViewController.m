@@ -10,8 +10,9 @@
 //
 
 #import "ScannerResultViewController.h"
-#import "SSMApi.h"
+//#import "SSMApi.h"
 #import "UnknownItemViewController.h"
+#import "BarcodeItemViewController.h"
 
 @implementation ScannerResultViewController
 @synthesize loaderView;
@@ -48,30 +49,35 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    /*
     SSMApi *api = [SSMApi sharedSSMApi];
     [self.indicatorView startAnimating];
     
+    self.barcodeData = @"7340011309697"; // fake a known one
     [api getBarcodeDataForBarcode:self.barcodeData withBlock:^(NSDictionary *result) {
         NSLog(@"Result: %@", result);
         [self.indicatorView stopAnimating];
         
         NSDictionary *codeInfo = [result objectForKey:@"streckkod"];
         
+        UIViewController *controller;
+        
         if ([codeInfo objectForKey:@"Artikel"] == nil) {
-            UnknownItemViewController *controller = [[UnknownItemViewController alloc] initWithNibName:@"UnknownItemViewController" bundle:nil];
-            
-            controller.barcodeInfo = codeInfo;
-            
-            [self.navigationController pushViewController:controller animated:YES];
-                        
-            [controller release];
+            controller = [[UnknownItemViewController alloc] initWithNibName:@"UnknownItemViewController" bundle:nil];
         }
+        else {
+            controller = [[BarcodeItemViewController alloc] initWithNibName:@"BarcodeItemViewController" bundle:nil];
+        }
+        
+        [controller performSelector:@selector(setBarcodeInfo:) withObject:codeInfo];
+        [self.navigationController pushViewController:controller animated:YES];
+        [controller release];
         
     } error:^(NSError *error) {
         NSLog(@"Error: %@", [error localizedDescription]);
         [self.indicatorView stopAnimating];
     }];
-
+     */
     
 }
 

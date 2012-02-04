@@ -11,7 +11,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SSMSegmentedControl.h"
-@class ItemArticleViewController;
+@class ItemArticleViewController, LoaderView;
 
 typedef void (^ArticleLoadedBlock)(ItemArticleViewController *);
 typedef void (^ArticleLoadFailedBlock)(NSError *);
@@ -32,11 +32,13 @@ typedef void (^ArticleLoadFailedBlock)(NSError *);
     NSArray *recipes;
     
     BOOL infoLoaded;
+    
+    LoaderView *loaderView;
 }
 
 @property (nonatomic, retain) IBOutlet SSMSegmentedControl *segmentedControl;
 
-
+@property (nonatomic, retain) LoaderView *loaderView;
 @property (nonatomic, retain) IBOutlet UIWebView *itemView;
 @property (nonatomic, retain) IBOutlet UIWebView *infoView;
 @property (nonatomic, retain) IBOutlet UITableView *recipeView;
@@ -52,6 +54,7 @@ typedef void (^ArticleLoadFailedBlock)(NSError *);
 - (void)loadInfo;
 - (IBAction)segmentSelected:(id)sender;
 
+/*
 + (void)articleControllerForArticle:(NSString *)articleName loadedBlock:(ArticleLoadedBlock)articleLoadedBlock errorBlock:(ArticleLoadFailedBlock)articleFailedBlock;
-
+*/
 @end

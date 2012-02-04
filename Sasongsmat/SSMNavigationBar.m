@@ -37,7 +37,7 @@
     CGContextFillRect(context, rect);
     self.tintColor = color;
     
-    UIColor *lineColor = [UIColor colorWithRed:0.6 green:0.2 blue:0 alpha:1]; /*#993300*/
+    //UIColor *lineColor = [UIColor colorWithRed:0.6 green:0.2 blue:0 alpha:1]; /*#993300*/
     
     CGContextSetLineWidth(context, 2);
     CGContextSetRGBStrokeColor(context, 0.6f, 0.2f, 0.0f, 1.0f);

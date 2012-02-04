@@ -5,11 +5,18 @@ $(document).ready(function() {
                   $(".editsection").hide();
                   $("img[alt^='QR-']").parents("p").hide();
                   $("#manadshuvud").hide();
+                  
+                  $.each($("p"), function(index, obj) {
+                         obj = $(obj);
+                         obj.html($.trim(obj.html()));
+                         });
                   $("p:empty").remove();
                   $("a[class!='mw-redirect']").addClass('vislink');
                   $.each($("img[src^='/']"), function(index, obj) {
-                        $(obj).attr('src', 'http://xn--ssongsmat-v2a.nu' + $(obj).attr('src'));
-                });
+                         $(obj).attr('src', 'http://xn--ssongsmat-v2a.nu' + $(obj).attr('src'));
+                         });
+                  
+                  
                   
                   var arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                   $.each($('.manadsrad').children(), function(index, obj) {
@@ -21,6 +28,10 @@ $(document).ready(function() {
                          else if (obj.hasClass('full'))
                          arr[index] = 3;
                          });
+                  
+                  if ($('body > .thumb').length == 0) {
+                  $('body').prepend($("<div class='thumb tright'><div class='thumbinner'><a href='#' class='image vislink'><img src='bigrecipe.png' class='thumbimage'/></a><div class='thumbcaption'>Bild saknas</div></div></div>"));
+                  }
                   
                   $('body > .thumb').prepend('<div id="indicator"><canvas width="300" height="30"></canvas></div>');
                   renderIndicator($('#indicator canvas')[0], arr);
@@ -38,8 +49,9 @@ $(document).ready(function() {
                                else if (target.attr("href").match(/^\/ssm\/Fil/)) {
                                event.preventDefault();
                                }
-                });
-});
+                               });
+                  });
+
 
 function renderIndicator(canvas, seasonInfo) {
 	var ctx = canvas.getContext('2d');
@@ -72,6 +84,7 @@ function renderIndicator(canvas, seasonInfo) {
            ctx.fillText(man[index], index*25 + 12 + adj[index], 11); // + adjVertical[index]);
            });
 }
+
 
 
 function removeInfoBoxes() {

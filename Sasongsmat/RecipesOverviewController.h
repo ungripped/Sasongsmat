@@ -2,7 +2,7 @@
 //  RecipesOverviewController.h
 //  Sasongsmat
 //
-//  Created by Matti Ryhänen on 2011-07-18.
+//  Created by Matti on 2011-10-21.
 //  Copyright 2011 Matti Ryhänen, Säsongsmat.
 //
 //  Licensed under the BSD license
@@ -10,41 +10,33 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EGORefreshTableHeaderView.h"
+#import "LoaderView.h"
 
-#define FEATURED_ROW_COUNT 4
 
-enum Sections {
-    kSeasonSection = 0,
-    kCategoriesSection,
-    NUM_SECTIONS
-};
+//@class ItemSearchDelegate; 
 
-enum SeasonSectionRows {
-    kFirstSeasonRow = 0,
-    NUM_SEASON_SECTION_ROWS
-};
-
-@interface RecipesOverviewController : UITableViewController <UITableViewDataSource, UITableViewDelegate> {
+@interface RecipesOverviewController : UIViewController <EGORefreshTableHeaderDelegate, UIWebViewDelegate, UIScrollViewDelegate> {
     
-    UIView *seasonHeaderView;
-    UIView *seasonFooterView;
+    EGORefreshTableHeaderView *_refreshHeaderView;
     
-    NSArray *featuredRecipes;
-    NSArray *seasonRecipes;
+    //ItemSearchDelegate *searchDelegate;
     
-    
-    BOOL isLoading;
+    BOOL _reloading;
+    UIWebView *_itemsView;
+    LoaderView *_loaderView;
+    UIScrollView *_parentScrollView;
+    UIScrollView *_itemsScrollView;
 }
+@property (nonatomic, retain) IBOutlet UIWebView *itemsView;
 
-@property (nonatomic, retain) UIView *seasonHeaderView;
-@property (nonatomic, retain) UIView *seasonFooterView;
+@property (nonatomic, retain) LoaderView *loaderView;
+@property (nonatomic, retain) IBOutlet UIScrollView *parentScrollView;
+@property (nonatomic, retain) UIScrollView *itemsScrollView;
 
-@property (nonatomic, retain) NSArray *seasonRecipes;
-@property (nonatomic, retain) NSArray *featuredRecipes;
+//@property (nonatomic, retain) IBOutlet ItemSearchDelegate *searchDelegate;
 
-- (void)loadRecipes;
-- (void)loadRecipeWithIndexPath:(NSIndexPath *)indexPath;
-- (void)loadRecipe:(NSString *)name;
-
+- (void)loadFoodItems;
+- (void)loadRecipe:(NSString *)recipeName;
 
 @end

@@ -14,10 +14,25 @@ p.test {
     color: #f0f;
 }
 
-ul, ol, li {
+ul {
+	list-style: none;
+	padding: 0 10px 0 10px;
+}
+
+ol li {
+	margin-bottom: 10px;
+}
+
+ol {
+	padding: 0 10px 0 30px;
+}
+.smwttcontent {
 	display: none;
 }
 
+.smwttinline {
+	display: inline-block;
+}
 a {
     color: #000;
     text-decoration: none;
@@ -59,7 +74,7 @@ sup {
 .thumb {
     width: 100%;
 	background-color: #fff;
-	padding: 45px 0 5px 0;
+	padding: 30px 0 5px 0;
 	border-bottom: 1px solid #aaa;
 	-webkit-box-shadow: 0 2px 5px #ddd;
 }
@@ -77,6 +92,7 @@ sup {
     margin: 0 auto;
 	box-shadow: 0 2px 5px #777;
 }
+
 #indicator {
 	width: 300px;
 	height: 25px;

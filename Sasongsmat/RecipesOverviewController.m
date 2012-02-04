@@ -2,7 +2,7 @@
 //  RecipesOverviewController.m
 //  Sasongsmat
 //
-//  Created by Matti Ryhänen on 2011-07-18.
+//  Created by Matti on 2011-10-21.
 //  Copyright 2011 Matti Ryhänen, Säsongsmat.
 //
 //  Licensed under the BSD license
@@ -10,34 +10,27 @@
 //
 
 #import "RecipesOverviewController.h"
+#import "ItemArticleViewController.h"
+#import "RecipeViewController.h"
+#import "SSMWebClient.h"
+#import "AFHTTPRequestOperation.h"
 
-#import "SSMNavigationBar.h"
-#import "SSMApi.h"
-
-#import "ASIHTTPRequest.h"
-#import "SBJson.h"
 
 @implementation RecipesOverviewController
-@synthesize seasonHeaderView, seasonFooterView;
-@synthesize seasonRecipes, featuredRecipes;
 
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize itemsView = _itemsView;
+@synthesize loaderView = _loaderView;
+@synthesize parentScrollView = _parentScrollView;
+@synthesize itemsScrollView = _itemsScrollView;
+//@synthesize searchDelegate;
 
 - (void)dealloc
 {
-    [seasonHeaderView release];
-    [seasonFooterView release];
-    [featuredRecipes release];
-    [seasonRecipes release];
-    
+    //[searchDelegate release];
+    [_itemsView release];
+    [_parentScrollView release];
+    [_itemsScrollView release];
+    [_loaderView release];
     [super dealloc];
 }
 
@@ -49,59 +42,128 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.seasonRecipes = [NSArray array];
-    self.featuredRecipes = [NSArray array];
     
-    //self.navigationItem.titleView = [SSMNavigationBar titleLabelWithText:self.navigationItem.title];
+    self.loaderView = [[LoaderView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    self.loaderView.alpha = 1.0;
     
-    isLoading = NO;
+    [self.view addSubview:self.loaderView];
     
-    UIViewController *tempController = [[UIViewController alloc] initWithNibName:@"SeasonHeaderView" bundle:nil];
-    self.seasonHeaderView = tempController.view;
+    for (id subview in self.itemsView.subviews) {
+        if ([[subview class] isSubclassOfClass: [UIScrollView class]])
+        {
+            // Find the UIScrollView of the UIWebView
+            self.itemsScrollView = (UIScrollView *)subview;
+            
+            //view.bounces = NO;
+            self.itemsScrollView.delegate = self;
+            
+            // Hook in the EGORefreshTableHeaderView on the UIWebView
+            if (_refreshHeaderView == nil) {
+                EGORefreshTableHeaderView *headerView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.view.bounds.size.height, self.view.frame.size.width, self.view.bounds.size.height)];
+                headerView.delegate = self;
+                [self.itemsScrollView addSubview:headerView];
+                _refreshHeaderView = headerView;
+                [headerView release];
+            }
+            
+        }
+    }
     
-    [tempController release];
+    UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"winter.png"]];
+    self.navigationItem.titleView = titleView;
+    [titleView release];
     
-    tempController = [[UIViewController alloc] initWithNibName:@"SeasonFooterView" bundle:nil];
-    self.seasonFooterView = tempController.view;
+    self.navigationItem.title = @"Recept";
+    _reloading = NO;
     
-    [tempController release];
-    [self loadRecipes];
+    [self loadFoodItems];
     
-    self.clearsSelectionOnViewWillAppear = YES;
+	//  update the last update date
+	[_refreshHeaderView refreshLastUpdatedDate];
+}
+
+- (void)loadFoodItems {
+    _reloading = YES;
+    SSMWebClient *client = [SSMWebClient sharedClient];
+    [client getPath:@"recipes" parameters:nil success:^(id object) {
+        [self.loaderView fadeOut];
+        [self.itemsView loadHTMLString:[object responseString] baseURL:client.baseURL];
+        _reloading = NO;
+        
+        
+    } failure:^(NSHTTPURLResponse *response, NSError *error) {
+        NSLog(@"Error: %@", error);
+        // Show error message in loader view
+    }];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if (scrollView == self.parentScrollView) {
+        
+    }
+    else {
+        CGPoint off = [scrollView contentOffset];
+        //NSLog(@"%f - %f", off.x, off.y);
+        CGPoint newOff;
+        if (off.y < 88 && off.y >= 0)
+            newOff = CGPointMake(0, off.y / 2);
+        else if (off.y >= 88)
+            newOff = CGPointMake(0, 44);
+        else if (off.y < 0) {
+            newOff = CGPointMake(0, 0);
+            [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+        }
+        self.parentScrollView.contentOffset = newOff;
+        
+        
+    }
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    _reloading = NO;
+	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.itemsScrollView];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    NSURL *url = [request mainDocumentURL];
+    
+    switch (navigationType) {
+        case UIWebViewNavigationTypeOther:
+            return YES;
+        case UIWebViewNavigationTypeLinkClicked:
+            if ([[url scheme] isEqualToString:@"ssm"]) {
+                [self loadRecipe:[url lastPathComponent]];
+            }
+            return NO;
+        default:
+            return NO;
+    }
+}
+
+- (void)loadRecipe:(NSString *)recipeName {
+    
+    RecipeViewController *controller = [[RecipeViewController alloc] initWithNibName:@"RecipeViewController" bundle:nil];
+    controller.recipeName = recipeName;
+    
+    [self.navigationController pushViewController:controller animated:YES];
+    
+    [controller release];
 }
 
 
 - (void)viewDidUnload
 {
+    //[self setSearchDelegate:nil];
+    [self setItemsView:nil];
+    [self setParentScrollView:nil];
+    [self setLoaderView:nil];
     [super viewDidUnload];
-    self.seasonHeaderView = nil;
-    self.seasonFooterView = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -110,285 +172,29 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)loadRecipes {
-    SSMApi *api = [SSMApi sharedSSMApi];
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+	
+}
+
+#pragma mark - EGORefreshTableHeaderDelegate methods
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view {
     
-    isLoading = YES;
-    [api getSeasonItemsInNamespace:@"550" withBlock:^(NSArray *items) {
-        
-        self.seasonRecipes = items;
-        
-        //NSLog(@"%@", seasonRecipes);
-
-        NSRange range;
-        range.location = 0;
-        range.length = [seasonRecipes count] > FEATURED_ROW_COUNT ? FEATURED_ROW_COUNT : [seasonRecipes count];
-        
-        self.featuredRecipes = [seasonRecipes subarrayWithRange:range];
-        
-        NSLog(@"Season recipes count: %i", [seasonRecipes count]);
-        NSLog(@"Featured recipes count: %i", [featuredRecipes count]);
-        
-        isLoading = NO;
-        
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:kSeasonSection] withRowAnimation:UITableViewRowAnimationFade];
-        
-        self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
-        
-    } error:^(NSError *error) {
-        isLoading = NO;
-        NSLog(@"Error: %@", [error localizedDescription]);
-        
-        // TODO: Set error message and tap-message in section footer
-    }];
+    NSLog(@"Did trigger refresh...");
+    [self loadFoodItems];
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return NUM_SECTIONS;
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view {
+    return _reloading;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    switch (section) {
-        case kSeasonSection:
-            return [seasonRecipes count] > FEATURED_ROW_COUNT ? [featuredRecipes count] + 1 : [featuredRecipes count];
-        default:
-            return 0;
-    }
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view {
+    return [NSDate date];
 }
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    switch (indexPath.section) {
-        case kSeasonSection:
-            if (indexPath.row == [featuredRecipes count]) {
-                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreIndicator"];
-                if (cell == nil) {
-                    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MoreIndicator"] autorelease];
-                    cell.selectionStyle = UITableViewCellSelectionStyleGray;
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                }
-                cell.textLabel.text = @"Fler säsongsrecept...";
-                
-                return cell;
-            }
-            else {
-                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FoodItemRowCell"];
-                
-                if (cell == nil) {
-                    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"FoodItemRowCell"] autorelease];
-                    cell.selectionStyle = UITableViewCellSelectionStyleGray;
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                }
-                
-                /*
-                FoodListItem *item = [featuredFoodItems objectAtIndex:indexPath.row];
-                cell.textLabel.text = item.label;
-                cell.detailTextLabel.text = @"6 dagar kvar";
-                
-                UIImage *image = [UIImage imageNamed:item.type];
-                cell.imageView.image = image;
-                */
-                return cell;
-            }
-            break;
-            
-        default:
-            break;
-    }
-    //cell.itemSeason.text = @"6 jun - 9 jul";
-    
-    //cell.textLabel.text = @"Majrova";
-    // Configure the cell...
-    
-    return nil;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case kCategoriesSection:
-            return @"Alla råvaror";            
-        default:
-            return nil;
-    }
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case kSeasonSection:
-            return seasonHeaderView;
-        default:
-            return nil;
-    }
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    switch (section) {
-        case kSeasonSection:
-            // TODO: Show message in footer if there's no rows.
-            if (isLoading) {
-                seasonFooterView.hidden = NO;
-            }
-            else {
-                seasonFooterView.hidden = YES;
-            }
-            return seasonFooterView;
-        default:
-            return nil;
-    }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.section) {
-        case kSeasonSection:
-            return 55;
-        default:
-            return 0;
-    }
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case kSeasonSection:
-            return 45;
-        case kCategoriesSection:
-            return 36;
-        default:
-            return 0;
-    }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    switch (section) {
-        case kSeasonSection:
-            if (isLoading) {
-                return 45;
-            }
-            else {
-                return 0;
-            }
-        default:
-            return 0;
-    }
-}
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }   
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }   
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    /*
-    switch (indexPath.section) {
-        case kSeasonSection:
-            if (indexPath.row == [featuredFoodItems count]) {
-                FoodItemsCompleteListController *completeListController = [[FoodItemsCompleteListController alloc] initWithNibName:@"FoodItemsCompleteListController" bundle:nil];
-                
-                completeListController.seasonFoodItems = self.seasonFoodItems;
-                
-                [self.navigationController pushViewController:completeListController animated:YES];
-                
-                [completeListController release];
-            }
-            else {
-                [self loadArticleWithIndexPath:indexPath];
-            }
-            break;
-            
-        default:
-            break;
-    }
-    */
-}
-
-- (void)loadRecipeWithIndexPath:(NSIndexPath *)indexPath {
-    /*
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    
-    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    
-    UIView *accessoryView = [cell accessoryView];
-    
-    [cell setAccessoryView:indicator];
-    [indicator startAnimating];
-    
-    FoodListItem *item = [featuredFoodItems objectAtIndex:indexPath.row];
-    
-    [ItemArticleViewController articleControllerForArticle:item.label loadedBlock:^(ItemArticleViewController * controller) {
-        
-        [self.navigationController pushViewController:controller animated:YES];
-        [indicator removeFromSuperview];
-        [cell setAccessoryView:accessoryView];
-        [indicator release];
-    } errorBlock:^(NSError * error) {
-        [indicator removeFromSuperview];
-        [cell setAccessoryView:accessoryView];
-        [indicator release];
-        
-        NSLog(@"Error loading article: %@", error);
-        // TODO: Set error message and tap-message in section footer
-        
-    }];
-    */
-}
-
-- (void)loadRecipe:(NSString *)name {
-    // TODO: Show load indicator in table view.
-    /*
-    [ItemArticleViewController articleControllerForArticle:name loadedBlock:^(ItemArticleViewController * controller) {
-        [self.navigationController pushViewController:controller animated:YES];
-    } errorBlock:^(NSError * error) {
-        NSLog(@"Error loading article: %@", error);
-        // TODO: Set error message and tap-message in section footer
-        
-    }];
-     */
-    
-}
-
-
 
 @end
