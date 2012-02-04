@@ -424,6 +424,7 @@
 		BE328CC01448DE8E00A7182C /* winter.png in Resources */ = {isa = PBXBuildFile; fileRef = BE328CBE1448DE8E00A7182C /* winter.png */; };
 		BE328CC11448DE8E00A7182C /* winter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE328CBF1448DE8E00A7182C /* winter@2x.png */; };
 		BE328CC41448E51E00A7182C /* SSMApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BE328CC31448E51E00A7182C /* SSMApiClient.m */; };
+		BE4DEE6714DDEA6D003C6568 /* SSMOverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4DEE6614DDEA6D003C6568 /* SSMOverviewController.m */; };
 		BE52650D1410E78500EF209C /* SeasonIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE52650C1410E78500EF209C /* SeasonIndicatorView.m */; };
 		BE62798B141E241400DB5C62 /* BarcodeItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE627989141E241400DB5C62 /* BarcodeItemViewController.m */; };
 		BE62798C141E241400DB5C62 /* BarcodeItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE62798A141E241400DB5C62 /* BarcodeItemViewController.xib */; };
@@ -942,6 +943,8 @@
 		BE328CBF1448DE8E00A7182C /* winter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "winter@2x.png"; sourceTree = "<group>"; };
 		BE328CC21448E51E00A7182C /* SSMApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSMApiClient.h; sourceTree = "<group>"; };
 		BE328CC31448E51E00A7182C /* SSMApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSMApiClient.m; sourceTree = "<group>"; };
+		BE4DEE6514DDEA6D003C6568 /* SSMOverviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSMOverviewController.h; path = Sasongsmat/SSMOverviewController.h; sourceTree = "<group>"; };
+		BE4DEE6614DDEA6D003C6568 /* SSMOverviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSMOverviewController.m; path = Sasongsmat/SSMOverviewController.m; sourceTree = "<group>"; };
 		BE52650B1410E78500EF209C /* SeasonIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonIndicatorView.h; sourceTree = "<group>"; };
 		BE52650C1410E78500EF209C /* SeasonIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonIndicatorView.m; sourceTree = "<group>"; };
 		BE627988141E241400DB5C62 /* BarcodeItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeItemViewController.h; sourceTree = "<group>"; };
@@ -1546,6 +1549,7 @@
 				4905542213B290740009EFD5 /* UI */,
 				490312E013A2AF44005EB2EC /* Recipes */,
 				49AD6CA513AA9CF3006D4675 /* Scanner */,
+				BE4DEE6314DDEA32003C6568 /* Controllers */,
 				BE4144161419FFC400BE0B16 /* Search */,
 				490312DF13A2AEE7005EB2EC /* Items */,
 				493E0917138DBC430030161D /* Supporting Files */,
@@ -1772,6 +1776,16 @@
 				BEE3A348141A5F6E003E3C1F /* SearchResultsDelegate.m */,
 			);
 			name = Search;
+			sourceTree = "<group>";
+		};
+		BE4DEE6314DDEA32003C6568 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BE4DEE6514DDEA6D003C6568 /* SSMOverviewController.h */,
+				BE4DEE6614DDEA6D003C6568 /* SSMOverviewController.m */,
+			);
+			name = Controllers;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		BE62798E141E24C900DB5C62 /* Images */ = {
@@ -2364,6 +2378,7 @@
 				BE328CC41448E51E00A7182C /* SSMApiClient.m in Sources */,
 				BE042EFC1450DA65007504BF /* RecipesOverviewController.m in Sources */,
 				BE89C0791457FCE500DF644F /* RecipeViewController.m in Sources */,
+				BE4DEE6714DDEA6D003C6568 /* SSMOverviewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
