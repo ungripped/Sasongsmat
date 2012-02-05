@@ -426,8 +426,6 @@
 		BE328CC41448E51E00A7182C /* SSMApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BE328CC31448E51E00A7182C /* SSMApiClient.m */; };
 		BE4DEE6714DDEA6D003C6568 /* SSMOverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4DEE6614DDEA6D003C6568 /* SSMOverviewController.m */; };
 		BE52650D1410E78500EF209C /* SeasonIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE52650C1410E78500EF209C /* SeasonIndicatorView.m */; };
-		BE62798B141E241400DB5C62 /* BarcodeItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE627989141E241400DB5C62 /* BarcodeItemViewController.m */; };
-		BE62798C141E241400DB5C62 /* BarcodeItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE62798A141E241400DB5C62 /* BarcodeItemViewController.xib */; };
 		BE651B671447918600C85C2E /* LoaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE651B661447918600C85C2E /* LoaderView.m */; };
 		BE67D0BB141D423900AE98AC /* UnknownItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE67D0B9141D423900AE98AC /* UnknownItemViewController.m */; };
 		BE67D0BC141D423900AE98AC /* UnknownItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE67D0BA141D423900AE98AC /* UnknownItemViewController.xib */; };
@@ -947,9 +945,6 @@
 		BE4DEE6614DDEA6D003C6568 /* SSMOverviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSMOverviewController.m; path = Sasongsmat/SSMOverviewController.m; sourceTree = "<group>"; };
 		BE52650B1410E78500EF209C /* SeasonIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonIndicatorView.h; sourceTree = "<group>"; };
 		BE52650C1410E78500EF209C /* SeasonIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonIndicatorView.m; sourceTree = "<group>"; };
-		BE627988141E241400DB5C62 /* BarcodeItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeItemViewController.h; sourceTree = "<group>"; };
-		BE627989141E241400DB5C62 /* BarcodeItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeItemViewController.m; sourceTree = "<group>"; };
-		BE62798A141E241400DB5C62 /* BarcodeItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BarcodeItemViewController.xib; sourceTree = "<group>"; };
 		BE651B651447918600C85C2E /* LoaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoaderView.h; sourceTree = "<group>"; };
 		BE651B661447918600C85C2E /* LoaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoaderView.m; sourceTree = "<group>"; };
 		BE67D0B8141D423900AE98AC /* UnknownItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnknownItemViewController.h; sourceTree = "<group>"; };
@@ -1625,9 +1620,6 @@
 				BE67D0B8141D423900AE98AC /* UnknownItemViewController.h */,
 				BE67D0B9141D423900AE98AC /* UnknownItemViewController.m */,
 				BE67D0BA141D423900AE98AC /* UnknownItemViewController.xib */,
-				BE627988141E241400DB5C62 /* BarcodeItemViewController.h */,
-				BE627989141E241400DB5C62 /* BarcodeItemViewController.m */,
-				BE62798A141E241400DB5C62 /* BarcodeItemViewController.xib */,
 			);
 			name = Scanner;
 			sourceTree = "<group>";
@@ -2289,7 +2281,6 @@
 				BE67D0BC141D423900AE98AC /* UnknownItemViewController.xib in Resources */,
 				BE67D0C0141D47B000AE98AC /* unknown_item.png in Resources */,
 				BE67D0C1141D47B000AE98AC /* unknown_item@2x.png in Resources */,
-				BE62798C141E241400DB5C62 /* BarcodeItemViewController.xib in Resources */,
 				BE328CC01448DE8E00A7182C /* winter.png in Resources */,
 				BE328CC11448DE8E00A7182C /* winter@2x.png in Resources */,
 				BE042EF81450D79E007504BF /* RecipesOverviewView.xib in Resources */,
@@ -2360,7 +2351,6 @@
 				BE13A8D71411885C00C2EA46 /* EGORefreshTableHeaderView.m in Sources */,
 				BEE3A349141A5F6E003E3C1F /* SearchResultsDelegate.m in Sources */,
 				BE67D0BB141D423900AE98AC /* UnknownItemViewController.m in Sources */,
-				BE62798B141E241400DB5C62 /* BarcodeItemViewController.m in Sources */,
 				BE9D950114462CC3009D0BF9 /* AFHTTPClient.m in Sources */,
 				BE9D950214462CC3009D0BF9 /* AFHTTPRequestOperation.m in Sources */,
 				BE9D950314462CC3009D0BF9 /* AFImageCache.m in Sources */,
