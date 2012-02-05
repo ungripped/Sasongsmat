@@ -10,6 +10,7 @@
 //
 
 #import "UnknownItemViewController.h"
+#import "SSMApiClient.h"
 
 @implementation UnknownItemViewController
 @synthesize searchResultsDelegate;
@@ -243,8 +244,57 @@
      */
 }
 
+/**
+ Handle search result. Connect barcode -> result (article name) 
+ */
 - (void)handleResult:(NSString *)result {
     NSLog(@"Handling search result: %@", result);
+    
+    NSString *title   = [NSString 
+                         stringWithFormat:@"Streckkod:%@", 
+                         [barcodeInfo objectForKey:@"streckkod"]];
+    NSString *text    = [NSString 
+                         stringWithFormat:@"{{Streckkod2|artikel=%@}}", 
+                         result];
+    
+    NSArray *keys    = [NSArray arrayWithObjects:
+                        @"action",
+                        @"format",
+                        @"summary",
+                        @"section",
+                        @"token",
+                        @"title",
+                        @"text",
+                        nil];
+    NSArray *objects = [NSArray arrayWithObjects:
+                        @"edit",
+                        @"json",
+                        @"Streckkod kopplad via iPhone-klient",
+                        @"new",
+                        @"+\\",
+                        title,
+                        text,
+                        nil];
+    
+    
+    NSDictionary *dict = [NSDictionary 
+                          dictionaryWithObjects:objects 
+                          forKeys:keys];
+    
+    SSMApiClient *client = [SSMApiClient sharedClient];
+    
+    
+    NSLog(@"Trying to connect barcode: %@ with article: %@", [barcodeInfo objectForKey:@"streckkod"], result);
+    
+    [client postPath:@"w/api.php" parameters:dict success:^(id object) {
+        NSLog(@"Success response!");
+        NSDictionary *response = [(NSDictionary *)object retain];
+        NSLog(@"%@", response);
+        
+    } failure:^(NSHTTPURLResponse *response, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+
 }
 
 - (void)dealloc {

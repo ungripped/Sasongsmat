@@ -43,6 +43,8 @@ NSString * const kSSMApiBaseURLString = @"http://xn--ssongsmat-v2a.nu";
     
     [self setDefaultHeader:@"X-UDID" value:[[UIDevice currentDevice] uniqueIdentifier]];
     
+    [self setParameterEncoding:AFFormURLParameterEncoding];
+    
     return self;
 }
 

@@ -76,7 +76,9 @@
         NSDictionary *barcodeResponse = [(NSDictionary *)object retain];
         NSLog(@"%@", barcodeResponse);
         
-        NSDictionary *codeInfo = [barcodeResponse objectForKey:@"streckkod"];
+        NSMutableDictionary *codeInfo = [NSMutableDictionary dictionaryWithDictionary:[barcodeResponse objectForKey:@"streckkod"]];
+        [codeInfo setObject:barcodeData forKey:@"streckkod"];
+        
         UIViewController *controller;
         
         if ([codeInfo objectForKey:@"Artikel"] == nil) {
