@@ -12,7 +12,7 @@
 #import "ScannerResultViewController.h"
 //#import "SSMApi.h"
 #import "UnknownItemViewController.h"
-#import "BarcodeItemViewController.h"
+#import "KnownItemViewController.h"
 #import "SSMApiClient.h"
 
 @implementation ScannerResultViewController
@@ -85,7 +85,7 @@
             controller = [[UnknownItemViewController alloc] initWithNibName:@"UnknownItemViewController" bundle:nil];
         }
         else {
-            controller = [[BarcodeItemViewController alloc] initWithNibName:@"BarcodeItemViewController" bundle:nil];
+            controller = [[KnownItemViewController alloc] initWithNibName:@"KnownItemViewController" bundle:nil];
         }
         
         [controller performSelector:@selector(setBarcodeInfo:) withObject:codeInfo];

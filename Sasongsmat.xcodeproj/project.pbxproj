@@ -407,6 +407,8 @@
 		49F4660613ABFC64003B97E4 /* Icon_Retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F4660513ABFC64003B97E4 /* Icon_Retina.png */; };
 		BE042EF81450D79E007504BF /* RecipesOverviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE042EF71450D79E007504BF /* RecipesOverviewView.xib */; };
 		BE042EFC1450DA65007504BF /* RecipesOverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE042EFA1450DA64007504BF /* RecipesOverviewController.m */; };
+		BE118E7E14DF349000737C9D /* KnownItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE118E7C14DF349000737C9D /* KnownItemViewController.m */; };
+		BE118E7F14DF349000737C9D /* KnownItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE118E7D14DF349000737C9D /* KnownItemViewController.xib */; };
 		BE13A8C914117EDC00C2EA46 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = BE13A8C114117EDC00C2EA46 /* blackArrow.png */; };
 		BE13A8CA14117EDC00C2EA46 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE13A8C214117EDC00C2EA46 /* blackArrow@2x.png */; };
 		BE13A8CB14117EDC00C2EA46 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = BE13A8C314117EDC00C2EA46 /* blueArrow.png */; };
@@ -920,6 +922,9 @@
 		BE042EF71450D79E007504BF /* RecipesOverviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipesOverviewView.xib; sourceTree = "<group>"; };
 		BE042EF91450DA64007504BF /* RecipesOverviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipesOverviewController.h; sourceTree = "<group>"; };
 		BE042EFA1450DA64007504BF /* RecipesOverviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipesOverviewController.m; sourceTree = "<group>"; };
+		BE118E7B14DF349000737C9D /* KnownItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnownItemViewController.h; sourceTree = "<group>"; };
+		BE118E7C14DF349000737C9D /* KnownItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnownItemViewController.m; sourceTree = "<group>"; };
+		BE118E7D14DF349000737C9D /* KnownItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KnownItemViewController.xib; sourceTree = "<group>"; };
 		BE13A8BD14117EBB00C2EA46 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		BE13A8C114117EDC00C2EA46 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		BE13A8C214117EDC00C2EA46 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
@@ -1620,6 +1625,9 @@
 				BE67D0B8141D423900AE98AC /* UnknownItemViewController.h */,
 				BE67D0B9141D423900AE98AC /* UnknownItemViewController.m */,
 				BE67D0BA141D423900AE98AC /* UnknownItemViewController.xib */,
+				BE118E7B14DF349000737C9D /* KnownItemViewController.h */,
+				BE118E7C14DF349000737C9D /* KnownItemViewController.m */,
+				BE118E7D14DF349000737C9D /* KnownItemViewController.xib */,
 			);
 			name = Scanner;
 			sourceTree = "<group>";
@@ -2288,6 +2296,7 @@
 				BE89C07C1458333000DF644F /* recipe.css in Resources */,
 				BE89C0821458363000DF644F /* bigrecipe.png in Resources */,
 				BE8786AF14DD5DAF00DC1C8C /* loader-bg.png in Resources */,
+				BE118E7F14DF349000737C9D /* KnownItemViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2369,6 +2378,7 @@
 				BE042EFC1450DA65007504BF /* RecipesOverviewController.m in Sources */,
 				BE89C0791457FCE500DF644F /* RecipeViewController.m in Sources */,
 				BE4DEE6714DDEA6D003C6568 /* SSMOverviewController.m in Sources */,
+				BE118E7E14DF349000737C9D /* KnownItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
