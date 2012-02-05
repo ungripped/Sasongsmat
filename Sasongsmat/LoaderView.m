@@ -65,6 +65,11 @@
     [UIView commitAnimations];
 }
 
+- (void)showError:(NSString *)errorMessage {
+    self.errorLabel.text = errorMessage;
+    self.errorLabel.hidden = NO;
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

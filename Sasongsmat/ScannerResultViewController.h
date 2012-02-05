@@ -10,18 +10,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoaderView.h"
 
 @interface ScannerResultViewController : UIViewController {
-    UIView *loaderView;
-    UIActivityIndicatorView *indicatorView;
+    LoaderView *loaderView;
     
     NSString *barcodeData;
     NSString *typeName;
     
 }
 
-@property (nonatomic, retain) IBOutlet UIView *loaderView;
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *indicatorView;
+@property (nonatomic, retain) IBOutlet LoaderView *loaderView;
 
 @property (nonatomic, retain) NSString *barcodeData;
 @property (nonatomic, retain) NSString *typeName;

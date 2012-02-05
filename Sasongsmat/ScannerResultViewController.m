@@ -13,10 +13,11 @@
 //#import "SSMApi.h"
 #import "UnknownItemViewController.h"
 #import "BarcodeItemViewController.h"
+#import "SSMApiClient.h"
 
 @implementation ScannerResultViewController
+
 @synthesize loaderView;
-@synthesize indicatorView;
 @synthesize barcodeData, typeName;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -41,6 +42,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.loaderView = [[LoaderView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    self.loaderView.alpha = 1.0;
+
+    
+    self.loaderView.loadingLabel.text = @"Laddar streckkod...";
+    [self.view addSubview:self.loaderView];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -49,17 +56,27 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    /*
-    SSMApi *api = [SSMApi sharedSSMApi];
-    [self.indicatorView startAnimating];
     
-    self.barcodeData = @"7340011309697"; // fake a known one
-    [api getBarcodeDataForBarcode:self.barcodeData withBlock:^(NSDictionary *result) {
-        NSLog(@"Result: %@", result);
-        [self.indicatorView stopAnimating];
+    NSLog(@"Kod: %@", self.barcodeData);
+    
+    NSDictionary *dict = [NSDictionary                        dictionaryWithObjects:[NSArray arrayWithObjects:
+                                                 @"ssmstreckkod", 
+                                                 @"json", 
+                                                 self.barcodeData, 
+                                                 nil]
+                          
+                          forKeys:[NSArray arrayWithObjects:
+                                   @"action", 
+                                   @"format", 
+                                   @"kod",
+                                   nil]];
+    
+    SSMApiClient *client = [SSMApiClient sharedClient];
+    [client getPath:@"w/api.php" parameters:dict success:^(id object) {
+        NSDictionary *barcodeResponse = [(NSDictionary *)object retain];
+        NSLog(@"%@", barcodeResponse);
         
-        NSDictionary *codeInfo = [result objectForKey:@"streckkod"];
-        
+        NSDictionary *codeInfo = [barcodeResponse objectForKey:@"streckkod"];
         UIViewController *controller;
         
         if ([codeInfo objectForKey:@"Artikel"] == nil) {
@@ -71,14 +88,17 @@
         
         [controller performSelector:@selector(setBarcodeInfo:) withObject:codeInfo];
         [self.navigationController pushViewController:controller animated:YES];
+
         [controller release];
+        [barcodeResponse release];
         
-    } error:^(NSError *error) {
+    } failure:^(NSHTTPURLResponse *response, NSError *error) {
+        NSLog(@"Error: %@", error);
         NSLog(@"Error: %@", [error localizedDescription]);
-        [self.indicatorView stopAnimating];
+       
+        [self.loaderView showError:[error localizedDescription]];
+
     }];
-     */
-    
 }
 
 - (void)viewDidUnload
@@ -87,7 +107,6 @@
     [self setBarcodeData:nil];
     [self setTypeName:nil];
     
-    [self setIndicatorView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -103,7 +122,6 @@
     [loaderView release];
     [typeName release];
     [barcodeData release];
-    [indicatorView release];
     [super dealloc];
 }
 @end

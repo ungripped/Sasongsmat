@@ -19,6 +19,8 @@
 }
 
 - (void)fadeOut;
+- (void)showError:(NSString *)errorMessage;
+
 
 @property (nonatomic, retain) UILabel *loadingLabel;
 @property (nonatomic, retain) UILabel *errorLabel;
