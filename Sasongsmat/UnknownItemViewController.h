@@ -10,6 +10,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchResultsDelegate.h"
 
 enum Sections {
     UnknownItemSection,
@@ -22,14 +23,14 @@ enum UnknownItemSection {
     NUM_ROWS
 };
 
-@class SearchResultsDelegate; 
-
-@interface UnknownItemViewController : UITableViewController {
+@interface UnknownItemViewController : UITableViewController<SSMSearchDelegate> {
     UITableViewCell *descriptionCell;
     
     NSDictionary *barcodeInfo;
     SearchResultsDelegate *searchResultsDelegate;
 }
+
+
 
 @property (nonatomic, retain) NSDictionary *barcodeInfo;
 @property (nonatomic, retain) IBOutlet SearchResultsDelegate *searchResultsDelegate;

@@ -8,12 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@class ASIHTTPRequest;
+@protocol SSMSearchDelegate <NSObject>
+
+- (void)handleResult:(NSString *)result;
+
+@end
 
 @interface SearchResultsDelegate : NSObject <UITableViewDelegate, UITableViewDataSource, UISearchDisplayDelegate> {
     
-    ASIHTTPRequest *activeRequest;
-    
+    id<SSMSearchDelegate> ssmDelegate;
+
     NSMutableArray *_searchResults;
     UISearchDisplayController *_searchController;
     
@@ -21,7 +25,7 @@
 }
 @property (nonatomic, retain) IBOutlet UISearchDisplayController *searchController;
 
-@property (nonatomic, retain) ASIHTTPRequest *activeRequest;
+@property (nonatomic, assign) id<SSMSearchDelegate> ssmDelegate;
 
 - (void)searchRequest:(NSString *)searchString;
 

@@ -7,13 +7,12 @@
 //
 
 #import "SearchResultsDelegate.h"
-//#import "ASIHTTPRequest.h"
 #import "SSMApiClient.h"
 #import "ItemArticleViewController.h"
 
 @implementation SearchResultsDelegate
 @synthesize searchController = _searchController;
-@synthesize activeRequest;
+@synthesize ssmDelegate;
 
 - (void)awakeFromNib {
     _searchResults = [[NSMutableArray alloc] initWithCapacity:10];
@@ -62,12 +61,19 @@
 {
     NSString *article = [_searchResults objectAtIndex:indexPath.row];
     
-    ItemArticleViewController *controller = [[ItemArticleViewController alloc] initWithNibName:@"ItemArticleView" bundle:nil];
-    controller.itemName = article;
+    if (ssmDelegate != nil) {
+        [ssmDelegate handleResult:article];
+        [_searchController setActive:false];
+    }
+    else {
+        
+        ItemArticleViewController *controller = [[ItemArticleViewController alloc] initWithNibName:@"ItemArticleView" bundle:nil];
+        controller.itemName = article;
     
-    [_searchController.searchContentsController.navigationController pushViewController:controller animated:YES];
+        [_searchController.searchContentsController.navigationController pushViewController:controller animated:YES];
     
-    [controller release];
+        [controller release];
+    }
 }
 
 

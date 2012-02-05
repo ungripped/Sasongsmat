@@ -37,7 +37,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -64,6 +65,8 @@
     NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray: self.navigationController.viewControllers];
     [allViewControllers removeObjectAtIndex:1];
     self.navigationController.viewControllers = allViewControllers;
+    self.searchResultsDelegate.ssmDelegate = self;
+    
 
 }
 
@@ -132,6 +135,12 @@
     return cell;
 }
  
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == UnknownItemSection && indexPath.row == ItemDescription) {
+        cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"loader-bg.png"]];
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForBarcodeInfoAtRow:(int)row {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BarcodeInfoRow"];
     
@@ -232,6 +241,10 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+}
+
+- (void)handleResult:(NSString *)result {
+    NSLog(@"Handling search result: %@", result);
 }
 
 - (void)dealloc {
