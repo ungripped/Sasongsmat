@@ -112,7 +112,7 @@
         
         NSArray *links = [article valueForKeyPath:@"parse.links"];
         for (NSDictionary *link in links) {
-            
+            NSLog(@"%@", link);
             NSNumber *ns = [link objectForKey:@"ns"];
             if ([ns isEqualToNumber:[NSNumber numberWithInt:550]]) {
                 NSString *fullRecipeName = [link objectForKey:@"*"];
@@ -126,6 +126,7 @@
         }
         
         self.recipes = articleReceipes;
+        [self.recipeView reloadData];
         
         [self loadArticle];
 
