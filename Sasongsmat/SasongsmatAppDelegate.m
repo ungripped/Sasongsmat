@@ -21,6 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self setAppearances];
     // Override point for customization after application launch.
     // Add the tab bar controller's current view as a subview of the window
     self.window.rootViewController = self.tabBarController;
@@ -38,10 +39,41 @@
     reader.supportedOrientationsMask = ZBarOrientationMaskAll;
     reader.readerView.frame = CGRectMake(0, 0, reader.view.frame.size.width, reader.view.frame.size.height);
     //reader.readerView.frame = reader.view.frame;
-
+    
     
     
     return YES;
+}
+
+- (void)setAppearances
+{
+    UIImage *barBg = [UIImage imageNamed:@"navbar.png"];
+    [[UINavigationBar appearance] setBackgroundImage:barBg forBarMetrics:UIBarMetricsDefault];
+    
+    
+    [[UISearchBar appearance] setBackgroundImage:barBg];
+    
+    UIImage *backButtonImage = [[UIImage imageNamed:@"back-button.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 15, 0, 3)];
+    UIImage *backButtonPressedImage = [[UIImage imageNamed:@"back-button-pressed.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 15, 0, 3)];
+    
+    UIImage *barButtonImage = [[UIImage imageNamed:@"bar-button.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 3, 0, 3)];
+    UIImage *barButtonPressedImage = [[UIImage imageNamed:@"bar-button-pressed.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 3, 0, 3)];
+    
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+    
+    [[UIBarButtonItem appearance] setBackgroundImage:barButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [[UIBarButtonItem appearance] setBackgroundImage:barButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+    
+    
+//    [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
+//    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor greenColor]];
+
+    //UIColor *blackish = [[UIColor redColor] colorWithAlphaComponent:.1f];
+    //[[UIBarButtonItem appearance] setTintColor:blackish];
+    
+    //[[UIBarButtonItem appearance] setTextC
+    //[[UISearchBar appearance] setBackgroundImage:barBg forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

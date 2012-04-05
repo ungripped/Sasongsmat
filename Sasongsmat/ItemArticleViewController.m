@@ -10,7 +10,6 @@
 //
 
 #import "ItemArticleViewController.h"
-#import "SSMNavigationBar.h"
 #import "LoaderView.h"
 #import "SSMApiClient.h"
 

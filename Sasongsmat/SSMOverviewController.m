@@ -73,7 +73,8 @@
         }
     }
     
-    UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"winter.png"]];
+    UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"spring.png"]];
+    titleView.alpha = .1f;
     self.navigationItem.titleView = titleView;
     [titleView release];
     

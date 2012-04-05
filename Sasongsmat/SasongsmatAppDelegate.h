@@ -17,6 +17,7 @@
 }
 
 - (void)openBarcodeController;
+- (void)setAppearances;
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
