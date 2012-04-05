@@ -47,12 +47,35 @@
 
 - (void)setAppearances
 {
+    /** Nav bars **/
     UIImage *barBg = [UIImage imageNamed:@"navbar.png"];
     [[UINavigationBar appearance] setBackgroundImage:barBg forBarMetrics:UIBarMetricsDefault];
+        
+    UIColor *navTextColor = [UIColor colorWithRed:73.0/255.0 green:73.0/255.0 blue:73.0/255.0 alpha:1.0];
+    NSDictionary *navTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       navTextColor,
+                                       UITextAttributeTextColor, 
+                                       [UIColor whiteColor], 
+                                       UITextAttributeTextShadowColor, 
+                                       [NSValue valueWithUIOffset:UIOffsetMake(0, 1)], 
+                                       UITextAttributeTextShadowOffset, 
+                                       nil];
     
+    NSDictionary *navTextHighlightAttributres = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                 [UIColor blackColor],
+                                                 UITextAttributeTextColor, 
+                                                 [UIColor whiteColor], 
+                                                 UITextAttributeTextShadowColor, 
+                                                 [NSValue valueWithUIOffset:UIOffsetMake(0, 1)], 
+                                                 UITextAttributeTextShadowOffset, 
+                                                 nil];
+        
+    [[UINavigationBar appearance] setTitleTextAttributes:navTextAttributes];
     
+    /** Search bar **/
     [[UISearchBar appearance] setBackgroundImage:barBg];
     
+    /** Bar button items **/
     UIImage *backButtonImage = [[UIImage imageNamed:@"back-button.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 15, 0, 3)];
     UIImage *backButtonPressedImage = [[UIImage imageNamed:@"back-button-pressed.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 15, 0, 3)];
     
@@ -66,14 +89,19 @@
     [[UIBarButtonItem appearance] setBackgroundImage:barButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
     
     
-//    [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
-//    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor greenColor]];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:navTextAttributes forState:UIControlStateNormal];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:navTextHighlightAttributres forState:UIControlStateHighlighted];
 
-    //UIColor *blackish = [[UIColor redColor] colorWithAlphaComponent:.1f];
-    //[[UIBarButtonItem appearance] setTintColor:blackish];
     
-    //[[UIBarButtonItem appearance] setTextC
-    //[[UISearchBar appearance] setBackgroundImage:barBg forBarMetrics:UIBarMetricsDefault];
+    /** Segmented controls **/
+    [[UISegmentedControl appearance] setBackgroundImage:[UIImage imageNamed:@"seg-normal.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [[UISegmentedControl appearance] setBackgroundImage:[UIImage imageNamed:@"seg-pressed.png"] forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+    [[UISegmentedControl appearance] setBackgroundImage:[UIImage imageNamed:@"seg-selected.png"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+    
+    [[UISegmentedControl appearance] setDividerImage:[UIImage imageNamed:@"seg-separator.png"] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
