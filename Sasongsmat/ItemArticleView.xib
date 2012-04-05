@@ -97,7 +97,7 @@
 							<object class="IBUISegmentedControl" id="499424859">
 								<reference key="NSNextResponder" ref="998490725"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{10, -1}, {300, 44}}</string>
+								<string key="NSFrame">{{0, -1}, {320, 44}}</string>
 								<reference key="NSSuperview" ref="998490725"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="308126184"/>
@@ -113,9 +113,9 @@
 								</object>
 								<object class="NSMutableArray" key="IBSegmentWidths">
 									<bool key="EncodedWithXMLCoder">YES</bool>
-									<real value="0.0"/>
-									<real value="0.0"/>
-									<real value="0.0"/>
+									<real value="106"/>
+									<real value="106"/>
+									<real value="106"/>
 								</object>
 								<object class="NSMutableArray" key="IBSegmentEnabledStates">
 									<bool key="EncodedWithXMLCoder">YES</bool>
@@ -142,8 +142,8 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="499424859"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">2</int>
-							<bytes key="NSRGB">MC44OTQxMTc3MTMgMC4yMTE3NjQ3MjMxIDAuMzY0NzA1ODkwNAA</bytes>
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MCAwAA</bytes>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
@@ -335,6 +335,7 @@
 					<string>21.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
 					<string>7.IBPluginDependency</string>
+					<string>7.IUISegmentedControlInspectorSelectedSegmentMetadataKey</string>
 					<string>8.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
@@ -348,6 +349,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<integer value="2"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>

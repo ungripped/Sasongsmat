@@ -94,9 +94,13 @@
 
     
     /** Segmented controls **/
-    [[UISegmentedControl appearance] setBackgroundImage:[UIImage imageNamed:@"seg-normal.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [[UISegmentedControl appearance] setBackgroundImage:[UIImage imageNamed:@"seg-pressed.png"] forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
-    [[UISegmentedControl appearance] setBackgroundImage:[UIImage imageNamed:@"seg-selected.png"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+    UIImage *normalImage = [[UIImage imageNamed:@"seg-normal.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    UIImage *pressedImage = [[UIImage imageNamed:@"seg-pressed.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    UIImage *selectedImage = [[UIImage imageNamed:@"seg-selected.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    [[UISegmentedControl appearance] setBackgroundImage:normalImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [[UISegmentedControl appearance] setBackgroundImage:pressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+    [[UISegmentedControl appearance] setBackgroundImage:selectedImage forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
     
     [[UISegmentedControl appearance] setDividerImage:[UIImage imageNamed:@"seg-separator.png"] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
