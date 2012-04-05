@@ -2,9 +2,10 @@ $(document).ready(function() {
                   $("span:contains('Länkar')").parent("h2").hide();
                   $("span:contains('Författare')").parent("h2").hide();
                   $("span:contains('Källor')").parent("h2").hide();
+                  $("span:contains('Näringsvärde')").parent("h2").hide();
                   $(".editsection").hide();
                   $("img[alt^='QR-']").parents("p").hide();
-                  $("#manadshuvud").hide();
+                  //$("#manadshuvud").hide();
                   $("p:empty").remove();
                   $("a[class!='mw-redirect']").addClass('vislink');
                   $.each($("img[src^='/']"), function(index, obj) {

@@ -104,7 +104,23 @@
     
     [[UISegmentedControl appearance] setDividerImage:[UIImage imageNamed:@"seg-separator.png"] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
+    NSDictionary *segmentedTextAttributes = 
+        [NSDictionary dictionaryWithObjectsAndKeys:
+         navTextColor,
+         UITextAttributeTextColor, 
+         [UIColor whiteColor], 
+         UITextAttributeTextShadowColor, 
+         [NSValue valueWithUIOffset:UIOffsetMake(0, 1)], 
+         UITextAttributeTextShadowOffset, 
+         [UIFont boldSystemFontOfSize:13.0],
+         UITextAttributeFont,
+         nil];
+
+    [[UISegmentedControl appearance] setTitleTextAttributes:segmentedTextAttributes forState:UIControlStateSelected];
+    [[UISegmentedControl appearance] setTitleTextAttributes:segmentedTextAttributes forState:UIControlStateNormal];
+    [[UISegmentedControl appearance] setTitleTextAttributes:segmentedTextAttributes forState:UIControlStateHighlighted];
     
+    [[UISegmentedControl appearance] setContentPositionAdjustment:UIOffsetMake(0, -3.0) forSegmentType:UISegmentedControlSegmentAny barMetrics:UIBarMetricsDefault];
     
 }
 

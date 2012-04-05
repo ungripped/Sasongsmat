@@ -84,3 +84,12 @@ sup {
 	padding-bottom: 5px;
 }
 
+.majasklimatpyramider, 
+#Majas_klimatpyramider, 
+#manadshuvud, 
+.majasklimatpyramider + p {
+    display: none;
+}
+
+
+
