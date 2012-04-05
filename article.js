@@ -7,6 +7,7 @@ $(document).ready(function() {
                   $("img[alt^='QR-']").parents("p").hide();
                   //$("#manadshuvud").hide();
                   $("p:empty").remove();
+                  $("p > br").parent().remove();
                   $("a[class!='mw-redirect']").addClass('vislink');
                   $.each($("img[src^='/']"), function(index, obj) {
                         $(obj).attr('src', 'http://xn--ssongsmat-v2a.nu' + $(obj).attr('src'));
