@@ -111,7 +111,7 @@
     }
     else {
         CGPoint off = [scrollView contentOffset];
-        NSLog(@"%f - %f", off.x, off.y);
+        //NSLog(@"%f - %f", off.x, off.y);
         CGPoint newOff;
         if (off.y < 88 && off.y >= 0)
             newOff = CGPointMake(0, off.y / 2);
@@ -121,7 +121,7 @@
             newOff = CGPointMake(0, 0);
             [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
         }
-        NSLog(@"new off: %f - %f", newOff.x, newOff.y);
+        //NSLog(@"new off: %f - %f", newOff.x, newOff.y);
         self.parentScrollView.contentOffset = newOff;
         
         

@@ -10,6 +10,7 @@
 //
 
 #import "ItemArticleViewController.h"
+#import "RecipeViewController.h"
 #import "LoaderView.h"
 #import "SSMApiClient.h"
 
@@ -306,7 +307,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([recipes count] > 0) {
-        NSLog(@"Show recipe: %@", [recipes objectAtIndex:indexPath.row]);
+        NSString * recipe = [recipes objectAtIndex:indexPath.row];
+        
+        RecipeViewController *controller = [[RecipeViewController alloc] initWithNibName:@"RecipeViewController" bundle:nil];
+        
+        controller.recipeName = recipe;
+        [self.navigationController pushViewController:controller animated:YES];
+        [controller release];
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
     else {
         NSLog(@"No recipes.");
