@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 #import "LoaderView.h"
 
-@interface ScannerResultViewController : UIViewController {
+@interface ScannerResultViewController : UIViewController <UIAlertViewDelegate> {
     LoaderView *loaderView;
     
     NSString *barcodeData;

@@ -81,7 +81,16 @@
         
         UIViewController *controller;
         
-        if ([codeInfo objectForKey:@"Artikel"] == nil) {
+        if ([codeInfo objectForKey:@"message"] != nil) {
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Fel"
+                                                              message:[codeInfo objectForKey:@"message"]
+                                                             delegate:self
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles:nil];
+            
+            [message show];
+        }
+        else if ([codeInfo objectForKey:@"Artikel"] == nil) {
             controller = [[UnknownItemViewController alloc] initWithNibName:@"UnknownItemViewController" bundle:nil];
         }
         else {
@@ -101,6 +110,10 @@
         [self.loaderView showError:[error localizedDescription]];
 
     }];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)viewDidUnload
