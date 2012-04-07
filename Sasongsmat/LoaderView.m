@@ -19,12 +19,13 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        //UIColor *bgColor = [UIColor colorWithRed:0.953 green:0.953 blue:0.953 alpha:1];
-        UIColor *bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"loader-bg.png"]];
+        //UIColor *bgColor = [UIColor colorWithRed:255.0/204.0 green:255.0/250.0 blue:1 alpha:1];
+        //UIColor *bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"loader-bg.png"]];
         // Initialization code
+        UIColor *bgColor = [UIColor colorWithRed:0.8 green:0.98 blue:1 alpha:1.0];
         self.backgroundColor = bgColor;
         
-        self.loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 139, 280, 21)];
+        self.loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 99, 280, 21)];
         self.loadingLabel.textAlignment = UITextAlignmentCenter;
         self.loadingLabel.textColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1]; /* #333 */
         self.loadingLabel.shadowColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
@@ -34,16 +35,23 @@
         
         self.loadingLabel.backgroundColor = [UIColor clearColor];
         
-        self.errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 176, 280, 21)];
+        self.errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 136, 280, 21)];
         self.errorLabel.hidden = YES;
         
         self.indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         
-        self.indicator.frame = CGRectMake(142, 168, 37, 37);
+        self.indicator.frame = CGRectMake(142, 128, 37, 37);
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"stuff-in-a-pile.png"]];
+        imageView.frame = CGRectMake(0, 245, 320, 171);
+        
         
         [self addSubview:loadingLabel];
         [self addSubview:errorLabel];
         [self addSubview:indicator];
+        [self addSubview:imageView];
+
+        [imageView release];
         
         [self.indicator startAnimating];
     }

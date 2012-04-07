@@ -84,7 +84,7 @@
     
     NSString *html = [NSString stringWithFormat:@"%@%@%@", js, css, self.initialHTML];
     
-    //NSLog(@"%@", html);
+    NSLog(@"%@", html);
     [recipeView loadHTMLString:html baseURL:baseURL];
     [self.loaderView fadeOut];
 }

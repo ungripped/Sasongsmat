@@ -25,6 +25,7 @@ $(document).ready(function() {
                          });
                   
                   $('body > .thumb').prepend('<div id="indicator"><canvas width="300" height="30"></canvas></div>');
+                  
                   renderIndicator($('#indicator canvas')[0], arr);
                   
                   console.log(arr);
@@ -44,7 +45,21 @@ $(document).ready(function() {
 });
 
 function renderIndicator(canvas, seasonInfo) {
+    if (window.devicePixelRatio) {
+        var hidefCanvas = $(canvas);
+        var canvasWidth = cssWidth = hidefCanvas.attr('width');
+        var canvasHeight = cssHeight = hidefCanvas.attr('height');
+        
+        hidefCanvas.attr('width', canvasWidth * window.devicePixelRatio);
+        hidefCanvas.attr('height', canvasHeight * window.devicePixelRatio);
+        hidefCanvas.css('width', cssWidth);
+        hidefCanvas.css('height', cssHeight);
+        
+    }
+    
 	var ctx = canvas.getContext('2d');
+    
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
     
 	ctx.strokeStyle = 'rgb(0,0,0)';
 	ctx.font = "11px sans-serif";
