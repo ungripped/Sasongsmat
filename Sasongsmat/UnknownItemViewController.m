@@ -10,6 +10,8 @@
 //
 
 #import "UnknownItemViewController.h"
+#import "LoaderView.h"
+#import "ScannerResultViewController.h"
 #import "SSMApiClient.h"
 
 @implementation UnknownItemViewController
@@ -112,7 +114,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == BarcodeInfoSection) {
+    if (section == BarcodeInfoSection && tableView == self.tableView) {
         return @"Information från streckkoden";
     }
     return nil;
@@ -286,13 +288,35 @@
     
     NSLog(@"Trying to connect barcode: %@ with article: %@", [barcodeInfo objectForKey:@"streckkod"], result);
     
+    LoaderView *loaderView = [[LoaderView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    loaderView.alpha = 1.0;
+    loaderView.loadingLabel.text = @"Kopplar streckkod...";
+    UIViewController *controller = [[UIViewController alloc] init];
+    controller.view = loaderView;
+    [loaderView release];
+    
+    [self.navigationController pushViewController:controller animated:YES];
+    
+    [controller release];
+    
     [client postPath:@"w/api.php" parameters:dict success:^(id object) {
-        NSLog(@"Success response!");
-        NSDictionary *response = [(NSDictionary *)object retain];
-        NSLog(@"%@", response);
+        NSDictionary *response = (NSDictionary *)object;
+        NSString *pageTitle = [response valueForKeyPath:@"edit.title"];
+        NSString *barcode = [pageTitle substringFromIndex:9];
+        NSLog(@"BARCODE: %@", barcode);
+        
+        
+        ScannerResultViewController *resultController = [[ScannerResultViewController alloc] initWithNibName:@"ScannerResultViewController" bundle:nil];
+        
+        resultController.barcodeData = barcode;
+        
+        [self.navigationController pushViewController:resultController animated:NO];
+        
+        [resultController release];
         
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
         NSLog(@"Error: %@", error);
+        [self.navigationController popViewControllerAnimated:YES];
     }];
 
 }
@@ -300,7 +324,7 @@
 - (void)dealloc {
     [descriptionCell release];
     [barcodeInfo release];
-    [searchResultsDelegate release];
+    //[searchResultsDelegate release];
     [super dealloc];
 }
 

@@ -10,6 +10,7 @@
 //
 
 #import "KnownItemViewController.h"
+#import "ItemArticleViewController.h"
 #import "SSMApiClient.h"
 
 @implementation KnownItemViewController
@@ -203,7 +204,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == ItemInfoSection && indexPath.row == ItemInfo) {
-        return 150;
+        return 102;
     }
     else {
         return 44;
@@ -261,6 +262,17 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    NSString *artikel = [self.barcodeInfo valueForKey:@"Artikel"];
+
+    ItemArticleViewController *controller = [[ItemArticleViewController alloc] initWithNibName:@"ItemArticleView" bundle:nil];
+    controller.itemName = artikel;
+    
+    [self.navigationController pushViewController:controller animated:YES];
+    
+    [controller release];
 }
 
 - (void)dealloc {

@@ -119,6 +119,8 @@
 		BE328CC01448DE8E00A7182C /* winter.png in Resources */ = {isa = PBXBuildFile; fileRef = BE328CBE1448DE8E00A7182C /* winter.png */; };
 		BE328CC11448DE8E00A7182C /* winter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE328CBF1448DE8E00A7182C /* winter@2x.png */; };
 		BE328CC41448E51E00A7182C /* SSMApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BE328CC31448E51E00A7182C /* SSMApiClient.m */; };
+		BE3561051530FC4600016B80 /* gronsaker.png in Resources */ = {isa = PBXBuildFile; fileRef = BE3561031530FC4600016B80 /* gronsaker.png */; };
+		BE3561061530FC4600016B80 /* gronsaker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE3561041530FC4600016B80 /* gronsaker@2x.png */; };
 		BE4DEE6714DDEA6D003C6568 /* SSMOverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4DEE6614DDEA6D003C6568 /* SSMOverviewController.m */; };
 		BE4E75A8152CEDD200A50971 /* navbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE4E75A7152CEDD200A50971 /* navbar@2x.png */; };
 		BE4E75AA152CEDFA00A50971 /* navbar.png in Resources */ = {isa = PBXBuildFile; fileRef = BE4E75A9152CEDFA00A50971 /* navbar.png */; };
@@ -353,6 +355,8 @@
 		BE328CBF1448DE8E00A7182C /* winter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "winter@2x.png"; sourceTree = "<group>"; };
 		BE328CC21448E51E00A7182C /* SSMApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSMApiClient.h; sourceTree = "<group>"; };
 		BE328CC31448E51E00A7182C /* SSMApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSMApiClient.m; sourceTree = "<group>"; };
+		BE3561031530FC4600016B80 /* gronsaker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gronsaker.png; sourceTree = "<group>"; };
+		BE3561041530FC4600016B80 /* gronsaker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gronsaker@2x.png"; sourceTree = "<group>"; };
 		BE4DEE6514DDEA6D003C6568 /* SSMOverviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSMOverviewController.h; path = Sasongsmat/SSMOverviewController.h; sourceTree = "<group>"; };
 		BE4DEE6614DDEA6D003C6568 /* SSMOverviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSMOverviewController.m; path = Sasongsmat/SSMOverviewController.m; sourceTree = "<group>"; };
 		BE4E75A7152CEDD200A50971 /* navbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navbar@2x.png"; path = "appearance/navbar@2x.png"; sourceTree = "<group>"; };
@@ -465,6 +469,8 @@
 		4903107113A2A9B8005EB2EC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BE3561031530FC4600016B80 /* gronsaker.png */,
+				BE3561041530FC4600016B80 /* gronsaker@2x.png */,
 				BEE3B28C15304EFF00F90924 /* stuff-in-a-pile.png */,
 				BEE3B28D15304EFF00F90924 /* stuff-in-a-pile@2x.png */,
 				BEE5C01A1530403A002DE6A2 /* splash.png */,
@@ -1164,6 +1170,8 @@
 				BEE5C01F15304077002DE6A2 /* Default@2x.png in Resources */,
 				BEE3B28E15304EFF00F90924 /* stuff-in-a-pile.png in Resources */,
 				BEE3B28F15304EFF00F90924 /* stuff-in-a-pile@2x.png in Resources */,
+				BE3561051530FC4600016B80 /* gronsaker.png in Resources */,
+				BE3561061530FC4600016B80 /* gronsaker@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
