@@ -11,6 +11,8 @@
 #import "ItemArticleViewController.h"
 
 @implementation SearchResultsDelegate
+
+@synthesize searchType;
 @synthesize searchController = _searchController;
 @synthesize ssmDelegate;
 
@@ -20,6 +22,8 @@
     
     _searchQueue = [[NSOperationQueue new] retain];
     [_searchQueue setMaxConcurrentOperationCount:1];
+    
+    //searchType = SSMSearchTypeArticle;
 }
 
 - (void)dealloc {
@@ -98,10 +102,14 @@
     
     [_searchQueue addOperationWithBlock:^{
         
-        NSDictionary *dict = [NSDictionary 
+        NSMutableDictionary *dict = [NSMutableDictionary 
                               dictionaryWithObjects:[NSArray arrayWithObjects:@"query", @"json", @"search", [NSString stringWithFormat:@"%@%@", searchString, @"*"], @"false", nil]
                               
                               forKeys:[NSArray arrayWithObjects:@"action", @"format", @"list", @"srsearch", @"srredirects", nil]];
+        
+        if (searchType == SSMSearchTypeRecipe) {
+            [dict setObject:@"550" forKey:@"srnamespace"];
+        }
         
         SSMApiClient *client = [SSMApiClient sharedClient];
         [client getPath:@"w/api.php" parameters:dict success:^(id object) {
@@ -116,7 +124,12 @@
                 for (NSDictionary *obj in tmp) {
                     NSString *snippet = [obj objectForKey:@"snippet"];
                     if (![snippet hasPrefix:@"#OMDIRIGERING"]) {
-                        [result addObject:[obj objectForKey:@"title"]];
+                        NSString *title = [obj objectForKey:@"title"];
+                        if (searchType == SSMSearchTypeRecipe && [title hasPrefix:@"Recept:"]) {
+                            title = [title substringFromIndex:7];
+                        }
+                        
+                        [result addObject:title];
                     }
                 }
                 

@@ -13,13 +13,13 @@
 #import "EGORefreshTableHeaderView.h"
 #import "LoaderView.h"
 
-@class ItemSearchDelegate; 
+@class SearchResultsDelegate; 
 
 @interface SSMOverviewController : UIViewController<EGORefreshTableHeaderDelegate, UIWebViewDelegate, UIScrollViewDelegate> {
     
     EGORefreshTableHeaderView *_refreshHeaderView;
     
-    ItemSearchDelegate *searchDelegate;
+    SearchResultsDelegate *searchDelegate;
     BOOL _reloading;
     UIWebView *_itemsView;
     LoaderView *_loaderView;
@@ -35,7 +35,7 @@
 @property (nonatomic, retain) IBOutlet UIScrollView *parentScrollView;
 @property (nonatomic, retain) UIScrollView *itemsScrollView;
 
-@property (nonatomic, retain) IBOutlet ItemSearchDelegate *searchDelegate;
+@property (nonatomic, retain) IBOutlet SearchResultsDelegate *searchDelegate;
 
 
 - (void)loadFoodItems;

@@ -11,6 +11,7 @@
 
 #import "RecipesOverviewController.h"
 #import "RecipeViewController.h"
+#import "SearchResultsDelegate.h"
 
 @implementation RecipesOverviewController
 
@@ -19,9 +20,14 @@
     viewTitle = @"Recept";
     listType = @"recipes";
     
+    self.searchDelegate.searchType = SSMSearchTypeRecipe;
+    
     [super viewDidLoad];
 }
 
+- (void)handleResult:(NSString *)result {
+    [self loadArticle:result];
+}
 
 - (void)loadArticle:(NSString *)article {
     RecipeViewController *controller = [[RecipeViewController alloc] initWithNibName:@"RecipeViewController" bundle:nil];

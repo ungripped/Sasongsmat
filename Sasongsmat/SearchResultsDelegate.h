@@ -14,6 +14,11 @@
 
 @end
 
+typedef enum {
+    SSMSearchTypeArticle,
+    SSMSearchTypeRecipe
+} SSMSearchType;
+
 @interface SearchResultsDelegate : NSObject <UITableViewDelegate, UITableViewDataSource, UISearchDisplayDelegate> {
     
     id<SSMSearchDelegate> ssmDelegate;
@@ -22,10 +27,12 @@
     UISearchDisplayController *_searchController;
     
     NSOperationQueue *_searchQueue;
+    
+    SSMSearchType searchType;
 }
 @property (nonatomic, retain) IBOutlet UISearchDisplayController *searchController;
-
-@property (nonatomic, assign) id<SSMSearchDelegate> ssmDelegate;
+@property (nonatomic, assign) IBOutlet id<SSMSearchDelegate> ssmDelegate;
+@property (nonatomic) SSMSearchType searchType;
 
 - (void)searchRequest:(NSString *)searchString;
 
