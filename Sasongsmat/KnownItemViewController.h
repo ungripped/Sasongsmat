@@ -11,9 +11,10 @@
 
 #import <UIKit/UIKit.h>
 
-enum KnownItemSection {
+enum KnownItemSections {
     ItemInfoSection,
     RecipeSection,
+    AlternativesSection,
     KnownItemBarcodeInfoSection,
     KNOWN_NUM_SECTIONS
 };
@@ -28,7 +29,6 @@ enum ItemInfoSection {
     NSDictionary *barcodeInfo;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForItemDescriptionAtRow:(int)row;
 
 @property (nonatomic, retain) NSDictionary *barcodeInfo;
 @property (retain, nonatomic) IBOutlet UILabel *itemNameLabel;

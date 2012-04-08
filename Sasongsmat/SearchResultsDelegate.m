@@ -99,9 +99,9 @@
     [_searchQueue addOperationWithBlock:^{
         
         NSDictionary *dict = [NSDictionary 
-                              dictionaryWithObjects:[NSArray arrayWithObjects:@"query", @"json", @"search", [NSString stringWithFormat:@"%@%@", searchString, @"*"], @"Baskategori|bild", nil]
+                              dictionaryWithObjects:[NSArray arrayWithObjects:@"query", @"json", @"search", [NSString stringWithFormat:@"%@%@", searchString, @"*"], @"false", nil]
                               
-                              forKeys:[NSArray arrayWithObjects:@"action", @"format", @"list", @"srsearch", @"srprop", nil]];
+                              forKeys:[NSArray arrayWithObjects:@"action", @"format", @"list", @"srsearch", @"srredirects", nil]];
         
         SSMApiClient *client = [SSMApiClient sharedClient];
         [client getPath:@"w/api.php" parameters:dict success:^(id object) {
@@ -114,7 +114,10 @@
                 NSMutableArray *result = [NSMutableArray arrayWithCapacity:[tmp count]];
                 NSLog(@"%@", tmp);
                 for (NSDictionary *obj in tmp) {
-                    [result addObject:[obj objectForKey:@"title"]];
+                    NSString *snippet = [obj objectForKey:@"snippet"];
+                    if (![snippet hasPrefix:@"#OMDIRIGERING"]) {
+                        [result addObject:[obj objectForKey:@"title"]];
+                    }
                 }
                 
                 [self showResults:result];

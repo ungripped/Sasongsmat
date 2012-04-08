@@ -1042,7 +1042,7 @@
 		493E0903138DBC430030161D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "Matti Ryhänen, Säsongsmat.\n//\n//  Licensed under the BSD license\n//  Please consult the LICENSE file in the root directory for more information.";
 			};
 			buildConfigurationList = 493E0906138DBC430030161D /* Build configuration list for PBXProject "Sasongsmat" */;

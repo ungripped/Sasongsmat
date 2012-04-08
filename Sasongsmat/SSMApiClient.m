@@ -41,7 +41,7 @@ NSString * const kSSMApiBaseURLString = @"http://xn--ssongsmat-v2a.nu";
     // Set default headers here, e.g:
     //[self setDefaultHeader:@"X-SSM-API-Version" value:@"1.0"];
     
-    [self setDefaultHeader:@"X-UDID" value:[[UIDevice currentDevice] uniqueIdentifier]];
+    //[self setDefaultHeader:@"X-UDID" value:[[UIDevice currentDevice] uniqueIdentifier]];
     
     [self setParameterEncoding:AFFormURLParameterEncoding];
     

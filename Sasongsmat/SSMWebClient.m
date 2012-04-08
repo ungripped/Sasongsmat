@@ -39,7 +39,7 @@ NSString * const kSSMWebBaseURLString = @"http://xn--ssongsmat-v2a.nu:4000";
     // Set default headers here, e.g:
     //[self setDefaultHeader:@"X-SSM-API-Version" value:@"1.0"];
     
-    [self setDefaultHeader:@"X-UDID" value:[[UIDevice currentDevice] uniqueIdentifier]];
+    //[self setDefaultHeader:@"X-UDID" value:[[UIDevice currentDevice] uniqueIdentifier]];
     
     return self;
 }
