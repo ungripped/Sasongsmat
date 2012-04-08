@@ -74,3 +74,12 @@ td {
     font-weight: bold;
 }
 
+.smwttcontent {
+    font-size: 0.75em;
+    display: block;
+}
+
+table.wikitable tr:nth-child(odd) td {
+    background-color: #eee;
+}
+
