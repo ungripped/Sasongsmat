@@ -97,7 +97,7 @@
 }
 
 - (void)searchRequest:(NSString *)searchString {
-    NSLog(@"Searching for: %@", searchString);
+    //NSLog(@"Searching for: %@", searchString);
     [_searchQueue cancelAllOperations];
     
     [_searchQueue addOperationWithBlock:^{
@@ -120,7 +120,7 @@
             
             if ([tmp count] > 0) {
                 NSMutableArray *result = [NSMutableArray arrayWithCapacity:[tmp count]];
-                NSLog(@"%@", tmp);
+                //NSLog(@"%@", tmp);
                 for (NSDictionary *obj in tmp) {
                     NSString *snippet = [obj objectForKey:@"snippet"];
                     if (![snippet hasPrefix:@"#OMDIRIGERING"]) {

@@ -64,7 +64,7 @@
 # pragma mark - Load extra stuff
 
 - (void)loadRecipesForArticle:(NSString *)articleName {
-    NSLog(@"Loading recipes for article: %@", articleName);
+    //NSLog(@"Loading recipes for article: %@", articleName);
     SSMApiClient *client = [SSMApiClient sharedClient];
     
     NSArray *parameterKeys = [NSArray arrayWithObjects:
@@ -87,7 +87,7 @@
     
     [client getPath:@"w/api.php" parameters:parameters success:^(id object) {
         NSDictionary *recipeResponse = [(NSDictionary *)object retain];
-        NSLog(@"%@", recipeResponse);
+        //NSLog(@"%@", recipeResponse);
         
         NSDictionary *pages = [recipeResponse valueForKeyPath:@"query.pages"];
         NSDictionary *page = [[pages allValues] objectAtIndex:0];
@@ -95,7 +95,7 @@
         NSMutableArray *articleReceipes = [NSMutableArray array];
         NSArray *links = [page objectForKey:@"links"];
         for (NSDictionary *link in links) {
-            NSLog(@"%@", link);
+            //NSLog(@"%@", link);
             NSNumber *ns = [link objectForKey:@"ns"];
             if ([ns isEqualToNumber:[NSNumber numberWithInt:550]]) {
                 NSString *fullRecipeName = [link objectForKey:@"title"];
@@ -124,7 +124,7 @@
 }
 
 - (void)loadAlternativesForArticle:(NSString *)articleName {
-    NSLog(@"Loading alternatives for article: %@", articleName);
+    //NSLog(@"Loading alternatives for article: %@", articleName);
     SSMApiClient *client = [SSMApiClient sharedClient];
     
     NSArray *parameterKeys = [NSArray arrayWithObjects:
@@ -150,7 +150,7 @@
         
         NSArray *alts = [[[article objectForKey:@"printouts"] allValues] objectAtIndex:0];
         NSMutableArray *articleAlternatives = [NSMutableArray array];
-        NSLog(@"Alternatives: \n%@", alts);
+        //NSLog(@"Alternatives: \n%@", alts);
         for (NSDictionary *alternative in alts) {
             [articleAlternatives addObject:[alternative objectForKey:@"fulltext"]];
         }
@@ -208,7 +208,7 @@
     SSMApiClient *client = [SSMApiClient sharedClient];
     [client getPath:@"w/api.php" parameters:seasonDict success:^(id object) {
         NSDictionary *seasonResponse = [(NSDictionary *)object retain];
-        NSLog(@"%@", seasonResponse);
+        //NSLog(@"%@", seasonResponse);
         
         NSString *keyPath = [NSString stringWithFormat:@"ssm.%@.isasong", articleName];
         BOOL inSeason = [[seasonResponse valueForKeyPath:keyPath] boolValue];

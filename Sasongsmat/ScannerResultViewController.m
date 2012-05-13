@@ -52,12 +52,12 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"Read: %@:%@", self.typeName, self.barcodeData);
+    //NSLog(@"Read: %@:%@", self.typeName, self.barcodeData);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     
-    NSLog(@"Kod: %@", self.barcodeData);
+    //NSLog(@"Kod: %@", self.barcodeData);
     
     NSDictionary *dict = [NSDictionary                        dictionaryWithObjects:[NSArray arrayWithObjects:
                                                  @"ssmstreckkod", 
@@ -74,7 +74,7 @@
     SSMApiClient *client = [SSMApiClient sharedClient];
     [client getPath:@"w/api.php" parameters:dict success:^(id object) {
         NSDictionary *barcodeResponse = [(NSDictionary *)object retain];
-        NSLog(@"%@", barcodeResponse);
+        //NSLog(@"%@", barcodeResponse);
         
         NSMutableDictionary *codeInfo = [NSMutableDictionary dictionaryWithDictionary:[barcodeResponse objectForKey:@"streckkod"]];
         [codeInfo setObject:barcodeData forKey:@"streckkod"];
@@ -88,6 +88,14 @@
                                                     cancelButtonTitle:@"OK"
                                                     otherButtonTitles:nil];
             
+            [message show];
+        }
+        else if ([[codeInfo objectForKey:@"typ"] isEqualToString:@"ISBN"]) {
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"ISBN"
+                                                              message:@"Säsongsmat har inte stöd för ISBN-koder för närvarande"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"OK" 
+                                                    otherButtonTitles:nil];
             [message show];
         }
         else if ([codeInfo objectForKey:@"Artikel"] == nil) {

@@ -250,7 +250,7 @@
  Handle search result. Connect barcode -> result (article name) 
  */
 - (void)handleResult:(NSString *)result {
-    NSLog(@"Handling search result: %@", result);
+    //NSLog(@"Handling search result: %@", result);
     
     NSString *title   = [NSString 
                          stringWithFormat:@"Streckkod:%@", 
@@ -286,7 +286,7 @@
     SSMApiClient *client = [SSMApiClient sharedClient];
     
     
-    NSLog(@"Trying to connect barcode: %@ with article: %@", [barcodeInfo objectForKey:@"streckkod"], result);
+    //NSLog(@"Trying to connect barcode: %@ with article: %@", [barcodeInfo objectForKey:@"streckkod"], result);
     
     LoaderView *loaderView = [[LoaderView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     loaderView.alpha = 1.0;
@@ -303,7 +303,7 @@
         NSDictionary *response = (NSDictionary *)object;
         NSString *pageTitle = [response valueForKeyPath:@"edit.title"];
         NSString *barcode = [pageTitle substringFromIndex:9];
-        NSLog(@"BARCODE: %@", barcode);
+        //NSLog(@"BARCODE: %@", barcode);
         
         
         ScannerResultViewController *resultController = [[ScannerResultViewController alloc] initWithNibName:@"ScannerResultViewController" bundle:nil];

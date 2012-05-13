@@ -202,15 +202,17 @@
     //UIImage *image = [info objectForKey: UIImagePickerControllerOriginalImage];
     
     ZBarSymbol *symbol = nil;
-    for(symbol in results)
-        // EXAMPLE: just grab the first barcode
+    for(symbol in results) {
         break;
+    }
     
     //[reader dismissModalViewControllerAnimated:YES];
     
     UINavigationController *navController = [self.tabBarController.viewControllers objectAtIndex:1];
     
     ScannerResultViewController *vc = [[ScannerResultViewController alloc] initWithNibName:@"ScannerResultViewController" bundle:nil];
+    
+    
     
     vc.barcodeData = symbol.data;
     vc.typeName = symbol.typeName;

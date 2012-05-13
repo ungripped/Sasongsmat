@@ -1377,8 +1377,8 @@
 				"OTHER_LDFLAGS[sdk=iphoneos*][arch=*]" = "-lzbar-debugos";
 				"OTHER_LDFLAGS[sdk=iphonesimulator*][arch=*]" = "-lzbar-debugsim";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "99B0E1DB-51D9-440B-8631-0537E02E20B2";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "99B0E1DB-51D9-440B-8631-0537E02E20B2";
+				PROVISIONING_PROFILE = "6CD5A45C-111E-4694-BC9E-F05499B8F414";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6CD5A45C-111E-4694-BC9E-F05499B8F414";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1401,8 +1401,8 @@
 				"OTHER_LDFLAGS[sdk=iphoneos*][arch=*]" = "-lzbar-releaseos";
 				"OTHER_LDFLAGS[sdk=iphonesimulator*][arch=*]" = "-lzbar-releasesim";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "99B0E1DB-51D9-440B-8631-0537E02E20B2";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "99B0E1DB-51D9-440B-8631-0537E02E20B2";
+				PROVISIONING_PROFILE = "6CD5A45C-111E-4694-BC9E-F05499B8F414";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6CD5A45C-111E-4694-BC9E-F05499B8F414";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1454,6 +1454,72 @@
 			};
 			name = Release;
 		};
+		BE8D7340153626E50058616C /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Matti Ryhänen (9HJ66JSYJU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matti Ryhänen (9HJ66JSYJU)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "4C79A0E9-8CB1-4C34-A692-65C81D5D8FAB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4C79A0E9-8CB1-4C34-A692-65C81D5D8FAB";
+				SDKROOT = iphoneos;
+			};
+			name = "Ad Hoc";
+		};
+		BE8D7341153626E50058616C /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Matti Ryhänen (9HJ66JSYJU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matti Ryhänen (9HJ66JSYJU)";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sasongsmat/Sasongsmat-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "Sasongsmat/Sasongsmat-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ZBarSDK/lib/\"",
+				);
+				"OTHER_LDFLAGS[sdk=iphoneos*][arch=*]" = "-lzbar-releaseos";
+				"OTHER_LDFLAGS[sdk=iphonesimulator*][arch=*]" = "-lzbar-releasesim";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6CD5A45C-111E-4694-BC9E-F05499B8F414";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6CD5A45C-111E-4694-BC9E-F05499B8F414";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = "Ad Hoc";
+		};
+		BE8D7342153626E50058616C /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Sasongsmat.app/Sasongsmat";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SasongsmatTests/SasongsmatTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "SasongsmatTests/SasongsmatTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = "Ad Hoc";
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1462,6 +1528,7 @@
 			buildConfigurations = (
 				493E0947138DBC430030161D /* Debug */,
 				493E0948138DBC430030161D /* Release */,
+				BE8D7340153626E50058616C /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1471,6 +1538,7 @@
 			buildConfigurations = (
 				493E094A138DBC430030161D /* Debug */,
 				493E094B138DBC430030161D /* Release */,
+				BE8D7341153626E50058616C /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1480,6 +1548,7 @@
 			buildConfigurations = (
 				493E094D138DBC430030161D /* Debug */,
 				493E094E138DBC430030161D /* Release */,
+				BE8D7342153626E50058616C /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

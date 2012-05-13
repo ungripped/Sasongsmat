@@ -113,7 +113,7 @@
         
         NSArray *links = [article valueForKeyPath:@"parse.links"];
         for (NSDictionary *link in links) {
-            NSLog(@"%@", link);
+            //NSLog(@"%@", link);
             NSNumber *ns = [link objectForKey:@"ns"];
             if ([ns isEqualToNumber:[NSNumber numberWithInt:550]]) {
                 NSString *fullRecipeName = [link objectForKey:@"*"];
@@ -164,7 +164,7 @@
     
     NSString *html = [NSString stringWithFormat:@"%@%@%@", js, css, self.initialHTML];
     
-    NSLog(@"%@", html);
+    //NSLog(@"%@", html);
     [itemView loadHTMLString:html baseURL:baseURL];
     [self.loaderView fadeOut];
 }
@@ -222,7 +222,7 @@
         case UIWebViewNavigationTypeLinkClicked:
             if ([url pathExtension] != nil &&
                 ![[url pathExtension] isEqualToString:@""]) {
-                NSLog(@"Path with extension: '%@'", [url pathExtension]);
+                //NSLog(@"Path with extension: '%@'", [url pathExtension]);
                 return NO;
             }
             NSString *obj = [url lastPathComponent];

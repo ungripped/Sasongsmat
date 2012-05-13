@@ -76,7 +76,7 @@
 
 - (void)loadArticle {
     NSString *path = [[NSBundle mainBundle] bundlePath];
-    NSLog(@"%@", path);
+    //NSLog(@"%@", path);
     NSURL *baseURL = [NSURL fileURLWithPath:path];
     
     NSString *js = @"<script src='jquery.js'></script><script src='recipe.js'></script>";
@@ -84,7 +84,7 @@
     
     NSString *html = [NSString stringWithFormat:@"%@%@%@", js, css, self.initialHTML];
     
-    NSLog(@"%@", html);
+    //NSLog(@"%@", html);
     [recipeView loadHTMLString:html baseURL:baseURL];
     [self.loaderView fadeOut];
 }

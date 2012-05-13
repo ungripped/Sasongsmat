@@ -191,7 +191,7 @@
 #pragma mark - EGORefreshTableHeaderDelegate methods
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view {
     
-    NSLog(@"Did trigger refresh...");
+    //NSLog(@"Did trigger refresh...");
     [self loadFoodItems];
 }
 
